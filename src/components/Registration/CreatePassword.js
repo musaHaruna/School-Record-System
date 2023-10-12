@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './otp.css'
+import '../../assets/css/otp.css'
 
 const CreatePassword = ({ prevStep }) => {
   const [otp1, setOtp1] = useState(new Array(6).fill(''))
