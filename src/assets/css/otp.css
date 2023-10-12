@@ -1,0 +1,17 @@
+.otp-area {
+  width: 70%;
+  margin: 20px auto;
+  display: flex;
+  gap: 10px;
+}
+
+.otp-area input {
+  width: 50%;
+  padding: 10px;
+  outline: none;
+  text-align: center;
+}
+
+.otp-area input:focus {
+  border: 2px solid green;
+}
