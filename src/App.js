@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Landing, Error, Register, SelectPreference } from './pages'
 
+
 function App() {
   return (
     <BrowserRouter>
