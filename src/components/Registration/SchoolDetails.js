@@ -85,7 +85,7 @@ const SchoolDetails = ({ nextStep, prevStep, step }) => {
           </label>
         </form>
         <div className='register-navigate'>
-          <button className='btn-blue-border' onClick={nextStep}>
+          <button className='btn-blue-border' onClick={prevStep}>
             <i class='fa-solid fa-chevron-left'></i>
             Previous
           </button>

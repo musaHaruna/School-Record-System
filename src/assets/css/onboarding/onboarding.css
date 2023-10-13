@@ -308,4 +308,7 @@ h3 {
   padding: 1rem 0.5rem;
 }
 
+.register-details.gaurdian-details input {
+  background-color: #eee;
+}
 /* Registration Pages */
