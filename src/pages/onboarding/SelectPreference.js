@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Logo, SchoolIcon, TeacherIcon } from '../../components/images'
+import '../../assets/css/onboarding/onboarding.css'
 
 function SelectPreference() {
   const [selectedPreference, setSelectedPreference] = useState(null)
@@ -8,74 +10,116 @@ function SelectPreference() {
     setSelectedPreference(preference)
   }
 
-  const linkStyles = {
-    pointerEvents: selectedPreference ? 'auto' : 'none', // Disable pointer events if no preference is selected
-    color: selectedPreference ? '#000' : '#999', // Change color if no preference is selected
-  }
-
   return (
-    <main>
-      <section>
-        <div>Logo</div>
+    <main className='pref-container'>
+      <section className='pref-headings'>
+        <div className='pref-logo logo-sm'>
+          <Logo />
+        </div>
         <h2>Choose Your Preference</h2>
         <p>It will help us, to give you a better experience on our platform.</p>
       </section>
-      <section>
-        <div>
-          <div>
-            <div>icon</div>
-            <button
-              onClick={() => handlePreferenceClick('Administrator')}
-              style={{
-                border:
-                  selectedPreference === 'Administrator'
-                    ? '2px solid blue'
-                    : '2px solid black',
-              }}
-            >
-              Administrator
-            </button>
-            <div className='circle'></div>
+      <section className='pref-select'>
+        <div
+          onClick={() => handlePreferenceClick('administrator')}
+          className={
+            selectedPreference === 'administrator'
+              ? 'select-active'
+              : ' select-deactive'
+          }
+        >
+          <div className=''>
+            <div>
+              <div
+                className={
+                  selectedPreference === 'administrator'
+                    ? 'pref-icon-active'
+                    : 'pref-icon'
+                }
+              >
+                <SchoolIcon />
+              </div>
+              <h3>Administrator</h3>
+            </div>
+
+            <div
+              className={
+                selectedPreference === 'administrator'
+                  ? 'circle-icon-active'
+                  : 'circle-icon'
+              }
+            ></div>
           </div>
         </div>
-        <div>
+        <div
+          onClick={() => handlePreferenceClick('teacher')}
+          className={
+            selectedPreference === 'teacher'
+              ? 'select-active'
+              : 'select-deactive'
+          }
+        >
           <div>
-            <div>icon</div>
-            <button
-              onClick={() => handlePreferenceClick('teacher')}
-              style={{
-                border:
+            <div>
+              <div
+                className={
                   selectedPreference === 'teacher'
-                    ? '2px solid blue'
-                    : '2px solid black',
-              }}
-            >
-              Teacher
-            </button>
-            <div className='circle'></div>
+                    ? 'pref-icon-active'
+                    : 'pref-icon'
+                }
+              >
+                <TeacherIcon />
+              </div>
+              <h3>Teacher</h3>
+            </div>
+
+            <div
+              className={
+                selectedPreference === 'teacher'
+                  ? 'circle-icon-active'
+                  : 'circle-icon'
+              }
+            ></div>
           </div>
         </div>
-        <div>
+        <div
+          onClick={() => handlePreferenceClick('student')}
+          className={
+            selectedPreference === 'student'
+              ? 'select-active'
+              : 'select-deactive'
+          }
+        >
           <div>
-            <div>icon</div>
-            <button
-              onClick={() => handlePreferenceClick('student')}
-              style={{
-                border:
+            <div>
+              <div
+                className={
                   selectedPreference === 'student'
-                    ? '2px solid blue'
-                    : '2px solid black',
-              }}
-            >
-              Student/Parent
-            </button>
-            <div className='circle'></div>
+                    ? 'pref-icon-active'
+                    : 'pref-icon'
+                }
+              >
+                <TeacherIcon />
+              </div>
+              <h3>Student/Parent</h3>
+            </div>
+
+            <div
+              className={
+                selectedPreference === 'student'
+                  ? 'circle-icon-active'
+                  : 'circle-icon'
+              }
+            ></div>
           </div>
         </div>
       </section>
 
       <div>
-        <Link to={'/register'} style={linkStyles}>
+        <Link
+          to={'/register'}
+          className={selectedPreference ? 'btn-blue-active' : 'btn-gray'}
+        >
           Continue
         </Link>
       </div>

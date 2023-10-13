@@ -22,4 +22,5 @@ img {
   --primary-blue: #4a3aff;
   --text-color-white: #fff;
   --bg-white: #fff;
+  --gray: rgba(46, 49, 146, 0.15);
 }

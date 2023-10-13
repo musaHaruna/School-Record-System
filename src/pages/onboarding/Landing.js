@@ -12,7 +12,7 @@ const Landing = () => {
             <Logo />
           </div>
           <h1 className='hero-heading'>
-            <span>Welcome to</span> <br />
+            <span className='welcome'>Welcome to</span> <br />
             Perculiar Treasure <br />
             Nursery an Primary School
           </h1>

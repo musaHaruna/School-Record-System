@@ -1,3 +1,4 @@
+/* Landing Page */
 .hero-heading {
   font-size: 46px;
   margin: 2rem 0;
@@ -17,6 +18,10 @@ a {
 p {
   color: rgba(33, 33, 33, 0.6);
   font-size: 20px;
+}
+
+.welcome {
+  font-weight: 200;
 }
 
 .btn-blue {
@@ -71,3 +76,119 @@ p {
   left: 40%;
   top: 5%;
 }
+/* Landing Page */
+
+/* Select Preference */
+
+.pref-container {
+  width: 50%;
+  margin: 2rem auto;
+}
+
+.pref-headings {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.pref-headings p {
+  margin: 0;
+}
+.pref-headings h2 {
+  margin-top: 2rem;
+}
+.pref-select div {
+  margin: 0.7rem 0;
+  cursor: pointer;
+}
+
+.pref-select-box {
+  border-radius: 10px;
+}
+
+.pref-select div div {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.7rem;
+  align-items: center;
+}
+.select-active {
+  border: 1.2px solid var(--primary-blue);
+  border-radius: 5px;
+}
+
+.select-deactive {
+  border: 1px solid var(--gray);
+  border-radius: 5px;
+}
+
+.logo-sm {
+  width: 80px;
+}
+
+.pref-logo {
+  margin: 0 auto;
+}
+
+.pref-icon {
+  width: 60px;
+  padding: 1.2rem;
+  background-color: var(--gray);
+  border-radius: 10px;
+  margin-right: 2rem;
+}
+
+.pref-icon-active {
+  width: 60px;
+  padding: 1.2rem;
+  background-color: var(--primary-blue);
+  border-radius: 10px;
+  margin-right: 2rem;
+}
+
+.pref-icon-active {
+  background-color: var(--primary-blue);
+}
+
+.circle-icon-active {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.2px solid var(--primary-blue);
+}
+
+.circle-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.2px solid rgb(23, 20, 15);
+}
+
+.btn-gray {
+  border-radius: 10px;
+  background: var(--gray);
+  padding: 0.75rem 0.5rem;
+  color: var(--text-color-white);
+  text-transform: capitalize;
+  font-size: 20px;
+  text-align: center;
+  margin: 1rem 0;
+  pointer-events: none;
+}
+
+.btn-blue-active {
+  border-radius: 10px;
+  background: var(--primary-blue);
+  padding: 0.75rem 0.5rem;
+  color: var(--text-color-white);
+  text-transform: capitalize;
+  font-size: 20px;
+  text-align: center;
+  margin: 1rem 0;
+  pointer-events: auto;
+}
+/* Select Preference */
+
+/* Registration Pages */
+
+
+/* Registration Pages */
