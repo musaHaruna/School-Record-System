@@ -279,16 +279,33 @@ h3 {
   border: none;
 }
 
+.register-details label h5 {
+  font-size: 16px;
+}
+
+.register-details div h5 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 .register-navigate .btn-blue-border {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background-color: #EDEEFD;
+  background-color: #edeefd;
 }
 
-.pref-link{
+.pref-link {
   color: var(--primary-blue);
 }
+
+.school-detail-select select {
+  width: 100%;
+  margin-bottom: 2rem;
+  margin-top: 5px;
+  padding: 1rem 0.5rem;
+}
+
 /* Registration Pages */

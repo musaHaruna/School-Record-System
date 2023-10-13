@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { HeroOne, SchoolIconWhite, Logo } from '../images'
 
-const SchoolDetails = ({ nextStep, prevStep }) => {
+const SchoolDetails = ({ nextStep, prevStep, step }) => {
   const [schoolId, setSchoolId] = useState('')
   const [selectedClass, setSelectedClass] = useState('')
   const [teacherName, setTeacherName] = useState('')
@@ -26,61 +27,78 @@ const SchoolDetails = ({ nextStep, prevStep }) => {
   }
 
   return (
-    <main>
-      <article>
-        <section>
-          <div>
-            <div>icon</div>
-            <div>
-              <h3>Personal Details</h3>
-              <p>Fill in your personal details appropriately below.</p>
-            </div>
+    <article className='register-form-flex'>
+      <section className='register-content'>
+        <div className={'logo-sm'}>
+          <Logo />
+        </div>
+        <p style={{ display: step === 4 ? 'none' : '' }}>
+          <span style={{ color: 'blue' }}>{step} </span>/3
+        </p>
+        <div className='register-desc'>
+          <div className={'icon-reg'}>
+            <SchoolIconWhite />
           </div>
-          <form onSubmit={handleFormSubmit}>
-            <label>
-              School ID:
-              <input
-                type='text'
-                value={schoolId}
-                onChange={(e) => setSchoolId(e.target.value)}
-                required
-              />
-            </label>
+          <div>
+            <h3>School Details</h3>
+            <p>Fill in your personal details appropriately below.</p>
+          </div>
+        </div>
+        <form onSubmit={handleFormSubmit} className='register-details'>
+          <label>
+            <h5> School ID</h5>
 
-            <label>
-              Class:
-              <select
-                value={selectedClass}
-                onChange={(e) => setSelectedClass(e.target.value)}
-                required
-              >
-                <option value=''>Select Class</option>
-                {classOptions.map((option, index) => (
-                  <option key={index} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <input
+              type='text'
+              value={schoolId}
+              onChange={(e) => setSchoolId(e.target.value)}
+              required
+            />
+          </label>
 
-            <label>
-              Teacher's Name:
-              <input
-                type='text'
-                value={teacherName}
-                onChange={(e) => setTeacherName(e.target.value)}
-                required
-              />
-            </label>
-          </form>
-        </section>
-        <section>Hero Image</section>
-      </article>
-      <div>
-        <button onClick={prevStep}>Previous</button>
-        <button onClick={nextStep}>Continue</button>
-      </div>
-    </main>
+          <label className='school-detail-select'>
+            <h5>Class</h5>
+
+            <select
+              value={selectedClass}
+              onChange={(e) => setSelectedClass(e.target.value)}
+              required
+            >
+              <option value=''>Select Class</option>
+              {classOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            <h5>Teacher's Name</h5>
+
+            <input
+              type='text'
+              value={teacherName}
+              onChange={(e) => setTeacherName(e.target.value)}
+              required
+            />
+          </label>
+        </form>
+        <div className='register-navigate'>
+          <button className='btn-blue-border' onClick={nextStep}>
+            <i class='fa-solid fa-chevron-left'></i>
+            Previous
+          </button>
+
+          <button className='btn-blue' onClick={nextStep}>
+            Continue
+          </button>
+        </div>
+      </section>
+      <section className='register-hero'>
+        <HeroOne />
+      </section>
+    </article>
   )
 }
 export default SchoolDetails

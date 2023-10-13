@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Logo, SchoolIcon, TeacherIcon } from '../../components/images'
-import '../../assets/css/onboarding/onboarding.css'
+import {
+  Logo,
+  SchoolIcon,
+  SchoolIconWhite,
+  StudentIcon,
+  StudentIconWhite,
+  TeacherIcon,
+  TeachersIconWhite,
+} from '../../components/images'
 
 function SelectPreference() {
   const [selectedPreference, setSelectedPreference] = useState(null)
@@ -37,7 +44,11 @@ function SelectPreference() {
                     : 'pref-icon'
                 }
               >
-                <SchoolIcon />
+                {selectedPreference === 'administrator' ? (
+                  <SchoolIconWhite />
+                ) : (
+                  <SchoolIcon />
+                )}
               </div>
               <h3>Administrator</h3>
             </div>
@@ -68,7 +79,11 @@ function SelectPreference() {
                     : 'pref-icon'
                 }
               >
-                <TeacherIcon />
+                {selectedPreference === 'teacher' ? (
+                  <TeachersIconWhite />
+                ) : (
+                  <TeacherIcon />
+                )}
               </div>
               <h3>Teacher</h3>
             </div>
@@ -99,7 +114,11 @@ function SelectPreference() {
                     : 'pref-icon'
                 }
               >
-                <TeacherIcon />
+                {selectedPreference === 'student' ? (
+                  <StudentIconWhite />
+                ) : (
+                  <StudentIcon />
+                )}
               </div>
               <h3>Student/Parent</h3>
             </div>
