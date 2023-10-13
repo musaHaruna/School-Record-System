@@ -189,6 +189,106 @@ p {
 /* Select Preference */
 
 /* Registration Pages */
+.register-form {
+  width: 95%;
+  margin: 2rem auto;
+}
+.register-form-flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
 
+.register-desc {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 0.7rem;
+}
 
+.register-desc div p,
+h3 {
+  margin: 0;
+}
+
+.register-desc div p {
+  font-size: 14px;
+}
+
+.register-details label {
+  font-size: 16px;
+}
+
+.register-details h5 {
+  margin: 0;
+}
+.register-details input {
+  width: 100%;
+  padding: 0.8rem 0.5rem;
+  font-size: 16px;
+  margin-bottom: 2rem;
+  margin-top: 5px;
+  border: 0.8px solid var(--gray);
+  border-radius: 4px;
+}
+
+.register-details label input:focus {
+  outline: 2px solid var(--primary-blue);
+}
+.radio-btn {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.radio-btn label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.radio-btn input {
+  margin: 0;
+}
+
+.register-content {
+  width: 60%;
+}
+
+.register-hero {
+  width: 60%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.icon-reg {
+  width: 60px;
+  padding: 1.2rem;
+  background-color: var(--primary-blue);
+  border-radius: 10px;
+}
+
+.register-navigate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+.register-navigate .btn-blue {
+  width: 100%;
+  border: none;
+}
+
+.register-navigate .btn-blue-border {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: #EDEEFD;
+}
+
+.pref-link{
+  color: var(--primary-blue);
+}
 /* Registration Pages */

@@ -7,10 +7,28 @@ import keyIcon from '../assets/images/key-icon.png'
 import gaurdianIcon from '../assets/images/gaurdian-icon.png'
 import heroOne from '../assets/images/hero-image-1.png'
 import heroTwo from '../assets/images/hero-image-2.png'
+import studentIconWhite from '../assets/images/student-icon-white.png'
+import schoolIconWhite from '../assets/images/school-icon-white.png'
+import gaurdianIconWhite from '../assets/images/gaurdian-icon-white.png'
+import teachersIconWhite from '../assets/images/teachers-icon-white.png'
 
 const Logo = () => {
   return <img src={logo} alt='logo' />
 }
+const TeachersIconWhite = () => {
+  return <img src={teachersIconWhite} alt='logo' />
+}
+
+const StudentIconWhite = () => {
+  return <img src={studentIconWhite} alt='logo' />
+}
+const SchoolIconWhite = () => {
+  return <img src={schoolIconWhite} alt='logo' />
+}
+const GaurdianIconWhite = () => {
+  return <img src={gaurdianIconWhite} alt='logo' />
+}
+
 const KeyIcon = () => {
   return <img src={keyIcon} alt='passcode' />
 }
@@ -37,4 +55,18 @@ const StudentIcon = () => {
   return <img src={studentIcon} alt='student' />
 }
 
-export { Logo, SchoolBg, TeacherIcon, StudentIcon, SchoolIcon, KeyIcon, GaurdianIcon, HeroOne, HeroTwo }
+export {
+  Logo,
+  SchoolBg,
+  TeacherIcon,
+  StudentIcon,
+  StudentIconWhite,
+  SchoolIconWhite,
+  SchoolIcon,
+  KeyIcon,
+  GaurdianIcon,
+  GaurdianIconWhite,
+  HeroOne,
+  HeroTwo,
+  TeachersIconWhite,
+}
