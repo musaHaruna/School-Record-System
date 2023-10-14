@@ -61,6 +61,10 @@ p {
   width: 150px;
 }
 
+.policy-links-show {
+  display: none;
+}
+
 .hero-flex {
   display: flex;
   justify-content: space-between;
@@ -75,7 +79,86 @@ p {
   width: 60%;
   left: 40%;
   top: 5%;
+  z-index: -44;
 }
+
+.hero-img-ipad {
+  display: none;
+}
+.landing-btns-ipad {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .hero-flex {
+    flex-direction: column;
+  }
+
+  .hero-img-ipad {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: -44;
+    margin-top: -8rem;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-img {
+    display: none;
+  }
+
+  .landing-btns {
+    display: none;
+  }
+
+  .landing-btns-ipad {
+    display: block;
+  }
+
+  .hero-container {
+    margin: 0 auto;
+  }
+
+  .hero-logo {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 428px) {
+  .hero-heading {
+    font-size: 28px;
+  }
+
+  .hero-img-ipad {
+    margin-top: -6rem;
+  }
+
+  .policy-links {
+    display: none;
+  }
+
+  .policy-links-show {
+    display: block;
+    font-size: 14px;
+  }
+
+  .policy-links-show a {
+    display: inline-block;
+  }
+
+  .hero-container {
+    width: 90%;
+  }
+
+  .hero-logo {
+    width: 70px;
+    padding-top: 2rem;
+  }
+}
+
 /* Landing Page */
 
 /* Select Preference */
@@ -185,6 +268,77 @@ p {
   text-align: center;
   margin: 1rem 0;
   pointer-events: auto;
+}
+
+@media (max-width: 1024px) {
+  .pref-container {
+    width: 80%;
+    margin: 6rem auto;
+  }
+
+  .pref-icon,
+  .pref-icon-active {
+    width: 100px;
+  }
+  .pref-headings h2 {
+    font-size: 42px;
+    margin-bottom: 0.3rem;
+  }
+
+  .pref-headings p {
+    font-size: 24px;
+  }
+
+  .pref-select div div h3 {
+    font-size: 30px;
+  }
+
+  .pref-select div {
+    margin: 2rem 0;
+  }
+
+  .btn-blue-active,
+  .btn-gray {
+    font-size: 30px;
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 428px) {
+  .pref-container {
+    width: 80%;
+    margin: 2rem auto;
+  }
+  .pref-headings h2 {
+    font-size: 28px;
+    margin-bottom: 0.3rem;
+  }
+
+  .pref-headings p {
+    margin: 0.4rem 0;
+    font-size: 16px;
+  }
+
+  .pref-container {
+    width: 90%;
+  }
+  .pref-icon,
+  .pref-icon-active {
+    width: 60px;
+  }
+
+  .btn-blue-active,
+  .btn-gray {
+    font-size: 20px;
+  }
+
+  .pref-select div div h3 {
+    font-size: 20px;
+  }
+
+  .pref-select div {
+    margin: 1rem 0;
+  }
 }
 /* Select Preference */
 
