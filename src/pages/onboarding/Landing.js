@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Logo, SchoolBg } from '../../components/images'
+import { Logo, SchoolBg, SchoolImgIpad } from '../../components/images'
 import '../../assets/css/onboarding/onboarding.css'
 
 /* eslint-disable */
@@ -19,7 +19,12 @@ const Landing = () => {
           <p>
             It will help us, to give you a better experience on our platform.
           </p>
-          <div>
+          <div className='landing-btns-ipad'>
+            <Link className='btn-blue' to='/select-preference'>
+              Let's get started
+            </Link>
+          </div>
+          <div className='landing-btns'>
             <Link className='btn-blue' to='/select-preference'>
               Apply
             </Link>
@@ -31,9 +36,16 @@ const Landing = () => {
             I have read and agree to the <a href='#'>Terms of Use </a>as well as
             <a href='#'>Privacy Policy</a>
           </p>
+          <p className='policy-links-show'>
+            I have read and agree to the <a href='#'>Terms of Use </a> as well
+            as <a href='#'>Privacy Policy</a>
+          </p>
         </section>
         <section className='hero-img'>
           <SchoolBg />
+        </section>
+        <section className='hero-img-ipad'>
+          <SchoolImgIpad />
         </section>
       </article>
     </main>
