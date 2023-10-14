@@ -366,7 +366,7 @@ h3 {
 }
 
 .register-desc div p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .register-details label {
@@ -414,8 +414,8 @@ h3 {
 }
 
 .icon-reg {
-  width: 60px;
-  padding: 1.2rem;
+  width: 70px;
+  padding: 0.7rem;
   background-color: var(--primary-blue);
   border-radius: 10px;
 }
@@ -431,6 +431,10 @@ h3 {
 .register-navigate .btn-blue {
   width: 100%;
   border: none;
+}
+
+.register-desc div h3 {
+  font-size: 24px;
 }
 
 .register-details label h5 {
@@ -465,4 +469,36 @@ h3 {
 .register-details.gaurdian-details input {
   background-color: #eee;
 }
+
+@media (max-width: 428px) {
+  .register-desc div p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .register-hero {
+    display: none;
+  }
+
+  .register-content {
+    width: 100%;
+  }
+
+  .register-navigate {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .register-navigate .btn-blue-border,
+  .btn-blue {
+    margin: 0;
+  }
+
+  .logo-sm {
+    margin: 1rem auto;
+  }
+}
+
 /* Registration Pages */

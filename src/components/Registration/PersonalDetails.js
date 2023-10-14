@@ -23,7 +23,7 @@ const PersonalDetails = ({ nextStep, step }) => {
   return (
     <article className='register-form-flex'>
       <section className='register-content'>
-        <div className={'logo-sm'}>
+        <div className='logo-sm'>
           <Logo />
         </div>
         <p style={{ display: step === 4 ? 'none' : '' }}>

@@ -21,14 +21,14 @@ const Gaurdian = ({ nextStep, prevStep, step }) => {
     <main>
       <article className='register-form-flex'>
         <section className='register-content'>
-          <div className={'logo-sm'}>
+          <div className='logo-sm'>
             <Logo />
           </div>
           <p style={{ display: step === 4 ? 'none' : '' }}>
             <span style={{ color: 'blue' }}>{step} </span>/3
           </p>
           <div className='register-desc'>
-            <div className={'icon-reg'}>
+            <div className='icon-reg'>
               <GaurdianIconWhite />
             </div>
             <div>
