@@ -1,17 +1,23 @@
 .otp-area {
-  width: 70%;
-  margin: 20px auto;
+  width: 100%;
+  margin-bottom: 1rem;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 }
 
 .otp-area input {
-  width: 50%;
+  width: 80px;
+  height: 80px;
   padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #c5c6cc;
   outline: none;
   text-align: center;
 }
 
 .otp-area input:focus {
-  border: 2px solid green;
+  outline: 1.5px solid #27ae60;
+}
+.border-active {
+  border: 4px solid green;
 }
