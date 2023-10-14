@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Logo, GaurdianIconWhite, HeroTwo } from '../images'
 
-const Gaurdian = ({ nextStep, prevStep }) => {
+const Gaurdian = ({ nextStep, prevStep, step }) => {
   const [fatherName, setFatherName] = useState('')
   const [motherName, setMotherName] = useState('')
   const [fatherContact, setFatherContact] = useState('')
@@ -18,18 +19,29 @@ const Gaurdian = ({ nextStep, prevStep }) => {
 
   return (
     <main>
-      <article>
-        <section>
-          <div>
-            <div>icon</div>
+      <article className='register-form-flex'>
+        <section className='register-content'>
+          <div className='logo-sm'>
+            <Logo />
+          </div>
+          <p style={{ display: step === 4 ? 'none' : '' }}>
+            <span style={{ color: 'blue' }}>{step} </span>/3
+          </p>
+          <div className='register-desc'>
+            <div className='icon-reg'>
+              <GaurdianIconWhite />
+            </div>
             <div>
-              <h3>Personal Details</h3>
+              <h3>School Details</h3>
               <p>Fill in your personal details appropriately below.</p>
             </div>
           </div>
-          <form onSubmit={handleFormSubmit}>
+          <form
+            onSubmit={handleFormSubmit}
+            className='register-details gaurdian-details'
+          >
             <label>
-              Father's Name:
+              Father's Name
               <input
                 type='text'
                 value={fatherName}
@@ -39,7 +51,7 @@ const Gaurdian = ({ nextStep, prevStep }) => {
             </label>
 
             <label>
-              Mother's Name:
+              Mother's Name
               <input
                 type='text'
                 value={motherName}
@@ -49,7 +61,7 @@ const Gaurdian = ({ nextStep, prevStep }) => {
             </label>
 
             <label>
-              Father's Contact:
+              Father's Contact
               <input
                 type='text'
                 value={fatherContact}
@@ -59,7 +71,7 @@ const Gaurdian = ({ nextStep, prevStep }) => {
             </label>
 
             <label>
-              Mother's Contact:
+              Mother's Contact
               <input
                 type='text'
                 value={motherContact}
@@ -68,14 +80,21 @@ const Gaurdian = ({ nextStep, prevStep }) => {
               />
             </label>
           </form>
-        </section>
-        <section>Hero Image</section>
-      </article>
+          <div className='register-navigate'>
+            <button className='btn-blue-border' onClick={prevStep}>
+              <i class='fa-solid fa-chevron-left'></i>
+              Previous
+            </button>
 
-      <div>
-        <button onClick={prevStep}>Previous</button>
-        <button onClick={nextStep}>Continue</button>
-      </div>
+            <button className='btn-blue' onClick={nextStep}>
+              Continue
+            </button>
+          </div>
+        </section>
+        <section className='register-hero'>
+          <HeroTwo />
+        </section>
+      </article>
     </main>
   )
 }

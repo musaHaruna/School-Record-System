@@ -12,7 +12,15 @@ html {
   font-family: 'Roboto', sans-serif;
 } /*16px*/
 
+img {
+  display: block;
+  width: 100%;
+}
+
 :root {
   /* colors */
-  --primary-50: #eff6ff;
+  --primary-blue: #4a3aff;
+  --text-color-white: #fff;
+  --bg-white: #fff;
+  --gray: rgba(46, 49, 146, 0.15);
 }
