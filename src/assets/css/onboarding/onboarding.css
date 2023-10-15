@@ -34,6 +34,30 @@ p {
   text-align: center;
   margin: 1rem 0;
 }
+.btn-green {
+  border-radius: 10px;
+  background: #27ae60;
+  padding: 0.75rem 0.5rem;
+  color: var(--text-color-white);
+  text-transform: capitalize;
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  margin: 1rem 0;
+}
+.btn-red {
+  border-radius: 10px;
+  background: #eb5757;
+  padding: 0.75rem 0.5rem;
+  color: var(--text-color-white);
+  text-transform: capitalize;
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  margin: 1rem 0;
+}
 
 .btn-blue-border {
   border-radius: 10px;
@@ -408,16 +432,16 @@ h3 {
 }
 
 .register-hero {
-  width: 60%;
+  width: 690px;
   overflow: hidden;
   border-radius: 10px;
 }
 
 .icon-reg {
   width: 70px;
-  padding: 0.7rem;
+  padding: 1rem;
   background-color: var(--primary-blue);
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 .register-navigate {
@@ -425,7 +449,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .register-navigate .btn-blue {
@@ -455,6 +479,9 @@ h3 {
   background-color: #edeefd;
 }
 
+.logo-sm.create-passcode {
+  margin-bottom: 4rem;
+}
 .pref-link {
   color: var(--primary-blue);
 }
@@ -499,6 +526,15 @@ h3 {
   .logo-sm {
     margin: 1rem auto;
   }
+}
+
+/* Temp Styles */
+
+h6 {
+  margin: 6px 0;
+}
+.clor {
+  color: #27ae60;
 }
 
 /* Registration Pages */

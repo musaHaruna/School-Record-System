@@ -24,7 +24,7 @@ function Register() {
       {step === 3 && (
         <Gaurdian nextStep={nextStep} prevStep={prevStep} step={step} />
       )}
-      {step > 3 && <CreatePassword prevStep={prevStep} />}
+      {step > 3 && <CreatePassword prevStep={prevStep} nextStep={nextStep}/>}
     </main>
   )
 }
