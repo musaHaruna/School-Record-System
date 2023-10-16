@@ -188,6 +188,7 @@ p {
 /* Select Preference */
 
 .pref-container {
+  max-width: 1440px;
   width: 50%;
   margin: 2rem auto;
 }
@@ -368,6 +369,7 @@ p {
 
 /* Registration Pages */
 .register-form {
+  max-width: 1440px;
   width: 95%;
   margin: 2rem auto;
 }

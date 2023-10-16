@@ -41,7 +41,7 @@ const CreatePassword = ({ prevStep, nextStep }) => {
     setBorderColor(areOTPMatching ? '#27ae60' : '#eb5757')
 
     if (!hasInputValues) {
-      alert('input values')
+      alert('Fields cannot be empty')
       setBorderColor('#c5c6cc')
       setIsModal(false)
       setSubmitBtn('btn-blue')
@@ -49,7 +49,6 @@ const CreatePassword = ({ prevStep, nextStep }) => {
     }
     setIsModal(true)
     setSubmitBtn('btn-green')
-    alert(borderColor)
   }
 
   return (
