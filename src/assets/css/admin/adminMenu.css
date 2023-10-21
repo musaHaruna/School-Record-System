@@ -1,0 +1,37 @@
+.admin-menus {
+  padding: 0 1rem;
+  margin: 1rem 0;
+}
+
+.admin-logo {
+  width: 75px;
+  margin: 2rem auto;
+}
+
+.admin-logo-container {
+  border-bottom: 3px solid #ebeafb;
+}
+
+.admin-menu {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  font-size: 16px;
+  color: rgba(33, 33, 33, 0.6);
+  font-weight: 500;
+  border-radius: 5px;
+  margin: 0 1rem;
+}
+
+.active-menu-border {
+  border-right: 5px solid #4a3aff;
+  border-radius: 2px;
+}
+
+.active-menu-link {
+  background-color: rgba(74, 58, 255, 0.22);
+  color: #212121;
+}
+
+.admin-menus.other-links {
+  margin-top: 10rem;
+}
