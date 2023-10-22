@@ -1,0 +1,50 @@
+.admin-navbar {
+  display: grid;
+  grid-template-columns: 1fr 3fr 0.5fr;
+  align-items: center;
+  background-color: #fff;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem;
+  border: 1.5px solid #ebeafb;
+}
+
+.admin-navbar h3 {
+  color: #212121;
+  font-size: 16px;
+}
+
+.navbar-profile {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-navbar-home {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.admin-navbar-home-icon {
+  font-size: 18px;
+  color: #4a3aff;
+}
+.navbar-notification {
+  font-size: 20px;
+}
+.admin-navbar section input {
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  font-size: 16px;
+  padding: 0.5rem;
+  border: 1.5px solid #e4e7ec;
+  border-radius: 5px;
+  align-self: self-end;
+}
+
+.navbar-arrow {
+  font-size: 18px;
+}

@@ -18,8 +18,8 @@ function App() {
         <Route path='/select-preference' element={<SelectPreference />} />
         <Route path='/register' element={<Register />} />
 
-        <Route path='/dashboard' element={<Layout />}>
-          <Route path='/dashboard' index element={<Dashboard />} />
+        <Route path='/admin' element={<Layout />}>
+          <Route path='dashboard' index element={<Dashboard />} />
           <Route path='classes' element={<Classes />} />
           <Route path='academic-sessions' element={<AcademicSessions />} />
           <Route path='teachers' element={<Teachers />} />

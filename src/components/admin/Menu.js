@@ -3,6 +3,7 @@ import { menuLinks, otherLinks } from '../../pages/admin/menuLinks'
 import { Link } from 'react-router-dom'
 import { Logo } from '../images'
 import '../../assets/css/admin/adminMenu.css'
+import { RiMenuFoldLine } from 'react-icons/ri'
 
 const Menu = () => {
   const [activeLink, setActiveLink] = useState(1)
@@ -14,43 +15,60 @@ const Menu = () => {
   return (
     <article>
       <section className='admin-logo-container'>
+        <div className='admin-sidebar'>
+          <RiMenuFoldLine className='admin-sidebar' />
+        </div>
         <div className='admin-logo'>
           <Logo />
         </div>
       </section>
-      <section className='admin-menus'>
+      <section className='admin-menus '>
         {menuLinks.map((link) => (
           <div
-            className={activeLink === link.id ? 'active-menu-border' : ''}
             key={link.id}
+            className={activeLink === link.id ? 'active-menu-border' : ''}
           >
-            <Link
-              to={link.url}
+            <div
               className={`admin-menu ${
-                activeLink === link.id ? 'active-menu-link' : ''
+                activeLink === link.id ? 'active-menu-link' : 'menu-links'
               }`}
-              onClick={() => handleLinkClick(link)}
             >
-              <span className='listItemTitle'>{link.title}</span>
-            </Link>
+              <div className={activeLink === link.id ? 'icon-active' : ''}>
+                {link.icon}
+              </div>
+              <Link
+                to={link.url}
+                className={`admin-menu`}
+                onClick={() => handleLinkClick(link)}
+              >
+                <span className='listItemTitle'>{link.title}</span>
+              </Link>
+            </div>
           </div>
         ))}
       </section>
-      <section className='admin-menus other-links '>
+      <section className='admin-menus other-links'>
         {otherLinks.map((link) => (
           <div
-            className={activeLink === link.id ? 'active-menu-border' : ''}
             key={link.id}
+            className={activeLink === link.id ? 'active-menu-border' : ''}
           >
-            <Link
-              to={link.url}
+            <div
               className={`admin-menu ${
-                activeLink === link.id ? 'active-menu-link' : ''
+                activeLink === link.id ? 'active-menu-link' : 'menu-links'
               }`}
-              onClick={() => handleLinkClick(link)}
             >
-              <span className='listItemTitle'>{link.title}</span>
-            </Link>
+              <div className={activeLink === link.id ? 'icon-active' : ''}>
+                {link.icon}
+              </div>
+              <Link
+                to={link.url}
+                className='admin-menu'
+                onClick={() => handleLinkClick(link)}
+              >
+                <span className='listItemTitle'>{link.title}</span>
+              </Link>
+            </div>
           </div>
         ))}
       </section>

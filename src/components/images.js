@@ -12,9 +12,12 @@ import schoolIconWhite from '../assets/images/school-icon-white.png'
 import gaurdianIconWhite from '../assets/images/gaurdian-icon-white.png'
 import teachersIconWhite from '../assets/images/teachers-icon-white.png'
 import schoolImgIpad from '../assets/images/school-img-ipad.png'
-
+import profile from '../assets/images/profile.png'
 const Logo = () => {
   return <img src={logo} alt='logo' />
+}
+const Profile = () => {
+  return <img src={profile} alt='profile' />
 }
 const TeachersIconWhite = () => {
   return <img src={teachersIconWhite} alt='logo' />
@@ -74,4 +77,5 @@ export {
   HeroTwo,
   TeachersIconWhite,
   SchoolImgIpad,
+  Profile
 }
