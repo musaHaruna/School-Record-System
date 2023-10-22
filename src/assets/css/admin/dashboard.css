@@ -1,0 +1,155 @@
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.chart div h2,
+p {
+  margin: 0;
+}
+
+.chart div h2 {
+  font-size: 20px;
+}
+
+.chart div p {
+  font-size: 10px;
+  color: rgba(33, 33, 33, 0.6);
+  margin: 0.5rem 0;
+}
+
+.admin-dashboard {
+  background-color: #ebeafb;
+  padding: 1.5rem;
+}
+
+.dashboard-charts-left {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.dashboard-charts-right {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.admin-dashboard h1 {
+  margin: 0;
+}
+
+.admin-dashboard-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+}
+
+.admin-dashboard-heading .gray {
+  color: rgba(33, 33, 33, 0.3);
+}
+
+.admin-dashboard-heading h1 {
+  font-size: 24px;
+}
+
+.admin-dashboard-heading p {
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+}
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.chart.student-growth-chart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart.student-growth-chart .inner-flex {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.chart.student-growth-chart .inner-flex select:focus {
+  border: 1.5px solid #4a3aff;
+  outline: #4a3aff;
+}
+
+.chart.student-growth-chart .inner-flex div {
+  display: flex;
+  align-items: center;
+}
+
+.chart.student-growth-chart select {
+  background-color: #fff;
+  border: 1px solid rgba(33, 33, 33, 0.6);
+  padding: 0.3rem;
+  border-radius: 5px;
+}
+
+.dashboard-summary .card {
+  background-color: #fff;
+  padding: 0.7rem;
+  border-radius: 5px;
+}
+
+.dashboard-summary .card .value {
+  margin-top: 2rem;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.dashboard-summary .card .user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-summary .card .user .name {
+  color: #212121;
+  font-size: 16px;
+}
+
+.chart-container {
+  width: 100%;
+}
+
+.chart-container {
+  background-color: #fff;
+  padding: 0.7rem;
+  border-radius: 5px;
+}
+
+.line-chart-margin {
+  margin-top: 2rem;
+}
+
+.students-teachers-ratio {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.students-teachers-ratio .labels {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  align-self: end;
+}
+
+.students-teachers-ratio .labels div {
+  display: flex;
+  align-items: center;
+}
+
+.pie-chart-padding {
+  padding: 4rem;
+}

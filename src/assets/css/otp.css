@@ -19,5 +19,52 @@
   outline: 1.5px solid #27ae60;
 }
 .border-active {
-  border: 4px solid green;
+  border: 4px solid #27ae60;
+}
+
+.passcode-modal {
+  display: flex;
+  border-radius: 5px;
+  gap: 0.5rem;
+  border-left: 4px solid #27ae60;
+  border-top: 1px solid #c5c6cc;
+  border-right: 1px solid #c5c6cc;
+  border-bottom: 1px solid #c5c6cc;
+  padding: 0.5rem;
+  width: 50%;
+  margin: 1rem auto;
+}
+
+.passcode-modal h5 {
+  margin: 0;
+}
+.passcode-modal p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.passcode-modal.error {
+  border-left: 4px solid #eb5757;
+}
+
+.passcode-modal.error p {
+  color: #eb5757;
+}
+
+.passcode-modal.error .icon {
+  color: #eb5757;
+  padding: 0.2rem;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid #f2bcba;
+  background: #fbeae9;
+}
+
+.passcode-modal .icon {
+  padding: 0.2rem;
+  color: #27ae60;
+  font-size: 20px;
+  border: 1px solid #b5e3c4;
+  background: #e7f6ec;
+  border-radius: 5px;
 }

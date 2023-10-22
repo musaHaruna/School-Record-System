@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { HeroOne, KeyIcon, Logo } from '../images'
 import '../../assets/css/otp.css'
+import { AiFillCheckCircle } from 'react-icons/ai'
+import { RxCross2 } from 'react-icons/rx'
 
 const CreatePassword = ({ prevStep, nextStep }) => {
   const [otp1, setOtp1] = useState(new Array(6).fill(''))
@@ -9,6 +11,10 @@ const CreatePassword = ({ prevStep, nextStep }) => {
   const [isModal, setIsModal] = useState(false)
   // eslint-disable-next-line
   const [submitBtn, setSubmitBtn] = useState('btn-blue')
+
+  const closeModal = () => {
+    setIsModal(false)
+  }
 
   const handleChange1 = (e, index) => {
     if (isNaN(e.target.value)) return false
@@ -70,24 +76,26 @@ const CreatePassword = ({ prevStep, nextStep }) => {
         <div>
           {isModal &&
             (areOTPMatching ? (
-              <div>
+              <div className='passcode-modal'>
                 <div>
-                  <i class='fa-solid fa-circle-check'></i>
+                  <AiFillCheckCircle className='icon' />
                 </div>
                 <div>
-                  <h6>Successfully created</h6>
+                  <h5>Successfully created</h5>
                   <p>Your passcode has successfully been created</p>
                 </div>
+                <RxCross2 onClick={closeModal} />
               </div>
             ) : (
-              <div>
+              <div className='passcode-modal error'>
                 <div>
-                  <i class='fa-solid fa-circle-check'></i>
+                  <AiFillCheckCircle className='icon' />
                 </div>
                 <div>
                   <h6>Passcode not match</h6>
                   <p>Passcode Error, code kindly input again</p>
                 </div>
+                <RxCross2 onClick={closeModal} />
               </div>
             ))}
           <div>
