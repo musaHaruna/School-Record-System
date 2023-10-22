@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import CreatePassword from '../../components/registration/CreatePassword'
-import PersonalDetails from '../../components/registration/PersonalDetails'
-import SchoolDetails from '../../components/registration/SchoolDetails'
-import Gaurdian from '../../components/registration/Gaurdian'
+import CreatePassword from '../../components/Registration/CreatePassword'
+import PersonalDetails from '../../components/Registration/PersonalDetails'
+import SchoolDetails from '../../components/Registration/SchoolDetails'
+import Gaurdian from '../../components/Registration/Gaurdian'
 
 function Register() {
   const [step, setStep] = useState(1)
