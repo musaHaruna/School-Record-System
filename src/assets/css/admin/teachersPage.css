@@ -1,0 +1,11 @@
+.custom-file-label {
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.custom-file-label:hover {
+  background-color: #0056b3;
+}

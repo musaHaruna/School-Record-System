@@ -54,7 +54,7 @@ const Menu = () => {
             >
               <div className={activeLink === link.id ? 'icon-active' : ''}>
                 {link.id === 2 ? (
-                  <div onClick={() => handleLinkClick(link)}>
+                  <div>
                     <GiTeacher />
                   </div>
                 ) : (
