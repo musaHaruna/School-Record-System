@@ -98,6 +98,14 @@ export const studentGrowthChartData = [
   },
 ]
 
+export const enrollmentByAgeData = [
+  { label: 0, value: 200 },
+  { label: 9, value: 500 },
+  { label: 15, value: 600 },
+  { label: 18, value: 700 },
+  { label: 21, value: 1000 },
+]
+
 export const performanceData = [
   {
     year: 2012,
@@ -142,6 +150,10 @@ export const performanceData = [
 ]
 
 export const genderData = [
-  { name: 'Boys', value: 60 },
-  { name: 'Girls', value: 40 },
+  { name: 'Boys', value: 50 },
+  { name: 'Girls', value: 50 },
+]
+export const teacherToStudentCharts = [
+  { name: 'Teachers', value: 25 },
+  { name: 'Student', value: 75 },
 ]
