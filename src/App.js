@@ -9,6 +9,8 @@ import {
   Subjects,
 } from './pages/admin/Pages'
 import Layout from './pages/admin/AdminLayout'
+import TeachersDetails from './pages/admin/Pages/TeachersDetails'
+import AddTeachers from './pages/admin/Pages/AddTeachers'
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path='classes' element={<Classes />} />
           <Route path='academic-sessions' element={<AcademicSessions />} />
-          <Route path='teachers' element={<Teachers />} />
+          <Route path='all-teachers' element={<Teachers />} />
+          <Route path='add-teacher' element={<AddTeachers />} />
+          <Route path='teachers-detail' element={<TeachersDetails />} />
           <Route path='students' element={<Students />} />
           <Route path='subjects' element={<Subjects />} />
         </Route>
