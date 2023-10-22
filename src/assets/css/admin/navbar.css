@@ -19,6 +19,43 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+}
+
+.navbar-dropdown {
+  position: absolute;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 5px;
+  right: -2.3rem;
+  box-shadow: 0px 4px 63px 0px rgba(0, 0, 0, 0.1);
+  top: 2rem;
+  z-index: 2;
+}
+
+.navbar-dropdown.block {
+  display: block;
+}
+.navbar-dropdown.none {
+  display: none;
+}
+.navbar-dropdown-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.navbar-dropdown-profile .profile-size {
+  width: 30px;
+}
+
+.navbar-dropdown-profile div h6,
+p {
+  margin: 0;
+}
+
+.navbar-dropdown-profile div p {
+  font-size: 10px;
 }
 
 .admin-navbar-home {
@@ -47,4 +84,22 @@
 
 .navbar-arrow {
   font-size: 18px;
+  cursor: pointer;
+}
+
+.navbar-dropdown-content div {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: rgba(33, 33, 33, 0.6);
+  margin: 0.8rem 0;
+}
+
+.navbar-dropdown-content div p {
+  font-size: 12px;
+}
+
+.rotate-upside-down {
+  transform: rotate(180deg);
+  color: #4a3aff;
 }
