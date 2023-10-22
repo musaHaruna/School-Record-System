@@ -10,7 +10,7 @@ export const menuLinks = [
   {
     id: 1,
     title: 'Dashboard',
-    url: 'dashboard',
+    url: '/admin',
     icon: <PiHouseLineLight />,
   },
   {

@@ -1,0 +1,16 @@
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.admin-dashboard {
+  background-color: #ebeafb;
+}
+
+.admin-dashboard h1 {
+  margin: 0;
+}
+
+.chart-container {
+  width: 100%;
+}
