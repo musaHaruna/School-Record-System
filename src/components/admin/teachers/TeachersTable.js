@@ -12,8 +12,6 @@ import {
 } from 'react-icons/hi'
 import { Paper } from '@mui/material'
 
-import AddTeachersModal from '../modals/AddTeachersModal'
-
 const rows = [
   // {
   //   name: 'Alison David',
@@ -27,14 +25,9 @@ const rows = [
   // },
 ]
 
-const TeachersTable = ({ onClose, show, isModalOpen }) => {
+const TeachersTable = () => {
   return (
     <article>
-      <AddTeachersModal
-        onClose={onClose}
-        show={show}
-        isModalOpen={isModalOpen}
-      />
       {rows.length === 0 ? (
         <section className='zero-teachers'>
           <div className='zero-teacher-container'>
@@ -44,9 +37,7 @@ const TeachersTable = ({ onClose, show, isModalOpen }) => {
             <h2>No Teachers at this time</h2>
             <p>Teachers will appear here after they enroll in your school.</p>
             <div>
-              <button className='add-teacher' onClick={show}>
-                Add Teacher
-              </button>
+              <button className='add-teacher'>Add Teacher</button>
             </div>
           </div>
         </section>

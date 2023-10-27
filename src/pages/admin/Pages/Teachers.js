@@ -5,10 +5,12 @@ import { AiOutlineCloudDownload, AiOutlinePlusCircle } from 'react-icons/ai'
 import { SlArrowDown } from 'react-icons/sl'
 import { CiSearch } from 'react-icons/ci'
 import { SlCalender } from 'react-icons/sl'
+import { useNavigate } from 'react-router-dom'
 
 const Teachers = () => {
   const [selectedFile, setSelectedFile] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const navigate = useNavigate()
 
   function showModal() {
     setIsModalOpen(true)
@@ -41,11 +43,12 @@ const Teachers = () => {
           />
 
           <AiOutlineCloudDownload className='import-icon' />
-          <label htmlFor='customFileInput'>
-            {selectedFile ? selectedFile.name : 'Import CVS'}
-          </label>
+          <label htmlFor='customFileInput'>Import CVS</label>
         </div>
-        <button onClick={showModal} className='import-btn'>
+        <button
+          onClick={() => navigate('/admin/add-teacher')}
+          className='import-btn'
+        >
           <AiOutlinePlusCircle className='add-icon' />
           Add Teachers
         </button>
