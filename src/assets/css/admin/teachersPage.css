@@ -1,11 +1,237 @@
 .custom-file-label {
   cursor: pointer;
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
+  /*  */
+  display: flex;
+  background-color: #fff;
+  color: #4a3aff;
+  border: 1px solid #4a3aff;
+  padding: 0.4rem 1rem;
   border-radius: 5px;
+  gap: 0.3rem;
+}
+.teachers-page {
+  position: relative;
 }
 
 .custom-file-label:hover {
   background-color: #0056b3;
+}
+
+.teachers-select-file {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.import-btn {
+  background-color: #4a3aff;
+  color: #fff;
+  padding: 0.4rem 1rem;
+  border: none;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  gap: 0.3rem;
+}
+
+.add-icon,
+.filter-icon,
+.import-icon {
+  display: block;
+}
+
+.teachers-table-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.teachers-table-filters p {
+  color: #212121;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.filter {
+  display: flex;
+  gap: 0.2rem;
+}
+.filter.filter-icon {
+  font-size: 12px;
+  color: #344054;
+}
+
+.filter.search-box {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.filter.search-box input {
+  width: 100%;
+  font-size: 14px;
+  border: 0;
+}
+
+.filter.calender {
+  color: #344054;
+}
+
+.tcontainer-wrapper input[type='checkbox'] {
+  transform: scale(1.2);
+  padding: 10px;
+}
+
+.thead {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.tcontainer-wrapper {
+  background-color: #fff;
+}
+
+.tcontainer-wrapper.photo {
+  padding: 2rem;
+}
+
+.tcontainer {
+  background-color: #fff;
+  border-bottom: 1px solid #b7b4b4;
+}
+
+.tcell {
+  font-family: 'Roboto', sans-serif;
+}
+
+.tcell.icon {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tcell.icon p {
+  font-size: 30px;
+  color: var(--primary-blue);
+}
+a {
+  color: #1e1e1e;
+  text-decoration: none;
+}
+
+.table-profile {
+  width: 30px;
+}
+
+.thead.name {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.th-row {
+  background-color: #e4e7ec;
+}
+
+.tcell .subject {
+  color: #4a3aff;
+  background-color: rgba(74, 58, 255, 0.22);
+  font-size: 14px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.table-pagination p {
+  font-size: 14px;
+}
+
+.btn-number {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 14px;
+}
+
+.btn-number button {
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-number .active {
+  background: rgba(74, 58, 255, 0.22);
+  padding: 0.4rem;
+  color: #667185;
+}
+
+.btn-number .btn-prev {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: 1px solid rgba(74, 58, 255, 0.22);
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn-number .btn-next {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #4a3aff;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.zero-teachers {
+  margin: 2rem 4rem;
+  background-color: #fff;
+  border-radius: 15px;
+}
+
+.zero-teachers .teacher-img {
+  width: 20%;
+}
+
+.zero-teacher-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.zero-teacher-container h2 {
+  color: #212121;
+  margin: 0;
+}
+
+.zero-teacher-container p {
+  font-size: 14px;
+}
+
+.zero-teacher-container .add-teacher {
+  background-color: #4a3aff;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 5rem;
+  display: block;
+  margin-top: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  border-radius: 5px;
 }

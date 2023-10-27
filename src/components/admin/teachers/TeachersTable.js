@@ -1,73 +1,143 @@
-import React from 'react'
+import * as React from 'react'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import teacher from '../../../assets/images/add-teacher.png'
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Button,
-} from '@mui/material'
+  HiOutlineArrowNarrowLeft,
+  HiOutlineArrowNarrowRight,
+} from 'react-icons/hi'
+import { Paper } from '@mui/material'
 
-const data = [
-  {
-    name: 'John Doe',
-    class: 'Math',
-    phone: '123-456-7890',
-    email: 'john@example.com',
-    subject: 'Math',
-    gender: 'Male',
-  },
-  {
-    name: 'Jane Smith',
-    class: 'Science',
-    phone: '987-654-3210',
-    email: 'jane@example.com',
-    subject: 'Science',
-    gender: 'Female',
-  },
-  // Add more data for additional rows...
+import AddTeachersModal from '../modals/AddTeachersModal'
+
+const rows = [
+  // {
+  //   name: 'Alison David',
+  //   class: 'JSS1 ',
+  //   phoneNumber: '08142449997',
+  //   email: 'alisondavid@gmail.com',
+  //   action: <BiDotsVerticalRounded />,
+  //   subject: 'French',
+  //   gender: 'Female',
+  //   profile: <img src={avatar} alt='profile' className='table-profile' />,
+  // },
 ]
 
-const TeachersTable = () => {
+const TeachersTable = ({ onClose, show, isModalOpen }) => {
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Class</TableCell>
-            <TableCell>Phone Number</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Subject</TableCell>
-            <TableCell>Gender</TableCell>
-            <TableCell>Actions</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row, index) => (
-            <TableRow key={index}>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.class}</TableCell>
-              <TableCell>{row.phone}</TableCell>
-              <TableCell>{row.email}</TableCell>
-              <TableCell>{row.subject}</TableCell>
-              <TableCell>{row.gender}</TableCell>
-              <TableCell>
-                <Button variant='contained' color='primary'>
-                  Edit
-                </Button>
-                <Button variant='contained' color='secondary'>
-                  Delete
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <article>
+      <AddTeachersModal
+        onClose={onClose}
+        show={show}
+        isModalOpen={isModalOpen}
+      />
+      {rows.length === 0 ? (
+        <section className='zero-teachers'>
+          <div className='zero-teacher-container'>
+            <div className='teacher-img'>
+              <img src={teacher} alt='teacher' />
+            </div>
+            <h2>No Teachers at this time</h2>
+            <p>Teachers will appear here after they enroll in your school.</p>
+            <div>
+              <button className='add-teacher' onClick={show}>
+                Add Teacher
+              </button>
+            </div>
+          </div>
+        </section>
+      ) : (
+        <section className='tcontainer-wrapper'>
+          <TableContainer sx={{ maxWidth: '100%' }} component={Paper}>
+            <Table
+              style={{ fontSize: '16px', fontWeight: 300 }}
+              aria-label='a dense table'
+            >
+              <TableHead className='th-row'>
+                <TableRow className='thead'>
+                  <TableCell className='thead name' align='left'>
+                    <input type='checkbox' width={'200px'} />
+                    Name
+                  </TableCell>
+                  <TableCell className='thead' align='left'>
+                    Class
+                  </TableCell>
+                  <TableCell className='thead' align='left'>
+                    Phone Number
+                  </TableCell>
+                  <TableCell className='thead' align='left'>
+                    Subjects
+                  </TableCell>
+                  <TableCell className='thead' align='left'>
+                    Gender
+                  </TableCell>
+                  <TableCell className='thead' align='left'>
+                    Action
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow
+                    key={row.name}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell
+                      className='tcell icon'
+                      component='th'
+                      scope='row'
+                    >
+                      <input type='checkbox' width={'200px'} />
+                      <p> {row.profile}</p>
+                      {row.name}
+                    </TableCell>
+                    <TableCell className='tcell' align='left'>
+                      {row.class}
+                    </TableCell>
+                    <TableCell className='tcell' align='left'>
+                      {row.email}
+                    </TableCell>
+                    <TableCell className='tcell' align='left'>
+                      <p className='subject'> {row.subject}</p>
+                    </TableCell>
+                    <TableCell className='tcell' align='left'>
+                      {row.gender}
+                    </TableCell>
+                    <TableCell className='tcell' align='left'>
+                      {row.action}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <div className='table-pagination'>
+            <div>
+              <p>page 1 0f 30</p>
+            </div>
+            <div className='btn-number'>
+              <button className='active'>1</button>
+              <button>2</button>
+              <button>3</button>
+              ...
+              <button>4</button>
+            </div>
+            <div className='btn-number'>
+              <button className='btn-prev'>
+                <HiOutlineArrowNarrowLeft /> Previous
+              </button>
+              <button className='btn-next'>
+                Next <HiOutlineArrowNarrowRight />
+              </button>
+            </div>
+          </div>
+        </section>
+      )}
+    </article>
   )
 }
-
 export default TeachersTable
