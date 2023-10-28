@@ -10,20 +10,22 @@ import {
   HiOutlineArrowNarrowLeft,
   HiOutlineArrowNarrowRight,
 } from 'react-icons/hi'
+import { BiDotsVerticalRounded } from 'react-icons/bi'
+import avatar from "../../../assets/images/profile.png"
 import { Paper } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 const rows = [
-  // {
-  //   name: 'Alison David',
-  //   class: 'JSS1 ',
-  //   phoneNumber: '08142449997',
-  //   email: 'alisondavid@gmail.com',
-  //   action: <BiDotsVerticalRounded />,
-  //   subject: 'French',
-  //   gender: 'Female',
-  //   profile: <img src={avatar} alt='profile' className='table-profile' />,
-  // },
+  {
+    name: 'Alison David',
+    class: 'JSS1 ',
+    phoneNumber: '08142449997',
+    email: 'alisondavid@gmail.com',
+    action: <BiDotsVerticalRounded />,
+    subject: 'French',
+    gender: 'Female',
+    profile: <img src={avatar} alt='profile' className='table-profile' />,
+  },
 ]
 
 const TeachersTable = () => {
