@@ -10,7 +10,9 @@
 html {
   font-size: 100%;
   font-family: 'Roboto', sans-serif;
-} /*16px*/
+}
+
+/*16px*/
 
 img {
   display: block;
@@ -24,3 +26,24 @@ img {
   --bg-white: #fff;
   --gray: rgba(46, 49, 146, 0.15);
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: rgba(182, 180, 180, 0.6);
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #4a3aff;
+  border-radius: 5px;
+}
+
+body {
+  background-color: #ebeafb;
+}
+

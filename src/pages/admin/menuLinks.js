@@ -5,6 +5,7 @@ import { LuGraduationCap } from 'react-icons/lu'
 import { GoBook } from 'react-icons/go'
 import { FiSettings } from 'react-icons/fi'
 import { CiLogout } from 'react-icons/ci'
+import { IoIosArrowForward } from 'react-icons/io'
 
 export const menuLinks = [
   {
@@ -16,7 +17,7 @@ export const menuLinks = [
   {
     id: 2,
     title: 'Teachers',
-    url: 'teachers',
+    url: 'all-teachers',
     icon: <GiTeacher />,
   },
 
@@ -44,6 +45,27 @@ export const menuLinks = [
     title: 'Students',
     url: 'students',
     icon: <LuGraduationCap />,
+  },
+]
+export const teachersLink = [
+  {
+    id: 1,
+    title: 'Add Teachers',
+    icon: <IoIosArrowForward />,
+    url: 'add-teacher',
+  },
+
+  {
+    id: 2,
+    title: 'All Teachers',
+    icon: <IoIosArrowForward />,
+    url: 'all-teachers',
+  },
+  {
+    id: 3,
+    title: 'Teachers details',
+    icon: <IoIosArrowForward />,
+    url: 'teachers-detail',
   },
 ]
 export const otherLinks = [

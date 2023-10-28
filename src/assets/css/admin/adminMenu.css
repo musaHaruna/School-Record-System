@@ -10,6 +10,7 @@
 
 .admin-logo-container {
   border-bottom: 3px solid #ebeafb;
+  background-color: #fff;
 }
 
 .admin-sidebar {
@@ -18,6 +19,7 @@
   color: #4a3aff;
   margin-left: auto;
   margin-top: 1rem;
+  background-color: #fff;
   display: block;
 }
 .admin-menu {
@@ -33,6 +35,7 @@
 
 .active-menu-border {
   border-right: 5px solid #4a3aff;
+  position: relative;
 }
 
 .active-menu-link {
@@ -55,4 +58,37 @@
 
 .admin-menus.other-links {
   margin-top: 10rem;
+}
+
+.admin-menus .teachers-links {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  color: rgba(33, 33, 33, 0.6);
+}
+
+.admin-menus .teacher-link {
+  color: rgba(33, 33, 33, 0.6);
+}
+
+.teachers-links-container .teachers-links:hover {
+  color: #4a3aff;
+}
+
+.teachers-links-container .teacher-link:hover {
+  color: #4a3aff;
+}
+.teacher-link.teacher-link-active {
+  color: #4a3aff;
+}
+.teachers-links.teacher-link-active {
+  color: #4a3aff;
+}
+
+.admin-menus .admin-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
