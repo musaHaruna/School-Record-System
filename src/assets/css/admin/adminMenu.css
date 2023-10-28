@@ -10,6 +10,7 @@
 
 .admin-logo-container {
   border-bottom: 3px solid #ebeafb;
+  background-color: #fff;
 }
 
 .admin-sidebar {
@@ -18,6 +19,7 @@
   color: #4a3aff;
   margin-left: auto;
   margin-top: 1rem;
+  background-color: #fff;
   display: block;
 }
 .admin-menu {

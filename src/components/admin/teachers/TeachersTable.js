@@ -11,6 +11,7 @@ import {
   HiOutlineArrowNarrowRight,
 } from 'react-icons/hi'
 import { Paper } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const rows = [
   // {
@@ -26,6 +27,7 @@ const rows = [
 ]
 
 const TeachersTable = () => {
+  const navigate = useNavigate()
   return (
     <article>
       {rows.length === 0 ? (
@@ -37,7 +39,12 @@ const TeachersTable = () => {
             <h2>No Teachers at this time</h2>
             <p>Teachers will appear here after they enroll in your school.</p>
             <div>
-              <button className='add-teacher'>Add Teacher</button>
+              <button
+                className='add-teacher'
+                onClick={() => navigate('/admin/add-teacher')}
+              >
+                Add Teacher
+              </button>
             </div>
           </div>
         </section>
