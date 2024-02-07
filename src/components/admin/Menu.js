@@ -41,6 +41,7 @@ const Menu = () => {
           <Logo />
         </div>
       </section>
+      <section>Teahcers dashboa</section>
       <section className='admin-menus '>
         {menuLinks.map((link) => (
           <div

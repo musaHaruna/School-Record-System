@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Logo, GaurdianIconWhite, HeroTwo } from '../images'
+import Wrapper from '../../assets/css/onboarding/Onboarding'
 
 const Gaurdian = ({ nextStep, prevStep, step }) => {
   const [fatherName, setFatherName] = useState('')
@@ -18,13 +19,13 @@ const Gaurdian = ({ nextStep, prevStep, step }) => {
   }
 
   return (
-    <main>
+    <Wrapper>
       <article className='register-form-flex'>
         <section className='register-content'>
           <div className='logo-sm'>
             <Logo />
           </div>
-          <p style={{ display: step === 4 ? 'none' : '' }}>
+          <p className='margin' style={{ display: step === 4 ? 'none' : '' }}>
             <span style={{ color: 'blue' }}>{step} </span>/3
           </p>
           <div className='register-desc'>
@@ -95,7 +96,7 @@ const Gaurdian = ({ nextStep, prevStep, step }) => {
           <HeroTwo />
         </section>
       </article>
-    </main>
+    </Wrapper>
   )
 }
 export default Gaurdian

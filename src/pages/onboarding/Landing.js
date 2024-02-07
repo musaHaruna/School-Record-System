@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { Logo, SchoolBg, SchoolImgIpad } from '../../components/images'
-import '../../assets/css/onboarding/onboarding.css'
+import Wrapper from '../../assets/css/onboarding/Onboarding.js'
 
 /* eslint-disable */
 const Landing = () => {
   return (
-    <main>
+    <Wrapper>
       <article className='hero-container hero-flex'>
         <section className='hero-content'>
           <div className='hero-logo'>
@@ -48,7 +48,7 @@ const Landing = () => {
           <SchoolImgIpad />
         </section>
       </article>
-    </main>
+    </Wrapper>
   )
 }
 

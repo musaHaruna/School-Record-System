@@ -26,7 +26,7 @@ const PersonalDetails = ({ nextStep, step }) => {
         <div className='logo-sm'>
           <Logo />
         </div>
-        <p style={{ display: step === 4 ? 'none' : '' }}>
+        <p className='margin' style={{ display: step === 4 ? 'none' : '' }}>
           <span style={{ color: 'blue' }}>{step} </span>/3
         </p>
         <div className='register-desc'>
