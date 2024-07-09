@@ -1,102 +1,102 @@
-import { PiStudent } from 'react-icons/pi'
-import { GiTeacher } from 'react-icons/gi'
-import { RiTeamLine } from 'react-icons/ri'
-import { GoBook } from 'react-icons/go'
-import { BsThreeDots } from 'react-icons/bs'
+import { PiStudent } from "react-icons/pi";
+import { GiTeacher } from "react-icons/gi";
+import { RiTeamLine } from "react-icons/ri";
+import { GoBook } from "react-icons/go";
+import { BsThreeDots } from "react-icons/bs";
 
 export const adminSummary = [
   {
     id: 1,
     icon: <GiTeacher />,
-    name: 'Teachers',
+    name: "Teachers",
     number: 500,
     dots: <BsThreeDots />,
   },
   {
     id: 2,
     icon: <PiStudent />,
-    name: 'Students',
+    name: "Students",
     number: 2000,
     dots: <BsThreeDots />,
   },
   {
     id: 3,
     icon: <GoBook />,
-    name: 'Subjects',
+    name: "Subjects",
     number: 500,
     dots: <BsThreeDots />,
   },
   {
     id: 4,
     icon: <RiTeamLine />,
-    name: 'Classes',
+    name: "Classes",
     number: 9,
     dots: <BsThreeDots />,
   },
-]
+];
 
 export const studentGrowthChartData = [
   {
-    name: 'JAN',
+    name: "JAN",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'FEB',
+    name: "FEB",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'MAR',
+    name: "MAR",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'APR',
+    name: "APR",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'MAY',
+    name: "MAY",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'JUN',
+    name: "JUN",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'JUL',
+    name: "JUL",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'AUG',
+    name: "AUG",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'SEP',
+    name: "SEP",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'OCT',
+    name: "OCT",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'NOV',
+    name: "NOV",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
   {
-    name: 'DEC',
+    name: "DEC",
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
-]
+];
 
 export const enrollmentByAgeData = [
   { label: 0, value: 200 },
@@ -104,7 +104,7 @@ export const enrollmentByAgeData = [
   { label: 15, value: 600 },
   { label: 18, value: 700 },
   { label: 21, value: 1000 },
-]
+];
 
 export const performanceData = [
   {
@@ -147,13 +147,40 @@ export const performanceData = [
     boys: Math.floor(Math.random() * 100),
     girls: Math.floor(Math.random() * 100),
   },
-]
+];
 
 export const genderData = [
-  { name: 'Boys', value: 50 },
-  { name: 'Girls', value: 50 },
-]
+  { name: "Boys", value: 50 },
+  { name: "Girls", value: 50 },
+];
 export const teacherToStudentCharts = [
-  { name: 'Teachers', value: 25 },
-  { name: 'Student', value: 75 },
-]
+  { name: "Teachers", value: 25 },
+  { name: "Student", value: 75 },
+];
+
+export const studentRows = [
+  { id: 1, firstName: "Snow", lasttName: "Jon", email: "jon@gmail.com" },
+  {
+    id: 2,
+    firstName: "Lannister",
+    lasttName: "Cersei",
+    email: "jon@gmail.com",
+  },
+  { id: 3, firstName: "Lannister", lasttName: "Jaime", email: "jon@gmail.com" },
+  { id: 4, firstName: "Stark", lasttName: "Arya", email: "jon@gmail.com" },
+  {
+    id: 5,
+    firstName: "Targaryen",
+    lasttName: "Daenerys",
+    email: "jon@gmail.com",
+  },
+  { id: 6, firstName: "Melisandre", lasttName: null, email: "jon@gmail.com" },
+  {
+    id: 7,
+    firstName: "Clifford",
+    lasttName: "Ferrara",
+    email: "jon@gmail.com",
+  },
+  { id: 8, firstName: "Frances", lasttName: "Rossini", email: "jon@gmail.com" },
+  { id: 9, firstName: "Roxie", lasttName: "Harvey", email: "jon@gmail.com" },
+];

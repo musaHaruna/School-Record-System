@@ -1,12 +1,12 @@
 .admin-navbar {
-  display: grid;
-  grid-template-columns: 1fr 3fr 0.5fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  justify-content: space-between;
   gap: 2rem;
   padding: 1rem;
   border: 1.5px solid #ebeafb;
+  width:100%;
 }
 
 .admin-navbar h3 {
@@ -103,3 +103,11 @@ p {
   transform: rotate(180deg);
   color: #4a3aff;
 }
+
+
+
+@media (max-width:420px){
+    .admin-nav-search{
+      display:none;
+    }
+} 

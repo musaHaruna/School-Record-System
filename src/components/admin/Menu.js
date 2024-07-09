@@ -32,7 +32,7 @@ const Menu = () => {
   }
 
   return (
-    <article>
+    <article >
       <section className='admin-logo-container'>
         <div className='admin-sidebar'>
           <RiMenuFoldLine className='admin-sidebar' />
