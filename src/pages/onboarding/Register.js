@@ -1,32 +1,36 @@
-// import { useState } from 'react'
-// import CreatePassword from '../../components/registration/CreatePassword'
-// import PersonalDetails from '../../components/registration/PersonalDetails'
-// import SchoolDetails from '../../components/registration/SchoolDetails'
-// import Gaurdian from '../../components/registration/Gaurdian'
+import React, { useState } from 'react'
 
-// function Register() {
-//   const [step, setStep] = useState(1)
+import ToCreatePassword from '../../components/Registration/ToCreatePassword'
+import Guardian from '../../components/Registration/Guardian'
+import PersonalDetails from '../../components/Registration/PersonalDetails'
+import SchoolDetails from '../../components/Registration/SchoolDetails'
 
-//   const nextStep = () => {
-//     setStep(step + 1)
-//   }
 
-//   const prevStep = () => {
-//     setStep(step - 1)
-//   }
+const Register = () => {
 
-//   return (
-//     <main className='register-form'>
-//       {step === 1 && <PersonalDetails nextStep={nextStep} step={step} />}
-//       {step === 2 && (
-//         <SchoolDetails nextStep={nextStep} prevStep={prevStep} step={step} />
-//       )}
-//       {step === 3 && (
-//         <Gaurdian nextStep={nextStep} prevStep={prevStep} step={step} />
-//       )}
-//       {step > 3 && <CreatePassword prevStep={prevStep} nextStep={nextStep} />}
-//     </main>
-//   )
-// }
+    const [step, setStep] = useState(1)
 
-// export default Register
+    const nextStep = () => {
+      setStep(step + 1)
+    }
+  
+    const prevStep = () => {
+      setStep(step - 1)
+    }
+
+
+  return (
+    <main className='register-form'>
+    {step === 1 && <PersonalDetails nextStep={nextStep} step={step} />}
+    {step === 2 && (
+      <SchoolDetails nextStep={nextStep} prevStep={prevStep} step={step} />
+    )}
+    {step === 3 && (
+      <Guardian nextStep={nextStep} prevStep={prevStep} step={step} />
+    )}
+    {step > 3 && <ToCreatePassword prevStep={prevStep} nextStep={nextStep} />}
+  </main>
+  )
+}
+
+export default Register

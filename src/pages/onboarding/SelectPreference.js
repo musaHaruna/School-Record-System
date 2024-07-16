@@ -17,6 +17,8 @@ function SelectPreference() {
     setSelectedPreference(preference)
   }
 
+  // dispatch(userRole(selectedPreference))
+
   return (
     <main className='pref-container'>
       <section className='pref-headings'>
@@ -136,7 +138,7 @@ function SelectPreference() {
 
       <div>
         <Link
-          to={'/register'}
+          to={'/registeration'}
           className={selectedPreference ? 'btn-blue-active' : 'btn-gray'}
         >
           Continue

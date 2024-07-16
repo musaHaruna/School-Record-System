@@ -2,11 +2,12 @@ import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import { MdDeleteForever, MdEdit } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "./Table.css";
+import DeleteModal from "../../DeleteModal";
 
 const handleDelete = (id) => {};
 
 const StudentsTable = ({ row, columns, link, page }) => {
-  const actionColumn: GridColDef = {
+  const actionColumn = {
     field: "action",
     headerName: "Actions",
     width: 200,
@@ -25,7 +26,8 @@ const StudentsTable = ({ row, columns, link, page }) => {
             onClick={() => handleDelete(params.row._id)}
           >
             <span className="text-[#e90404]">
-              <MdDeleteForever size={24} />{" "}
+              
+              <DeleteModal />
             </span>
           </div>
         </div>

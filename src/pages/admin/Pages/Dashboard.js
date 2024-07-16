@@ -37,7 +37,7 @@ const Dashboard = () => {
         </p>
       </section>
 
-      <section className="dashboard-summary">
+      <section className="dashboard-summary flex flex-col sm:flex-row gap-5">
         {adminSummary.map((item) => (
           <div className="card" key={item.id}>
             <div className="user">

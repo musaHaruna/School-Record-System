@@ -3,12 +3,12 @@ import { Outlet } from "react-router-dom";
 import "../../assets/css/admin/adminLayout.css";
 const Layout = () => {
   return (
-    <div className="main-layout">
-      <div className="menuContainer">
+    <div className="flex h-screen">
+      {/* <div className="menuContainer hidden sm:flex">
         <Menu />
-      </div>
+      </div> */}
 
-      <div className="main-container">
+      <div className="main-container h-screen">
         <Navbar />
         <div className="contentContainer">
           <Outlet />

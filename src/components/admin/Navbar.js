@@ -6,6 +6,7 @@ import { PiHouseLineLight } from "react-icons/pi";
 import { BsPerson, BsChatLeft } from "react-icons/bs";
 import { SlLogout } from "react-icons/sl";
 import { useState } from "react";
+import MobileSideBar from "./MobileSideBar";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +17,11 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <article className="admin-navbar">
+    <article className="admin-navbar ">
       <section className="admin-navbar-home">
-        <div>
-          <PiHouseLineLight className="admin-navbar-home-icon" />
-        </div>
+      <div>
+        <MobileSideBar />
+      </div>
         <h3>Dashboard</h3>
       </section>
       <section className="admin-nav-search">
@@ -63,6 +64,9 @@ const Navbar = () => {
           </div>
         </div>
       </section>
+
+{/*to trigger mobile sidebar */}
+    
     </article>
   );
 };

@@ -5,7 +5,7 @@
 
 .admin-logo {
   width: 75px;
-  margin: 2rem auto;
+  /* margin: 2rem auto; */
 }
 
 .admin-logo-container {
@@ -14,13 +14,14 @@
 }
 
 .admin-sidebar {
-  font-size: 30px;
+  font-size: 35px;
   width: 50%;
   color: #4a3aff;
   margin-left: auto;
   margin-top: 1rem;
-  background-color: #fff;
-  display: block;
+  /* background-color: #fff; */
+  /* display: block; */
+  cursor: pointer;
 }
 .admin-menu {
   padding: 0.5rem;

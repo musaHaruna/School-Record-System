@@ -1,6 +1,7 @@
 import Error from './Error'
 import Landing from './onboarding/Landing'
-import Register from './onboarding/Register'
 import SelectPreference from './onboarding/SelectPreference'
+import Registration from './onboarding/Registration'
+import Register from './onboarding/Register'
 
-export { Landing, Error, Register, SelectPreference }
+export { Landing, Error, SelectPreference, Registration, Register }

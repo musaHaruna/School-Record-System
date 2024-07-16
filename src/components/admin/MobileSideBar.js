@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
 import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "../../components/ui/sheet"
+import {
   menuLinks,
-  otherLinks,
   teachersLink,
 } from '../../pages/admin/menuLinks'
 import { Link } from 'react-router-dom'
@@ -10,43 +18,55 @@ import '../../assets/css/admin/adminMenu.css'
 import { RiMenuFoldLine } from 'react-icons/ri'
 import { IoIosArrowDown } from 'react-icons/io'
 import { GiTeacher } from 'react-icons/gi'
+  
 
-const Menu = () => {
-  const [activeLink, setActiveLink] = useState(1)
-  const [activeTeacherLink, setActiveTeacherLink] = useState(null)
-  const [showTeacherLinks, setShowTeacherLinks] = useState(false) // New state variable
+const MobileSideBar = () => {
 
-  const handleLinkClick = (link) => {
-    setActiveLink(link.id)
-    if (link.id === 2) {
-      // If the link is the "Teachers" link (id 2), toggle the teacher links
-      setShowTeacherLinks(!showTeacherLinks)
-    } else {
-      // If a different link is clicked, hide the teacher links
-      setShowTeacherLinks(false)
+    const [activeLink, setActiveLink] = useState(1)
+    const [activeTeacherLink, setActiveTeacherLink] = useState(null)
+    const [showTeacherLinks, setShowTeacherLinks] = useState(false) // New state variable
+  
+    const handleLinkClick = (link) => {
+      setActiveLink(link.id)
+      if (link.id === 2) {
+        // If the link is the "Teachers" link (id 2), toggle the teacher links
+        setShowTeacherLinks(!showTeacherLinks)
+      } else {
+        // If a different link is clicked, hide the teacher links
+        setShowTeacherLinks(false)
+      }
     }
-  }
 
-  const handleTeacherLinkClick = (teacherLink) => {
-    setActiveTeacherLink(teacherLink.id)
-  }
+    const handleTeacherLinkClick = (teacherLink) => {
+        setActiveTeacherLink(teacherLink.id)
+      }
+
 
   return (
-    <article className='h-screen overflow-auto' >
-      <section className='flex items-center w-full justify-center p-7 admin-logo-container'>
-        <div className='admin-logo'>
-          <Logo  />
-        </div>
-        {/* <div className='admin-sidebar'>
+    <Sheet side="left" >
+    <SheetTrigger asChild>
+        <RiMenuFoldLine className="r text-[#4a3aff] text-[25px]" />
+    </SheetTrigger>
+    <SheetContent side="left" >
+        
+        <section className='flex items-center w-full justify-center p-7 admin-logo-container'>
+            <div className='admin-logo'>
+                <Logo  />
+            </div>
+            {/* <div className='admin-sidebar'>
           <RiMenuFoldLine className="admin-sidebar" />
-        </div> */}
-      </section>
-      <section className='admin-menus '>
+            </div> */}
+         </section>
+            
+
+         <section className='w-full '>
+        
         {menuLinks.map((link) => (
           <div
             key={link.id}
             className={activeLink === link.id ? 'active-menu-border' : ''}
           >
+           <SheetClose asChild key={link.id}>
             <div
               className={`admin-menu ${
                 activeLink === link.id ? 'active-menu-link' : 'menu-links'
@@ -61,6 +81,7 @@ const Menu = () => {
                   link.icon
                 )}
               </div>
+              <SheetClose asChild>
               <Link
                 to={link.url}
                 className={`admin-menu`}
@@ -78,7 +99,9 @@ const Menu = () => {
                   ''
                 )}
               </Link>
+              </SheetClose>
             </div>
+            </SheetClose>
             {link.id === 2 && showTeacherLinks && (
               <div className='teachers-links-container'>
                 {teachersLink.map((teacherLink) => (
@@ -108,34 +131,14 @@ const Menu = () => {
             )}
           </div>
         ))}
+        
       </section>
-      {/* <section className='admin-menus other-links'>
-        {otherLinks.map((link) => (
-          <div
-            key={link.id}
-            className={activeLink === link.id ? 'active-menu-border' : ''}
-          >
-            <div
-              className={`admin-menu ${
-                activeLink === link.id ? 'active-menu-link' : 'menu-links'
-              }`}
-            >
-              <div className={activeLink === link.id ? 'icon-active' : ''}>
-                {link.icon}
-              </div>
-              <Link
-                to={link.url}
-                className='admin-menu'
-                onClick={() => handleLinkClick(link)}
-              >
-                <span className='listItemTitle'>{link.title}</span>
-              </Link>
-            </div>
-          </div>
-        ))}
-      </section> */}
-    </article>
+
+            
+    </SheetContent>
+  </Sheet>
+  
   )
 }
 
-export default Menu
+export default MobileSideBar

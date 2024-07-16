@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Logo, GaurdianIconWhite, HeroTwo } from '../images'
 
-const Gaurdian = ({ nextStep, prevStep, step }) => {
+const Guardian = ({ nextStep, prevStep, step }) => {
   const [fatherName, setFatherName] = useState('')
   const [motherName, setMotherName] = useState('')
   const [fatherContact, setFatherContact] = useState('')
@@ -98,4 +98,4 @@ const Gaurdian = ({ nextStep, prevStep, step }) => {
     </main>
   )
 }
-export default Gaurdian
+export default Guardian

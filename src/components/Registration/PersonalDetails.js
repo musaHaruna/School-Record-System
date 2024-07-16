@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { HeroOne, StudentIconWhite, Logo } from '../images'
+import { Button } from '../../components/ui/button'
 
 const PersonalDetails = ({ nextStep, step }) => {
   const [fullName, setFullName] = useState('')
@@ -21,7 +22,13 @@ const PersonalDetails = ({ nextStep, step }) => {
   }
 
   return (
+    
     <article className='register-form-flex'>
+       <section className='register-hero'>
+        <HeroOne />
+      </section>
+
+
       <section className='register-content'>
         <div className='logo-sm'>
           <Logo />
@@ -38,6 +45,9 @@ const PersonalDetails = ({ nextStep, step }) => {
             <p>Fill in your personal details appropriately below.</p>
           </div>
         </div>
+
+
+        
         <form onSubmit={handleFormSubmit} className='register-details'>
           <label>
             <h5> Full Name</h5>
@@ -106,11 +116,11 @@ const PersonalDetails = ({ nextStep, step }) => {
           <button className='btn-blue' onClick={nextStep}>
             Continue
           </button>
+
+          {/* <Button variant="outline">Shadcn</Button> */}
         </div>
       </section>
-      <section className='register-hero'>
-        <HeroOne />
-      </section>
+   
     </article>
   )
 }
