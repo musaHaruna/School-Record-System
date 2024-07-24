@@ -8,6 +8,7 @@ import {
   Teachers,
   Subjects,
   SingleSubjects,
+  Results,
 } from "./pages/admin/Pages";
 import Layout from "./pages/admin/AdminLayout";
 import TeachersDetails from "./pages/admin/Pages/TeachersDetails";
@@ -33,6 +34,7 @@ function App() {
         <Route path="teachers-detail" element={<TeachersDetails />} />
         <Route path="students" element={<Students />} />
         <Route path="subjects" element={<Subjects />} />
+        <Route path="results" element={<Results />} />
         <Route path="subjects/:id" element={<SingleSubjects />} />
         </Route>
 

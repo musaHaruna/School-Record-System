@@ -5,5 +5,6 @@ import Students from './Students'
 import AcademicSessions from './AcademicSessions'
 import Subjects from './Subjects'
 import SingleSubjects from './SingleSubjects'
+import Results from './Results'
 
-export { Classes, Dashboard, Students, AcademicSessions, Subjects, Teachers, SingleSubjects }
+export { Classes, Dashboard, Students, AcademicSessions, Subjects, Teachers, SingleSubjects, Results }
