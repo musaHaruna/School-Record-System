@@ -34,7 +34,7 @@ function App() {
         <Route path="teachers-detail" element={<TeachersDetails />} />
         <Route path="students" element={<Students />} />
         <Route path="subjects" element={<Subjects />} />
-        <Route path="results" element={<Results />} />
+        <Route path="results/*" element={<Results />} />
         <Route path="subjects/:id" element={<SingleSubjects />} />
         </Route>
 

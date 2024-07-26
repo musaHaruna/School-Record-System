@@ -6,7 +6,7 @@ import { GoBook } from 'react-icons/go'
 import { FiSettings } from 'react-icons/fi'
 import { CiLogout } from 'react-icons/ci'
 import { IoIosArrowForward } from 'react-icons/io'
-
+import { Icon } from '@iconify/react'
 export const menuLinks = [
   {
     id: 1,
@@ -39,7 +39,12 @@ export const menuLinks = [
     url: 'classes',
     icon: <RiTeamLine />,
   },
-
+  {
+    id: 7,
+    title: 'Results',
+    url: 'results',
+    icon: <Icon icon='carbon:result-new' />,
+  },
   {
     id: 3,
     title: 'Students',
