@@ -15,11 +15,10 @@ import TeachersDetails from "./pages/admin/Pages/TeachersDetails";
 import AddTeachers from "./pages/admin/Pages/AddTeachers";
 import StudentLayout from "./pages/student/StudentLayout";
 import StudentDashboard from "./pages/teachers/TeachersDashboard";
-import {  StudentViewResult } from "./pages/student/StudentViewResult";
+import { StudentProfile } from "./pages/student/StudentProfile";
 import TeachersLayout from "./pages/teachers/TeachersLayout";
 import TeachersDashboard from "./pages/teachers/TeachersDashboard";
 import { ManageResults } from "./pages/teachers/ManageResults";
-import { UploadResults } from "./pages/teachers/UploadResults";
 
 function App() {
   return (
@@ -45,12 +44,12 @@ function App() {
         </Route>
         <Route path="/student" element={<StudentLayout />}>
           <Route index element={<StudentDashboard />} />
-          <Route path="result" element={<StudentViewResult />} />
+          <Route path="profile/*" element={<StudentProfile />} />
         </Route>
         <Route path="/teacher" element={<TeachersLayout />}>
           <Route index element={<TeachersDashboard />} />
-          <Route path='results' element={<ManageResults />} />
-          <Route path="results/upload" element={<UploadResults />} />
+          <Route path="results" element={<ManageResults />} />
+          <Route path="results/updload" element={<ManageResults />} />
         </Route>
 
         <Route path="*" element={<Error />} />

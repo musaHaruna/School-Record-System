@@ -14,10 +14,14 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
-  font-family: "Inter","Noto Sans","Rubik", sans-serif;
+  font-family: "Inter", "Noto Sans", "Rubik", sans-serif;
 }
 
-/*16px*/
+@media (max-width: 768px) {
+  html {
+    font-size: 57.5%;
+  }
+}
 
 img {
   display: block;

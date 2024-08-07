@@ -20,7 +20,12 @@ export const menuLinks = [
     url: 'all-teachers',
     icon: <GiTeacher />,
   },
-
+  {
+    id: 3,
+    title: 'Students',
+    url: 'students',
+    icon: <LuGraduationCap />,
+  },
   {
     id: 4,
     title: 'Academic Sessions',
@@ -41,16 +46,25 @@ export const menuLinks = [
   },
   {
     id: 7,
-    title: 'Results',
+    title: 'Admin Results',
     url: 'results',
     icon: <Icon icon='carbon:result-new' />,
   },
   {
-    id: 3,
-    title: 'Students',
-    url: 'students',
-    icon: <LuGraduationCap />,
+    // student rouute
+    id: 8,
+    title: 'My Result',
+    url: 'result',
+    icon: <Icon icon='carbon:result-new' />,
   },
+  {
+    // teachers route
+    id: 8,
+    title: 'Upload results',
+    url: 'results',
+    icon: <Icon icon='foundation:results-demographics' />,
+  },
+ 
 ]
 export const teachersLink = [
   {

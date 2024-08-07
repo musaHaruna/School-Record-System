@@ -2,6 +2,8 @@ import { Routes, Route, Link, Outlet, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { SAMPLE_COURSES } from "../../../shared/constants";
+import { SelectFilter } from "../../../components/fields/filterFields";
+import { ScoreInputField } from "../../../components/fields/scoreInput";
 const TableCtaButton = ({ href, icon, title }) => (
   <Link
     to={href}
@@ -12,34 +14,7 @@ const TableCtaButton = ({ href, icon, title }) => (
   </Link>
 );
 
-const Filter = ({ handleChange, children, primaryLabel }) => {
-  return (
-    <div className="flex flex-col ">
-      <span className="font-inter text-[16px] font-medium mb-1">
-        {primaryLabel}
-      </span>
-      <select
-        className="font-inter text-[14px] p-2 shadow-sm rounded-sm"
-        onChange={handleChange}
-      >
-        {children}
-      </select>
-    </div>
-  );
-};
-const ScoreInputField = ({ value, name, handleChange,disabled }) => {
-  return (
-    <input
-      type="number"
-      min={0}
-      name={name}
-      disabled={disabled}
-      value={value}
-      onChange={handleChange}
-      className="w-[4rem] h-[4rem] disabled:cursor-not-allowed hover:border-blue-800 focus:border-blue-800 border-[1px] border-solid border-slate-200"
-    />
-  );
-};
+
 const StudentListTableEmpty = () => (
   <div className="w-full overflow-x-scroll text-[1.4rem] font-inter bg-white py-[4rem] px-[2rem] rounded-3xl ">
     <table className="w-full min-w-[50rem] ">
@@ -379,9 +354,9 @@ const ResultList = () => {
       <div>
         <h1 className="font-thin font-rubik text-[2.4rem] mb-4">Result List</h1>
 
-        <div className="flex gap-4 flex-row [&>div]:w-[400px] [&>div]:max-w-[400px] mb-8">
+        <div className="flex-col flex gap-4 md:flex-row mb-8">
           {/* filters container  */}
-          <Filter
+          <SelectFilter
             primaryLabel={"Session"}
             handleChange={(e) => setSession(e?.target?.value)}
           >
@@ -392,8 +367,8 @@ const ResultList = () => {
             <option value="2021/2022">2021/2022</option>
             <option value="2022/2023">2022/2023</option>
             <option value="2023/2024">2023/2024</option>
-          </Filter>
-          <Filter
+          </SelectFilter>
+          <SelectFilter
             primaryLabel={"Class"}
             handleChange={(e) => setClasss(e?.target?.value)}
           >
@@ -403,9 +378,9 @@ const ResultList = () => {
             <option value="2">Class 2</option>
             <option value="3">Class 3</option>
             <option value="4">Class 4</option>
-          </Filter>
+          </SelectFilter>
 
-          <Filter
+          <SelectFilter
             primaryLabel={"Term"}
             handleChange={(e) => setTerm(e?.target?.value)}
           >
@@ -414,7 +389,7 @@ const ResultList = () => {
             <option value="1">First term</option>
             <option value="2">Second term</option>
             <option value="3">Third term</option>
-          </Filter>
+          </SelectFilter>
         </div>
         {!(term && session && classs) ? (
           <StudentListTableEmpty />
