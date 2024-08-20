@@ -20,7 +20,7 @@ function SelectPreference() {
   // dispatch(userRole(selectedPreference))
 
   return (
-    <main className='pref-container'>
+    <main className='pref-container '>
       <section className='pref-headings'>
         <div className='pref-logo logo-sm'>
           <Logo />
@@ -99,7 +99,7 @@ function SelectPreference() {
             ></div>
           </div>
         </div>
-        <div
+        {/* <div
           onClick={() => handlePreferenceClick('student')}
           className={
             selectedPreference === 'student'
@@ -133,12 +133,12 @@ function SelectPreference() {
               }
             ></div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       <div>
         <Link
-          to={'/registeration'}
+          to={selectedPreference ==='administrator' ? "/admin-registration" :'/staff-registration' }
           className={selectedPreference ? 'btn-blue-active' : 'btn-gray'}
         >
           Continue

@@ -7,8 +7,16 @@ import { BsPerson, BsChatLeft } from "react-icons/bs";
 import { SlLogout } from "react-icons/sl";
 import { useState } from "react";
 import MobileSideBar from "./MobileSideBar";
+import { Link } from "react-router-dom";
+import { useGetUserProfileQuery } from "../../app/api/userApi";
+import { useSelector } from "react-redux";
+import { Loader } from "lucide-react";
 
 const Navbar = () => {
+
+  const {_}=useGetUserProfileQuery()
+  const {user, isLoading} =useSelector((state)=> state.user)
+
   const [isOpen, setIsOpen] = useState(false);
 
   const rotateIconClass = isOpen ? "rotate-upside-down" : "";
@@ -17,20 +25,21 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <article className="admin-navbar ">
+    <article className="admin-navbar">
       <section className="admin-navbar-home">
       <div>
         <MobileSideBar />
       </div>
-        <h3>Dashboard</h3>
+      <Link to="/">
+        <h3 className="cursor-pointer">Dashboard</h3>
+      </Link>
       </section>
       <section className="admin-nav-search">
         <input type="text" placeholder="Search here..." />
       </section>
       <section>
-        <div className="navbar-profile ">
-          <div></div>
-          <Profile />
+        <div className="flex items-center w-[50px] gap-2  ">
+          <Profile  />
           <div>
             <SlArrowDown
               className={`navbar-arrow ${rotateIconClass}`}
@@ -43,18 +52,14 @@ const Navbar = () => {
                 <Profile />
               </div>
               <div>
-                <h6>Fola Davis</h6>
-                <p>Administrator</p>
+                <h6>{isLoading ? <Loader /> :user.username}</h6>
+                <p>{isLoading ? <Loader /> : user.role}</p>
               </div>
             </div>
             <div className="navbar-dropdown-content">
               <div>
                 <BsPerson />
                 <p>View Profile</p>
-              </div>
-              <div>
-                <BsChatLeft />
-                <p>Chat</p>
               </div>
               <div>
                 <SlLogout />

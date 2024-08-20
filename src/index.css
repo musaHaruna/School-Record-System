@@ -8,12 +8,12 @@
     box-sizing: border-box;
   }
   
-  /* fonts */
-  @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap');
+  /* font */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap');
   
   html {
     font-size: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Outfit", sans-serif;
   }
   
   /*16px*/

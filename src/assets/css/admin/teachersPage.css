@@ -1,6 +1,5 @@
 .custom-file-label {
   cursor: pointer;
-  /*  */
   display: flex;
   background-color: #fff;
   color: #4a3aff;
@@ -36,7 +35,7 @@
   border-radius: 5px;
   gap: 0.3rem;
 }
-
+/* 
 .add-icon,
 .filter-icon,
 .import-icon {
@@ -235,4 +234,4 @@ button {
   width: 100%;
   margin-bottom: 2rem;
   border-radius: 5px;
-}
+} */

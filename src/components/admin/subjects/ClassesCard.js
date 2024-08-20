@@ -1,47 +1,34 @@
 import { Link } from "react-router-dom";
-import { IoMdBook, IoMdBookmark } from "react-icons/io";
 import "./ClassesCard.css";
+import { BookOpen } from "lucide-react";
+import { Button } from "../../../components/ui/button";
+import { MdDeleteForever } from "react-icons/md";
+import DeleteModal from "../../DeleteModal";
 
-const ClassesCard = (props) => {
+const ClassesCard = ({className}) => {
   return (
-    <div className="classesCard border-gray-200">
-      <div className="classesCard-top">
-        <img
-          src={
-            "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=600"
-          }
-          alt="img"
-          className="object-cover w-full rounded-t-xl h-[160px] "
-        />
+    <div className="py-5 px-4 shadow rounded-lg ">
+    <div className="flex items gap-4">
+      <BookOpen size={30} className="p-01 rounded-full text-white bg-[#4a3aff]" />
+
+      <div className="flex flex-col gap-1">
+      <h2 className="text-lg font-semibold">{className.name}</h2>
+
+      <div>
+      <p className="text-sm">25 Students, 4 Teachers</p>
+      </div>
       </div>
 
-      <div className="classesCard-body">
-        <h2 className="font-bold">
-          {props.class} {props.description}
-        </h2>
-        <p className="font-semibold">All Subjects </p>
-      </div>
-
-      <div className="classesCard-details">
-        <p>
-          <IoMdBook size={24} className="text-[#687EFF]" />5 Classes
-        </p>
-        <span>
-          <IoMdBookmark size={24} className="text-[#2f309b]" /> 14 Subjects
-        </span>
-      </div>
-
-      {props.subject && (
-        <>
-          <hr />
-          <div className="classesCard-button flex justify-end p-2">
-            <Link to={`/admin/subjects/:123`}>
-              <span>View Class </span>
-            </Link>
-          </div>
-        </>
-      )}
     </div>
+        <div  className="flex justify-between mt-4">
+        <DeleteModal id={className.id} type="class" />
+      <Link to={`/admin/class/${className.id}`}>
+        <Button variant="outline" className="text-sm">View</Button>
+      </Link>
+        </div>
+
+    
+  </div>
   );
 };
 

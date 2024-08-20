@@ -4,7 +4,7 @@
   align-items: center;
   background-color: #fff;
   gap: 2rem;
-  padding: 1rem;
+  padding: 1rem 1.8rem;
   border: 1.5px solid #ebeafb;
   width:100%;
 }
@@ -27,9 +27,9 @@
   background-color: #fff;
   padding: 0.5rem;
   border-radius: 5px;
-  right: -2.3rem;
+  right: 1rem;
   box-shadow: 0px 4px 63px 0px rgba(0, 0, 0, 0.1);
-  top: 2rem;
+  top: 4rem;
   z-index: 2;
 }
 
@@ -97,6 +97,7 @@ p {
 
 .navbar-dropdown-content div p {
   font-size: 12px;
+  cursor: pointer;
 }
 
 .rotate-upside-down {

@@ -2,24 +2,39 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const teachersApi = createApi({
   reducerPath: "teachersApi",
+  tagTypes:["Teachers"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:4000/api",
+    baseUrl:"https://resultprocessingapi.onrender.com/",
+    prepareHeaders:(headers, {getState})=>{
+        const token =getState().auth.token || localStorage.getItem("token")
+  
+        // if we have a token set it in the headers
+        if (token) {
+          headers.set('Authorization', `Bearer ${token}`);
+        }
+        return headers
+      },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllTeachers: builder.query({
-      query: () => "/",
+      query: () => "/teacher",
+      providesTags:["Teachers"]
     }),
     getTeacherDetails: builder.query({
-      query: (id) => `/${id}`,
+      query: (id) => `/teacher${id}`,
     }),
     createTeacher: builder.mutation({
       query: (body) => ({
-        url: "",
+        url: "/teacher",
         method: "POST",
         body,
       }),
+      invalidatesTags:["Teachers"]
     }),
+    getSingleTeacher: builder.query({
+      query:(id)=> `/teacher/${id}`
+    })
   }),
 });
 
@@ -27,4 +42,5 @@ export const {
   useGetAllTeachersQuery,
   useGetTeacherDetailsQuery,
   useCreateTeacherMutation,
+  useGetSingleTeacherQuery
 } = teachersApi;

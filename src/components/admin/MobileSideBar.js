@@ -45,7 +45,7 @@ const MobileSideBar = () => {
   return (
     <Sheet side="left" >
     <SheetTrigger asChild>
-        <RiMenuFoldLine className="r text-[#4a3aff] text-[25px]" />
+        <RiMenuFoldLine className="cursor-pointer text-[#4a3aff] text-[25px]" />
     </SheetTrigger>
     <SheetContent side="left" >
         
@@ -88,7 +88,7 @@ const MobileSideBar = () => {
                 onClick={() => handleLinkClick(link)}
               >
                 <span className='listItemTitle'>{link.title}</span>
-                {link.id === 2 ? (
+                {/* {link.id === 2 ? (
                   <div
                     className={activeLink === link.id ? 'icon-active' : ''}
                     onClick={() => handleLinkClick(link)}
@@ -97,12 +97,12 @@ const MobileSideBar = () => {
                   </div>
                 ) : (
                   ''
-                )}
+                )} */}
               </Link>
               </SheetClose>
             </div>
             </SheetClose>
-            {link.id === 2 && showTeacherLinks && (
+            {/* {link.id === 2 && showTeacherLinks && (
               <div className='teachers-links-container'>
                 {teachersLink.map((teacherLink) => (
                   <div
@@ -128,7 +128,7 @@ const MobileSideBar = () => {
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         ))}
         
