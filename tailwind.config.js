@@ -17,6 +17,11 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        noto: ["Noto Sans", "Inter", "sans-serif"],
+        rubik: ["Rubik",'Inter', "sans-serif"],
+        inter: ["Inter", "sans-serif"],
+      },
       colors: {
         text1:"#4a3aff",
         text2:"#5446f2",
@@ -25,6 +30,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        blue_primary : '#4a3aff',
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

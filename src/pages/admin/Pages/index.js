@@ -10,7 +10,15 @@ import Subjects from './subjects/Subjects'
 import SingleSubjects from './subjects/SingleSubjects'
 import AddStudent from './students/AddStudent'
 import SingleStudent from './students/SingleStudent'
+import Results from './Results'
 
 export { Classes, Dashboard, Students, AcademicSessions, Subjects, Teachers, SingleSubjects, AddStudent, SingleStudent, SingleClass,
-    TeachersDetails, AddTeacher
+    TeachersDetails, AddTeacher, Results
 }
+
+
+
+
+// src/App.js
+// src/index.css
+// src/pages/admin/Pages/index.js

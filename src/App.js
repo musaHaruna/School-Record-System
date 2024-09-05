@@ -13,12 +13,20 @@ import {
   AddTeacher,
   Subjects,
   SingleSubjects,
+  Results,
 } from "./pages/admin/Pages";
 import Layout from "./pages/admin/AdminLayout";
 import AddTeachers from "./pages/admin/Pages/AddTeachers";
 import { ToastContainer, Zoom } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "react-datepicker/dist/react-datepicker.css";
+import StudentLayout from "./pages/student/StudentLayout";
+import StudentDashboard from "./pages/teachers/TeachersDashboard";
+import {  StudentViewResult } from "./pages/student/StudentViewResult";
+import TeachersLayout from "./pages/teachers/TeachersLayout";
+import TeachersDashboard from "./pages/teachers/TeachersDashboard";
+import { ManageResults } from "./pages/teachers/ManageResults";
+import { UploadResults } from "./pages/teachers/UploadResults";
 
 function App() {
   return (
@@ -68,6 +76,20 @@ function App() {
         {/* subjects */}
         <Route path="subjects" element={<Subjects />} />
         <Route path="subjects/:id" element={<SingleSubjects />} />
+
+
+{/* new merge */}
+          <Route path="results/*" element={<Results />} />
+
+        </Route>
+        <Route path="/student" element={<StudentLayout />}>
+          <Route index element={<StudentDashboard />} />
+          <Route path="result" element={<StudentViewResult />} />
+        </Route>
+        <Route path="/teacher" element={<TeachersLayout />}>
+          <Route index element={<TeachersDashboard />} />
+          <Route path='results' element={<ManageResults />} />
+          <Route path="results/upload" element={<UploadResults />} />
         </Route>
 
         <Route path="*" element={<Error />} />

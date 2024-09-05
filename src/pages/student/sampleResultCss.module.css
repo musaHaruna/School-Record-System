@@ -1,0 +1,107 @@
+.sampleResult {
+  background:#fff;
+  padding : 2rem 2.5vw ;
+}
+.sampleResult table {
+  border-collapse: collapse;
+  width: 100%; 
+  border: 1px solid black 
+}
+.sampleResult td,th {
+  border:1px solid black ;
+}
+.sampleResult .header { 
+  margin-bottom: 8rem;
+  font-size: 1.8rem;
+}
+.sampleResult .header h3, 
+.sampleResult .header h1{margin : 0 }
+.sampleResult .header img {
+  width: 15rem;
+  height:auto;
+}
+.sampleResult .header h3 {
+  font-weight: 600;
+  color: #333333;
+}
+
+/* top summary */
+.sampleResult .topSummary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  font-size: 1.6rem;
+  grid-auto-flow: row dense;
+  gap: 2rem;
+}
+
+/* label span  */
+.sampleResult .topSummary div span:nth-of-type(1) {
+  font-weight: 700;
+}
+.sampleResult .topSummary div span:nth-of-type(2) {
+  text-transform: uppercase;
+  text-decoration: underline;
+  font-weight: 500;
+}
+.sampleResult .sheetContainer {
+  margin: 4rem 0;
+  font-size: 1.4rem;
+}
+
+
+.sampleResult .sheetContainer table td,
+.sampleResult .sheetContainer table th {
+  padding: 0.5rem;
+}
+.sampleResult .sheetContainer .bottomTable {
+  margin: 4rem 0;
+}
+.sampleResult .sheetContainer .bottomTable div {
+  display: flex;
+  gap: 2rem;
+}
+
+.sampleResult .sheetContainer .bottomTable p span:nth-of-type(1) {
+  font-weight: 600;
+}
+
+.sampleResult .sheetContainer .bottomTable p span:nth-of-type(2) {
+  font-weight: 700;
+  text-decoration: underline;
+  font-size: 1.1em;
+}
+
+.sampleResult .stamp {
+  display: flex ;
+  justify-content: flex-end;
+}
+.sampleResult .stamp p {
+width : 30rem ; 
+text-align: center;
+font-size: 1.6rem;
+border-top : 1px solid black ;
+padding-top: 1rem;
+margin-top: 10rem;
+}
+.sampleResult .finalGrading{
+  border :1px solid black ; 
+  padding : 1rem ; 
+  font-size: 1.6rem ; 
+
+  text-align: center ;
+  margin-bottom: 1rem
+  
+  ;
+}
+
+.sampleResult .footer  {
+  text-align: center ; 
+  font-weight: 500;
+  font-size: 1.4rem ; ;
+}
+
+/* UTILS */
+.sampleResult .vertical-text {
+  writing-mode: vertical-lr;
+  transform: scale(-1);
+}
