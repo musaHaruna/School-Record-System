@@ -1,5 +1,4 @@
-import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
-import { MdDeleteForever, MdEdit } from "react-icons/md";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import "./Table.css";
 import DeleteModal from "../../DeleteModal";
@@ -7,6 +6,14 @@ import DeleteModal from "../../DeleteModal";
 const handleDelete = (id) => {};
 
 const StudentsTable = ({ row, columns, link, page }) => {
+
+  // const classColumn={
+  //    field: "studentClass", headerName: "Student Class", width: 170 ,
+  //    renderCell:(params)=>{
+  //     return params.row.studentClass.name
+  //    }
+  // }
+
   const actionColumn = {
     field: "action",
     headerName: "Actions",
@@ -14,7 +21,7 @@ const StudentsTable = ({ row, columns, link, page }) => {
     renderCell: (params) => {
       return (
         <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
-          <Link to={`/${link}/${row._id}`}>
+          <Link to={`/admin/student-details/${params.row.id}`}>
             <span className="text-[#3ec555] viewAction outline-1 p-2   ">
               {" "}
               View
@@ -23,7 +30,7 @@ const StudentsTable = ({ row, columns, link, page }) => {
 
           <div
             className="deleteAction"
-            onClick={() => handleDelete(params.row._id)}
+            onClick={() => handleDelete(params.row.id)}
           >
             <span className="text-[#e90404]">
               
@@ -40,7 +47,7 @@ const StudentsTable = ({ row, columns, link, page }) => {
       <DataGrid
         className="dataTableBg p-[20px] "
         rows={row}
-        columns={[...columns, actionColumn]}
+        columns={[...columns,actionColumn]}
         //  getRowId={generateUniqueId}
         initialState={{
           pagination: {

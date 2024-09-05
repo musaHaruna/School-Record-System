@@ -28,8 +28,8 @@ const Landing = () => {
             <Link className='btn-blue' to='/select-preference'>
               Apply
             </Link>
-            <Link className='btn-blue-border' to=''>
-              Returning student/staff Login
+            <Link className='btn-blue-border' to='/login'>
+              Returning Admin/staff Login
             </Link>
           </div>
           <p className='policy-links'>

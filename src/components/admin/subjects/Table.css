@@ -1,0 +1,29 @@
+.MuiDataGrid-toolbarContainer {
+    flex-direction:row-reverse
+}
+
+.actionButton{
+    display:flex;
+    width:100%;
+    align-items:center;
+    gap:10px;
+
+}
+.viewAction{
+
+    padding: 10px 16px;
+    color:#61db76;
+    cursor: pointer;
+
+}
+.deleteAction{
+ 
+    padding: 10px 16px;
+    color:#d40527;
+    cursor: pointer;
+
+}
+
+.dataTableBg{
+    background: #fff;
+}
