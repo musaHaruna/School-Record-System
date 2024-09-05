@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StudentDashboardHeader } from "../../components/studentDashboardHeader/studentDashboardHeader";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { fetchClasses } from "../../services/teachers";
 export const ManageResults = () => {
   const [classes] = useState([{class :"JSS1", subject:'English' ,} ,{class :"JSS2", subject:'Mathematics' ,},{class :"JSS3", subject:'Literature' ,}]);
+  const handleFetchClasses = async () =>{
+    const classes = await fetchClasses()
+    console.log(classes)
+  }
+  useEffect(() => {
+    // todo change this to fetch classes assigned to a teacher 
+  handleFetchClasses()
+  },[])
   return (
     <div className="px-[2.5vw] py-[2rem]">
       <StudentDashboardHeader primaryRoute={"Home"} otherRoutes={["results"]}>
