@@ -19,7 +19,7 @@ export const userApi =createApi({
     }),
     endpoints: (builder)=>({
         getUserProfile:builder.query({
-            query:()=> "/user/profile",
+            query:()=> "/admin/profile",
             async onQueryStarted(_, {dispatch, queryFulfilled}){
                 try{
                     const {data}= await queryFulfilled
@@ -31,7 +31,7 @@ export const userApi =createApi({
             }
         }),
         getAllUsers:builder.query({
-            query:()=> "/user/all"
+            query:()=> "/admin/all"
         })
     })
 })
