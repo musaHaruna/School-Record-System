@@ -16,6 +16,15 @@
     cursor: pointer;
 
 }
+
+.viewStudentsAction{
+
+    padding: 10px 16px;
+    color:#5446F2;
+    cursor: pointer;
+
+}
+
 .deleteAction{
  
     padding: 10px 16px;

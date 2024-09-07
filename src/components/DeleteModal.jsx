@@ -43,8 +43,6 @@ const DeleteModal = ({id, type}) => {
     }
   }, [error,isSuccess, isSubjectSuccess, subjectError])
 
-  console.log(id)
-
   const handleDeleteClass =()=>{
     deleteClasses(id)
   }

@@ -1,4 +1,4 @@
-import { Navbar, Menu } from "../../components/admin";
+import { Navbar } from "../../components/admin";
 import { Outlet } from "react-router-dom";
 import "../../assets/css/admin/adminLayout.css";
 const Layout = () => {

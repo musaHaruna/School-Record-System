@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const teachersApi = createApi({
   reducerPath: "teachersApi",
   tagTypes:["Teachers"],
   baseQuery: fetchBaseQuery({
-    baseUrl:"https://resultprocessingapi.onrender.com/",
+    baseUrl,
     prepareHeaders:(headers, {getState})=>{
         const token =getState().auth.token || localStorage.getItem("token")
   

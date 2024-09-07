@@ -31,6 +31,13 @@ const SubjectTable = ({row, columns}) => {
                   View
                 </span>
               </Link>
+
+              <Link to={`/admin/subject-students/${params.row.id}`}>
+                <span className="text-[#3ec555] viewStudentsAction outline-1 p-2   ">
+                  {" "}
+                  View Students
+                </span>
+              </Link>
     
               <div
                 className="deleteAction"

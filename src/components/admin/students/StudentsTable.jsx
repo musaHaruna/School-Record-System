@@ -5,7 +5,7 @@ import DeleteModal from "../../DeleteModal";
 
 const handleDelete = (id) => {};
 
-const StudentsTable = ({ row, columns, link, page }) => {
+const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) => {
 
   // const classColumn={
   //    field: "studentClass", headerName: "Student Class", width: 170 ,
@@ -21,22 +21,37 @@ const StudentsTable = ({ row, columns, link, page }) => {
     renderCell: (params) => {
       return (
         <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
-          <Link to={`/admin/student-details/${params.row.id}`}>
-            <span className="text-[#3ec555] viewAction outline-1 p-2   ">
-              {" "}
-              View
-            </span>
-          </Link>
+          {/* Conditionally render view button based on showView prop */}
+          {showView && (
+            <Link to={`/admin/student-details/${params.row.id}`}>
+              <span className="text-[#3ec555] viewAction outline-1 p-2   ">
+                {" "}
+                View
+              </span>
+            </Link>
+          )}
 
-          <div
-            className="deleteAction"
-            onClick={() => handleDelete(params.row.id)}
-          >
-            <span className="text-[#e90404]">
-              
-              <DeleteModal />
-            </span>
-          </div>
+          {/* Conditionally render delete button based on showDelete prop */}
+          {showDelete && (
+            <div
+              className="deleteAction"
+              onClick={() => handleDelete(params.row.id)}
+            >
+              <span className="text-[#e90404]">
+                <DeleteModal />
+              </span>
+            </div>
+          )}
+
+          {/* Conditionally render view button based on showView prop */}
+          {showEditScores && (
+            <Link to={`/admin/student-details/${params.row.id}`}>
+              <span className="text-[#3ec555] viewAction outline-1 p-2   ">
+                {" "}
+                View/Edit Scores
+              </span>
+            </Link>
+          )}
         </div>
       );
     },

@@ -13,6 +13,7 @@ import {
   AddTeacher,
   Subjects,
   SingleSubjects,
+  SubjectStudents,
   Results,
 } from "./pages/admin/Pages";
 import Layout from "./pages/admin/AdminLayout";
@@ -76,6 +77,8 @@ function App() {
         {/* subjects */}
         <Route path="subjects" element={<Subjects />} />
         <Route path="subjects/:id" element={<SingleSubjects />} />
+        <Route path="subject-students/:id" element={<SubjectStudents />} />
+
 
 
 {/* new merge */}
