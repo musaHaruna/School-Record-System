@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export const studentsApi = createApi({
-  reducerPath: "studentsApi",
-  tagTypes:["Students"],
+export const termsApi = createApi({
+  reducerPath: "termsApi",
+  tagTypes:["Terms"],
   baseQuery: fetchBaseQuery({
     baseUrl,
     prepareHeaders:(headers, {getState})=>{
@@ -18,35 +18,35 @@ export const studentsApi = createApi({
     credentials: "include",
   }),
   endpoints: (builder) => ({
-    getAllStudents: builder.query({
-      query: () => "/student",
-      providesTags:["Students"]
+    getAllTerms: builder.query({
+      query: () => "/terms",
+      providesTags:["Terms"]
     }),
-    getStudentDetails: builder.query({
-      query: (id) => `/student/${id}`,
+    getTermDetails: builder.query({
+      query: (id) => `/terms/${id}`,
     }),
-    createStudent: builder.mutation({
+    createTerm: builder.mutation({
       query: (body) => ({
-        url: "/student",
+        url: "/terms",
         method: "POST",
         body,
       }),
-      invalidatesTags:["Students"]
+      invalidatesTags:["Terms"]
     }),
-    updateStudent:builder.mutation({
+    updateTerm:builder.mutation({
       query: (id,body)=>({
-        url:`/student/${id}/status`,
+        url:`/terms/${id}/status`,
         body,
         method:"PUT"
       }),
-      invalidatesTags:["Students"]
+      invalidatesTags:["Terms"]
     })
   }),
 });
 
 export const {
-  useGetAllStudentsQuery,
-  useGetStudentDetailsQuery,
-  useCreateStudentMutation,
-  useUpdateStudentMutation
-} = studentsApi;
+  useGetAllTermsQuery,
+  useGetTermDetailsQuery,
+  useCreateTermMutation,
+  useUpdateTermMutation
+} = termsApi;

@@ -1,5 +1,6 @@
 import { Button } from "../../../../components/ui/button";
 import StudentsTable from "../../../../components/admin/students/StudentsTable";
+import AssessmentModal from "../../../../components/Assessments/AssessmentModal";
 import { Link } from "react-router-dom";
 import { useGetAllStudentsQuery } from "../../../../app/api/studentsApi";
 import { Loader2 } from "lucide-react";
@@ -41,16 +42,14 @@ const SubjectStudents = () => {
     <section className='className="py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto'>
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-[32px]">Mathematics Students</h1>
-        <Link to="/admin/add-student">
         <div className="action-buttons">
-        <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Add Assessment</Button>
+        <AssessmentModal></AssessmentModal>
         <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Print Scores</Button>
         </div>
-        </Link>
+       
       </div>
 
       <div className="p-2 w-full ">
-      
         <StudentsTable
           link="students"
           route="students"

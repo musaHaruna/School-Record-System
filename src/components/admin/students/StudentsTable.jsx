@@ -2,6 +2,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import "./Table.css";
 import DeleteModal from "../../DeleteModal";
+import ScoresModal from "../../Scores/ScoresModal";
 
 const handleDelete = (id) => {};
 
@@ -45,12 +46,15 @@ const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) =
 
           {/* Conditionally render view button based on showView prop */}
           {showEditScores && (
-            <Link to={`/admin/student-details/${params.row.id}`}>
-              <span className="text-[#3ec555] viewAction outline-1 p-2   ">
-                {" "}
-                View/Edit Scores
-              </span>
-            </Link>
+            <div
+            className="text-[#3ec555] viewAction outline-1 p-2"
+            onClick={() => handleDelete(params.row.id)}
+          >
+            <span className="text-[#e90404]">
+              <ScoresModal/>
+            </span>
+          </div>
+
           )}
         </div>
       );
