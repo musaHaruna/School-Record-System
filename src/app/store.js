@@ -11,6 +11,7 @@ import userReducer from "./features/userSlice"
 import { sessionsApi } from "./api/sessionsApi";
 import { termsApi } from "./api/termApi";
 import { assessmentsApi } from "./api/assessmentsApi";
+import { resultsApi } from "./api/resultsApi";
 
 
 export const store = configureStore({
@@ -26,6 +27,7 @@ export const store = configureStore({
     [sessionsApi.reducerPath]: sessionsApi.reducer,
     [termsApi.reducerPath]: termsApi.reducer,
     [assessmentsApi.reducerPath]: assessmentsApi.reducer,
+    [resultsApi.reducerPath]: resultsApi.reducer,
     // [studentsApi.reducerPath]: studentsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -39,6 +41,7 @@ export const store = configureStore({
       sessionsApi.middleware,
       termsApi.middleware,
       assessmentsApi.middleware,
+      resultsApi.middleware,
       // studentsApi.middleware,
     ]),
 });

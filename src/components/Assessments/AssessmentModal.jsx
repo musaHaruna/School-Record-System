@@ -13,11 +13,9 @@ import { toast } from 'react-toastify';
 import { Loader2 } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { useGetAllClassesQuery } from '../../app/api/classApi'; 
-import { useGetAllSessionsQuery } from '../../app/api/sessionsApi';
+import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../app/api/sessionsApi'; // Import session and terms query
 import { useGetAllSubjectsQuery } from '../../app/api/allSubjectApi';
-import { useGetAllTermsQuery } from '../../app/api/termApi';
 import { useCreateAssessmentMutation } from '../../app/api/assessmentsApi';
-
 import './AssessmentModal.css'; 
 
 const AssessmentsModal = () => {
@@ -27,7 +25,10 @@ const AssessmentsModal = () => {
   const { data: classesData, isLoading: classesLoading, error: classesError } = useGetAllClassesQuery();
   const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
   const { data: subjectsData, isLoading: subjectsLoading, error: subjectsError } = useGetAllSubjectsQuery();
-  const { data: termsData, isLoading: termsLoading, error: termsError } = useGetAllTermsQuery();
+  const [selectedSession, setSelectedSession] = useState(''); // Track selected session
+  const { data: sessionTermsData, isLoading: termsLoading, error: termsError } = useGetSessionTermsQuery(selectedSession, {
+    skip: !selectedSession, // Skip fetching terms if no session is selected
+  });
 
   const [assessment, setAssessment] = useState({
     class: '',
@@ -58,16 +59,16 @@ const AssessmentsModal = () => {
     if (sessionsData && sessionsData.length > 0) {
       const lastSession = sessionsData[sessionsData.length - 1].id;
       setAssessment((prev) => ({ ...prev, session: lastSession }));
+      setSelectedSession(lastSession); // Update selected session for terms
     }
   }, [sessionsData]);
 
-  // Preselect the last term when termsData is available
-  useEffect(() => {
-    if (termsData && termsData.length > 0) {
-      const lastTerm = termsData[termsData.length - 1].id;
-      setAssessment((prev) => ({ ...prev, term: lastTerm }));
-    }
-  }, [termsData]);
+  // Handle session change and update terms based on selected session
+  const handleSessionChange = (e) => {
+    const selectedSessionId = e.target.value;
+    setSelectedSession(selectedSessionId); // Update selected session
+    setAssessment((prev) => ({ ...prev, session: selectedSessionId, term: '' })); // Clear term when session changes
+  };
 
   const handleChange = (e) => {
     setAssessment({ ...assessment, [e.target.name]: e.target.value });
@@ -193,7 +194,7 @@ const AssessmentsModal = () => {
             <select
               name="session"
               value={assessment.session}
-              onChange={handleChange}
+              onChange={handleSessionChange} // Change session and update terms
               className="w-full p-2 border rounded-md"
             >
               <option value="">Select Session</option>
@@ -216,12 +217,13 @@ const AssessmentsModal = () => {
               value={assessment.term}
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
+              disabled={!selectedSession || termsLoading} // Disable until session is selected
             >
               <option value="">Select Term</option>
               {termsLoading ? (
                 <option>Loading...</option>
               ) : (
-                termsData?.map((term) => (
+                sessionTermsData?.map((term) => (
                   <option key={term.id} value={term.id}>
                     {term.name}
                   </option>

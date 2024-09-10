@@ -22,6 +22,9 @@ export const assessmentsApi = createApi({
       query: () => "/assessments",
       providesTags:["Assessments"]
     }),
+    getAssessmentByTerm: builder.query({
+      query: (termId) => `/assessments/term/${termId}`,
+    }),
     getAssessmentDetails: builder.query({
       query: (id) => `/assessments/${id}`,
     }),
@@ -48,5 +51,6 @@ export const {
   useGetAllAssessmentsQuery,
   useGetAssessmentDetailsQuery,
   useCreateAssessmentMutation,
-  useUpdateAssessmentMutation
+  useUpdateAssessmentMutation,
+  useGetAssessmentByTermQuery
 } = assessmentsApi;
