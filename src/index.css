@@ -10,16 +10,18 @@
 
 /* fonts */
 /* @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 html {
-  font-size: 62.5%;
+  font-size: 100%;
   scroll-behavior: smooth;
-  font-family: "Inter", "Noto Sans", "Rubik", sans-serif;
+  /* font-family: "Inter", "Noto Sans", "Rubik", sans-serif; */
+  font-family: "Plus Jakarta Sans", sans-serif;
 }
 
 @media (max-width: 768px) {
   html {
-    font-size: 57.5%;
+    font-size: 100%;
   }
 }
 

@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setLoading, setUser } from "../features/userSlice";
 
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
+// const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const userApi =createApi({
     reducerPath:"userApi",
     baseQuery: fetchBaseQuery({
-        baseUrl,
+        baseUrl: "https://resultprocessingapi.onrender.com/",
         prepareHeaders:(headers, {getState})=>{
           const token =getState().auth.token || localStorage.getItem("token")
     

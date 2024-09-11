@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 // const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export const classesApi = createApi({
-    reducerPath:"classesApi",
-    tagTypes:["Classes"],
+export const sessionApi = createApi({
+    reducerPath:"sessionApi",
+    tagTypes:["Sessions"],
     baseQuery: fetchBaseQuery({
         baseUrl: "https://resultprocessingapi.onrender.com/",
         prepareHeaders:(headers, {getState})=>{
@@ -13,46 +13,44 @@ export const classesApi = createApi({
             if (token) {
               headers.set('Authorization', `Bearer ${token}`);
             }
-            headers.set('Content-Type', 'application/json'); // Set the Content-Type to application/json
-            return headers;
+            return headers
           },
         credentials: "include",
-        
     }),
     endpoints:(builder)=>({
-        getAllClasses:builder.query({
-            query: ()=> "/classes",
-            providesTags:["Classes"]
+        getAllSessions:builder.query({
+            query: ()=> "/sessions",
+            providesTags:["Session"]
         }),
-        getSingleClasses : builder.query({
-            query: (id)=> `/classes/${id}`
+        getSingleSessions : builder.query({
+            query: (id)=> `/sessions/${id}`
         }),
-        createClass: builder.mutation({
+        createSession: builder.mutation({
             query:(body)=>({
-                url:"/classes",
+                url:"/sessions",
                 body,
                 method:"POST"
             }),
-            invalidatesTags:["Classes"]
+           invalidatesTags:["Sessions"]
         }),
-        updateClasses: builder.mutation({
+        updateSession: builder.mutation({
             query:(id,body)=>({
-                url:`/Classes/${id}`,
+                url:`/sessions/${id}`,
                 body,
                 method:"PUT"
             }),
-            invalidatesTags:["Classes"]
+            invalidatesTags:["Sessions"]
         }),
-        deleteClasses : builder.mutation({
+        deleteSession: builder.mutation({
             query: (id)=>({
-                url:`/Classes/${id}`,
+                url:`/sessions/${id}`,
                 method:"DELETE"
             }),
-            invalidatesTags:["Classes"]
+            invalidatesTags:["Subjects"]
         }),
     })
 })
 
 export const {
-    useCreateClassMutation, useDeleteClassesMutation, useGetAllClassesQuery, useGetSingleClassesQuery,useUpdateClassesMutation
-}= classesApi
+    useCreateSessionMutation, useGetAllSessionsQuery, useGetSingleSessionsQuery, useUpdateSessionMutation, useDeleteSessionMutation
+}= sessionApi

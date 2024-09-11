@@ -6,6 +6,7 @@ import { teachersApi } from "./api/teachersApi";
 import {classesApi} from "./api/classApi"
 // import { studentsApi } from "./api/studentsApi";
 import {allSubjectApi} from  "./api/allSubjectApi"
+import {sessionApi} from "./api/sessionsApi"
 import authReducer from "./features/authSlice";
 import userReducer from "./features/userSlice"
 
@@ -20,6 +21,7 @@ export const store = configureStore({
     [teachersApi.reducerPath]: teachersApi.reducer,
     [allSubjectApi.reducerPath]: allSubjectApi.reducer,
     [classesApi.reducerPath]: classesApi.reducer,
+    [sessionApi.reducerPath]: sessionApi.reducer,
     // [studentsApi.reducerPath]: studentsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -30,6 +32,7 @@ export const store = configureStore({
       teachersApi.middleware,
       allSubjectApi.middleware,
       classesApi.middleware,
+      sessionApi.middleware,
       // studentsApi.middleware,
     ]),
 });
