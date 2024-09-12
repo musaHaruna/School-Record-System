@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import { Loader2 } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 import { useGetAllClassesQuery } from '../../app/api/classApi'; 
-import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../app/api/sessionsApi'; // Import session and terms query
+import { useGetAllSessionsQuery, useGetSessionsTermsQuery } from '../../app/api/sessionsApi'; // Import session and terms query
 import { useGetAllSubjectsQuery } from '../../app/api/allSubjectApi';
 import { useCreateAssessmentMutation } from '../../app/api/assessmentsApi';
 import './AssessmentModal.css'; 
@@ -26,7 +26,7 @@ const AssessmentsModal = () => {
   const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
   const { data: subjectsData, isLoading: subjectsLoading, error: subjectsError } = useGetAllSubjectsQuery();
   const [selectedSession, setSelectedSession] = useState(''); // Track selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError } = useGetSessionTermsQuery(selectedSession, {
+  const { data: sessionTermsData, isLoading: termsLoading, error: termsError } = useGetSessionsTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip fetching terms if no session is selected
   });
 

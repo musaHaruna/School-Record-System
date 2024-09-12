@@ -19,7 +19,7 @@ const samplePerformanceSummary = [
 ];
 const TeachersDashboard = () => {
   return (
-    <section className="px-[2.5vw] font-noto">
+    <section className="px-[2.5vw] ">
       <div className=" flex flex-row justify-between items-end  py-[2.5vw]">
         {/* header */}
         <h1 className="text-[2.8rem]  font-500">Welcome Mr Andrew!</h1>

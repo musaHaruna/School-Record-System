@@ -1,11 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const baseUrl = process.env.REACT_APP_API_BASE_URL;
+  const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
+// console.log("URL IS>>>>>>",baseUrl)
 export const studentsApi = createApi({
   reducerPath: "studentsApi",
   tagTypes:["Students"],
   baseQuery: fetchBaseQuery({
-    baseUrl,
+     baseUrl,
     prepareHeaders:(headers, {getState})=>{
       const token =getState().auth.token || localStorage.getItem("token")
 

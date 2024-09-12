@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Logo, SchoolBg, SchoolImgIpad } from '../../components/images'
 import '../../assets/css/onboarding/onboarding.css'
+import LoginDialog from './LoginDialog'
 
 /* eslint-disable */
 const Landing = () => {
@@ -28,9 +29,8 @@ const Landing = () => {
             <Link className='btn-blue' to='/select-preference'>
               Apply
             </Link>
-            <Link className='btn-blue-border' to='/login'>
-              Returning Admin/staff Login
-            </Link>
+            
+           <LoginDialog />
           </div>
           <p className='policy-links'>
             I have read and agree to the <a href='#'>Terms of Use </a>as well as

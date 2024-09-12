@@ -7,21 +7,20 @@ import { Button } from '../../components/ui/button'
 import { MdPassword } from 'react-icons/md'
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import { Link, useNavigate } from 'react-router-dom'
-import { useLoginMutation } from '../../app/api/authApi'
+import { useTeacherLoginMutation } from '../../app/api/authApi'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Loader2 } from 'lucide-react'
 
-const LoginPage = () => {
+const TeacherLogin = () => {
 
     const navigate =useNavigate()
     const dispatch=useDispatch()
-    const [login, {isLoading, isSuccess, error}] =useLoginMutation()
+    const [teacherLogin, {isLoading, isSuccess, error}] =useTeacherLoginMutation()
 
     const [credentials, setCredientials]= useState({
-        username:"",
+        email:"",
         password:"",
-        role:"admin"
     })
 
     useEffect(()=>{
@@ -47,7 +46,7 @@ const LoginPage = () => {
     const handleSubmit =(e)=>{
       e.preventDefault()
       if(!credentials.password.trim()) return toast.error("Password is missing")
-      login(credentials)
+    teacherLogin(credentials)
 
     }
 
@@ -61,7 +60,7 @@ const LoginPage = () => {
         <div className="relative flex h-32 items-end bg-gray-900 lg:h-full ">
         <img
         alt=""
-        src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=600"
+        src="/teacherImg.webp"
         className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
 
@@ -89,18 +88,18 @@ const LoginPage = () => {
                 <div className=' logo-sm'>
                     <Logo />
                  </div>
-                <p className='text-sm sm:text-[16px] '>Login into your dashboard on Perculiar Treasure School </p>
+                <p className='text-sm sm:text-[16px] '>Login into your dashboard as a Teacher on Perculiar Treasure School </p>
             </div>
 
             <form onSubmit={handleSubmit} className='w-full flex flex-col gap-4 mt-4 sm:max-w-[450px] justify-start'>
                 {/* email */}
 
                 <div className='flex flex-col gap-2 w-full'>
-                    <label htmlFor='username'  className='text-sm'>User Name</label>
-                        <input type='username' id='username' 
-                          name='username'
+                    <label htmlFor='email'  className='text-sm'>Email</label>
+                        <input type='email' id='email' 
+                          name='email'
                           placeholder=''
-                          value={credentials.username}
+                          value={credentials.email}
                           onChange={handleChange}
                           className='px-4 py-2 outline-[#988fff] border border-gray-300 rounded-lg' />
                 </div>
@@ -141,11 +140,11 @@ const LoginPage = () => {
                 <Button
                 disabled={isLoading}
                  className="w-full bg-[#4a3aff] hover:bg-[#4e3ffa] text-[18px] "> {isLoading ? <Loader2 className='animate-spin' /> : "Login"}</Button>
-                <p className='text-black text-sm flex items-center gap-1'>Not Registered?
+                {/* <p className='text-black text-sm flex items-center gap-1'>Not Registered?
                 <Link to="/select-preference">
                  <span className='text-gray-600 cursor-pointer underline'>Register with us today</span>
                 </Link>
-                 </p>
+                 </p> */}
                 </div>
 
             </form>
@@ -155,4 +154,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default TeacherLogin

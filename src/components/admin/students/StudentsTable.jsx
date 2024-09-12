@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Table.css";
 import DeleteModal from "../../DeleteModal";
 import ScoresModal from "../../Scores/ScoresModal";
-import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../../app/api/sessionsApi'; // Import both queries
+import { useGetAllSessionsQuery, useGetSessionsTermsQuery } from '../../../app/api/sessionsApi'; // Import both queries
 
 const handleDelete = (id) => {};
 
@@ -16,7 +16,7 @@ const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) =
   const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
   
   // Fetch terms for the selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError, refetch: fetchSessionTerms } = useGetSessionTermsQuery(selectedSession, {
+  const { data: sessionTermsData, isLoading: termsLoading, error: termsError, refetch: fetchSessionTerms } = useGetSessionsTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip the query if no session is selected
   });
 

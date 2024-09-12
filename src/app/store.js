@@ -6,9 +6,10 @@ import { teachersApi } from "./api/teachersApi";
 import {classesApi} from "./api/classApi"
 // import { studentsApi } from "./api/studentsApi";
 import {allSubjectApi} from  "./api/allSubjectApi"
+// import {sessionApi} from "./api/sessionsApi"
 import authReducer from "./features/authSlice";
 import userReducer from "./features/userSlice"
-import { sessionsApi } from "./api/sessionsApi";
+import { sessionApi } from "./api/sessionsApi";
 import { termsApi } from "./api/termApi";
 import { assessmentsApi } from "./api/assessmentsApi";
 import { resultsApi } from "./api/resultsApi";
@@ -24,7 +25,7 @@ export const store = configureStore({
     [teachersApi.reducerPath]: teachersApi.reducer,
     [allSubjectApi.reducerPath]: allSubjectApi.reducer,
     [classesApi.reducerPath]: classesApi.reducer,
-    [sessionsApi.reducerPath]: sessionsApi.reducer,
+    [sessionApi.reducerPath]: sessionApi.reducer,
     [termsApi.reducerPath]: termsApi.reducer,
     [assessmentsApi.reducerPath]: assessmentsApi.reducer,
     [resultsApi.reducerPath]: resultsApi.reducer,
@@ -38,10 +39,9 @@ export const store = configureStore({
       teachersApi.middleware,
       allSubjectApi.middleware,
       classesApi.middleware,
-      sessionsApi.middleware,
+      sessionApi.middleware,
       termsApi.middleware,
       assessmentsApi.middleware,
-      resultsApi.middleware,
       // studentsApi.middleware,
     ]),
 });

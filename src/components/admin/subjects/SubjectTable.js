@@ -3,7 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import "./Table.css";
 import DeleteModal from "../../DeleteModal";
-import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../../app/api/sessionsApi'; // Import both queries
+import { useGetAllSessionsQuery, useGetSessionsTermsQuery } from '../../../app/api/sessionsApi'; // Import both queries
 
 const SubjectTable = ({ row, columns }) => {
   const [selectedSession, setSelectedSession] = useState("");
@@ -13,7 +13,7 @@ const SubjectTable = ({ row, columns }) => {
   const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
   
   // Fetch terms for the selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError, refetch: fetchSessionTerms } = useGetSessionTermsQuery(selectedSession, {
+  const { data: sessionTermsData, isLoading: termsLoading, error: termsError, refetch: fetchSessionTerms } = useGetSessionsTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip the query if no session is selected
   });
 
