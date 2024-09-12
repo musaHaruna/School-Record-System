@@ -59,7 +59,7 @@ const SubjectTable = ({ row, columns }) => {
             <span className="text-[#3ec555] viewAction outline-1 p-2"> View </span>
           </Link>
 
-          <Link to={`/admin/subject-students/${params.row.id}`}>
+          <Link to={`/admin/subject-students/${params.row.id}/${params.row.class.id}`}>
             <span className="text-[#3ec555] viewStudentsAction outline-1 p-2"> View Students </span>
           </Link>
 

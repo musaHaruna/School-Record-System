@@ -32,14 +32,12 @@ const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) =
   const handleSessionChange = (e) => {
     const sessionId = e.target.value;
     setSelectedSession(sessionId);
-    setSelectedTerm(""); // Reset the term when a new session is selected
-    fetchSessionTerms(); // Refetch terms for the newly selected session
+    setSelectedTerm("");
+    fetchSessionTerms();
   };
 
-  // Handle term change
   const handleTermChange = (e) => {
     setSelectedTerm(e.target.value);
-    // Add logic here to filter or refetch the students based on the selected term
   };
 
   const actionColumn = {
@@ -48,6 +46,7 @@ const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) =
     width: 200,
     renderCell: (params) => {
       const studentId = params.row.id; // Extract studentId from the current row
+      console.log("studentId>>>>>>", params.row);
 
       return (
         <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">

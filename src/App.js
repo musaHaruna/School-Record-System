@@ -77,7 +77,7 @@ function App() {
         {/* subjects */}
         <Route path="subjects" element={<Subjects />} />
         <Route path="subjects/:id" element={<SingleSubjects />} />
-        <Route path="subject-students/:id" element={<SubjectStudents />} />
+        <Route path="subject-students/:subjectId/:classId" element={<SubjectStudents />} />
 
 
 
