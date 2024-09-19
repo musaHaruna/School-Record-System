@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   padding: 1rem;
@@ -81,6 +81,6 @@ const Wrapper = styled.article`
     border: 1px solid #4a3aff;
     gap: 0.3rem;
   }
-`
+`;
 
-export default Wrapper
+export default Wrapper;

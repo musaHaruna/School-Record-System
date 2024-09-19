@@ -155,50 +155,48 @@ p {
   padding: 4rem;
 }
 
-
-
-@media(max-width:420px){
+@media (max-width: 420px) {
   .admin-dashboard h1 {
     font-size: 16px;
     font: 700;
   }
 
-  .dashboard-summary{
-    display:flex;
-    flex-direction:column;
+  .dashboard-summary {
+    display: flex;
+    flex-direction: column;
   }
-  
+
   .dashboard-summary .card {
     background-color: #fff;
-    max-width:280px;
+    max-width: 280px;
   }
-  .dashboard-charts{
-    display:flex;
-    flex-direction:column;
+  .dashboard-charts {
+    display: flex;
+    flex-direction: column;
   }
 
   .chart-container {
-    max-width:300px;
-    display:none;
+    max-width: 300px;
+    display: none;
   }
 
-  .chart{
-    max-width:250px;
+  .chart {
+    max-width: 250px;
   }
   .chart.student-growth-chart {
-    display:none;
-    max-width:250px;
+    display: none;
+    max-width: 250px;
   }
- .chart.students-teachers-ratio-rating {
-    display:none;
-    max-width:250px;
+  .chart.students-teachers-ratio-rating {
+    display: none;
+    max-width: 250px;
   }
- .chart.enrollment-by-gender {
-    display:none;
-    max-width:250px;
+  .chart.enrollment-by-gender {
+    display: none;
+    max-width: 250px;
   }
- .chart.enrollment-by-age {
-    display:none;
-    max-width:250px;
+  .chart.enrollment-by-age {
+    display: none;
+    max-width: 250px;
   }
 }

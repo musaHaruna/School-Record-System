@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import { Logo, GaurdianIconWhite, HeroTwo } from '../images'
+import { useState } from "react";
+import { Logo, GaurdianIconWhite, HeroTwo } from "../images";
 
 const Guardian = ({ nextStep, prevStep, step }) => {
-  const [fatherName, setFatherName] = useState('')
-  const [motherName, setMotherName] = useState('')
-  const [fatherContact, setFatherContact] = useState('')
-  const [motherContact, setMotherContact] = useState('')
+  const [fatherName, setFatherName] = useState("");
+  const [motherName, setMotherName] = useState("");
+  const [fatherContact, setFatherContact] = useState("");
+  const [motherContact, setMotherContact] = useState("");
 
   const handleFormSubmit = (e) => {
-    e.preventDefault()
-    console.log('Form submitted with data:', {
+    e.preventDefault();
+    console.log("Form submitted with data:", {
       fatherName,
       motherName,
       fatherContact,
       motherContact,
-    })
-  }
+    });
+  };
 
   return (
     <main>
-      <article className='register-form-flex'>
-        <section className='register-content'>
-          <div className='logo-sm'>
+      <article className="register-form-flex">
+        <section className="register-content">
+          <div className="logo-sm">
             <Logo />
           </div>
-          <p style={{ display: step === 4 ? 'none' : '' }}>
-            <span style={{ color: 'blue' }}>{step} </span>/3
+          <p style={{ display: step === 4 ? "none" : "" }}>
+            <span style={{ color: "blue" }}>{step} </span>/3
           </p>
-          <div className='register-desc'>
-            <div className='icon-reg'>
+          <div className="register-desc">
+            <div className="icon-reg">
               <GaurdianIconWhite />
             </div>
             <div>
@@ -38,12 +38,12 @@ const Guardian = ({ nextStep, prevStep, step }) => {
           </div>
           <form
             onSubmit={handleFormSubmit}
-            className='register-details gaurdian-details'
+            className="register-details gaurdian-details"
           >
             <label>
               Father's Name
               <input
-                type='text'
+                type="text"
                 value={fatherName}
                 onChange={(e) => setFatherName(e.target.value)}
                 required
@@ -53,7 +53,7 @@ const Guardian = ({ nextStep, prevStep, step }) => {
             <label>
               Mother's Name
               <input
-                type='text'
+                type="text"
                 value={motherName}
                 onChange={(e) => setMotherName(e.target.value)}
                 required
@@ -63,7 +63,7 @@ const Guardian = ({ nextStep, prevStep, step }) => {
             <label>
               Father's Contact
               <input
-                type='text'
+                type="text"
                 value={fatherContact}
                 onChange={(e) => setFatherContact(e.target.value)}
                 required
@@ -73,29 +73,29 @@ const Guardian = ({ nextStep, prevStep, step }) => {
             <label>
               Mother's Contact
               <input
-                type='text'
+                type="text"
                 value={motherContact}
                 onChange={(e) => setMotherContact(e.target.value)}
                 required
               />
             </label>
           </form>
-          <div className='register-navigate'>
-            <button className='btn-blue-border' onClick={prevStep}>
-              <i class='fa-solid fa-chevron-left'></i>
+          <div className="register-navigate">
+            <button className="btn-blue-border" onClick={prevStep}>
+              <i class="fa-solid fa-chevron-left"></i>
               Previous
             </button>
 
-            <button className='btn-blue' onClick={nextStep}>
+            <button className="btn-blue" onClick={nextStep}>
               Continue
             </button>
           </div>
         </section>
-        <section className='register-hero'>
+        <section className="register-hero">
           <HeroTwo />
         </section>
       </article>
     </main>
-  )
-}
-export default Guardian
+  );
+};
+export default Guardian;

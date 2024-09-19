@@ -3,38 +3,38 @@ import { setLoading, setUser } from "../features/userSlice";
 
 const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-export const userApi =createApi({
-    reducerPath:"userApi",
-    baseQuery: fetchBaseQuery({
-        baseUrl,
-        prepareHeaders:(headers, {getState})=>{
-          const token =getState().auth.token || localStorage.getItem("token")
-    
-          // if we have a token set it in the headers
-          if (token) {
-            headers.set('Authorization', `Bearer ${token}`);
-          }
-          return headers
-        },
-        credentials: "include",
+export const userApi = createApi({
+  reducerPath: "userApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
+
+      // if we have a token set it in the headers
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+    credentials: "include",
+  }),
+  endpoints: (builder) => ({
+    getUserProfile: builder.query({
+      query: () => "/admin/profile",
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setUser(data));
+          dispatch(setLoading(false));
+        } catch (error) {
+          console.log(error);
+        }
+      },
     }),
-    endpoints: (builder)=>({
-        getUserProfile:builder.query({
-            query:()=> "/admin/profile",
-            async onQueryStarted(_, {dispatch, queryFulfilled}){
-                try{
-                    const {data}= await queryFulfilled
-                    dispatch(setUser(data))
-                    dispatch(setLoading(false))
-                }catch(error){
-                    console.log(error)
-                }
-            }
-        }),
-        getAllUsers:builder.query({
-            query:()=> "/admin/all"
-        })
-    })
-})
+    getAllUsers: builder.query({
+      query: () => "/admin/all",
+    }),
+  }),
+});
 
 export const { useGetUserProfileQuery, useGetAllUsersQuery } = userApi;

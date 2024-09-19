@@ -1,16 +1,15 @@
-import '../../../../assets/css/admin/teachersPage.css'
+import "../../../../assets/css/admin/teachersPage.css";
 // import TeachersTable from '../../../components/admin/teachers/TeachersTable'
-import { Link, useNavigate } from 'react-router-dom'
-import NewTeachersTable from '../../../../components/admin/teachers/NewTeachersTable'
-import { teachersRow } from '../../../../constants/index'
-import { Button } from '../../../../components/ui/button'
-import { Loader2, PlusCircle } from 'lucide-react'
-import { useGetAllTeachersQuery } from '../../../../app/api/teachersApi'
+import { Link, useNavigate } from "react-router-dom";
+import NewTeachersTable from "../../../../components/admin/teachers/NewTeachersTable";
+import { teachersRow } from "../../../../constants/index";
+import { Button } from "../../../../components/ui/button";
+import { Loader2, PlusCircle } from "lucide-react";
+import { useGetAllTeachersQuery } from "../../../../app/api/teachersApi";
 
 const Teachers = () => {
-
-  const navigate =useNavigate()
-  const {data, isLoading}=useGetAllTeachersQuery()
+  const navigate = useNavigate();
+  const { data, isLoading } = useGetAllTeachersQuery();
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
@@ -20,20 +19,22 @@ const Teachers = () => {
     { field: "phoneNumber", headerName: "Phone Number", width: 160 },
   ];
 
-  if(isLoading){
-    return(
+  if (isLoading) {
+    return (
       <div className="flex items-center justify-center h-screen w-full">
         <Loader2 className=" animate-spin w-[60px] h-[60px]" />
-    </div>
-    )
+      </div>
+    );
   }
 
   return (
-    <article className='py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto'>
+    <article className="py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto">
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-[32px]">All Teachers</h1>
         <Link to="/admin/add-teacher">
-      <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Add New Student</Button>
+          <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
+            Add New Student
+          </Button>
         </Link>
       </div>
 
@@ -61,7 +62,6 @@ const Teachers = () => {
         isModalOpen={isModalOpen}
       /> */}
 
-
       <div className="p-2 w-full ">
         <NewTeachersTable
           link="all-teachers"
@@ -71,7 +71,7 @@ const Teachers = () => {
         />
       </div>
     </article>
-  )
-}
+  );
+};
 
-export default Teachers
+export default Teachers;

@@ -1,19 +1,18 @@
-.classes{
-    width:100%;
-    height:100%;
-
+.classes {
+  width: 100%;
+  height: 100%;
 }
 
-.classes-container .subject-container{
-    max-width:1152px;
-    padding:16px;
-    margin-top:8px;
-    margin-bottom:16px;
+.classes-container .subject-container {
+  max-width: 1152px;
+  padding: 16px;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
-.classes-display{
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: 5rem;
-    gap: 2rem;
+.classes-display {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 5rem;
+  gap: 2rem;
 }

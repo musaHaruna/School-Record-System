@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import "./SubjectStudents.css";
 
 const SubjectStudents = () => {
-  
   const { classId } = useParams();
 
   const { data, isLoading, error } = useGetSubjectStudentsQuery(classId);
@@ -39,12 +38,14 @@ const SubjectStudents = () => {
   }
 
   return (
-    <section className='py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto'>
+    <section className="py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto">
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-[32px]">Subject Students</h1>
         <div className="action-buttons">
           <AssessmentModal />
-          <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Print Scores</Button>
+          <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
+            Print Scores
+          </Button>
         </div>
       </div>
 

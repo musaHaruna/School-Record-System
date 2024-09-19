@@ -1,9 +1,9 @@
-import { useState ,Fragment} from "react";
+import { useState, Fragment } from "react";
 import { StudentDashboardHeader } from "../../components/studentDashboardHeader/studentDashboardHeader";
 import { Icon } from "@iconify/react";
 import { SAMPLE_COURSES } from "../../shared/constants";
 import { ScoreInputField } from "../../components/fields/scoreInput";
-const SELECTED_COURSES = SAMPLE_COURSES.slice(0,1); //sample selected one course
+const SELECTED_COURSES = SAMPLE_COURSES.slice(0, 1); //sample selected one course
 
 const StudentsListTable = ({ students }) => {
   const [studentEditIndex, setStudentEditIndex] = useState();
@@ -19,7 +19,7 @@ const StudentsListTable = ({ students }) => {
         exams: null,
         total: null,
       })),
-    }))
+    })),
   );
   const calculateTotal = (studentIndex, gradeIndex) => {
     if (studentEditIndex !== studentIndex) return null;
@@ -41,10 +41,10 @@ const StudentsListTable = ({ students }) => {
                         Number(g._2ndTest) +
                         Number(g._2ndAssessment) +
                         Number(g.exams),
-                    }
+                    },
               ),
-            }
-      )
+            },
+      ),
     );
   };
   const handleGradeChange = (e, studentIndex, gradeIndex) => {
@@ -64,10 +64,10 @@ const StudentsListTable = ({ students }) => {
                         [e?.target?.name]: e?.target?.value
                           ? Number(e?.target?.value)
                           : 0,
-                      }
+                      },
                 ),
-              }
-        )
+              },
+        ),
       );
 
     calculateTotal(studentIndex, gradeIndex);
@@ -149,7 +149,7 @@ const StudentsListTable = ({ students }) => {
                     exams,
                     total,
                   },
-                  gradeIndex
+                  gradeIndex,
                 ) => (
                   <Fragment key={gradeIndex}>
                     <td key={gradeIndex}>
@@ -208,7 +208,7 @@ const StudentsListTable = ({ students }) => {
                       {total}
                     </td>
                   </Fragment>
-                )
+                ),
               )}
             </tr>
           ))}
@@ -220,14 +220,14 @@ const StudentsListTable = ({ students }) => {
 export const UploadResults = () => {
   return (
     <div className="px-[2.5vw] py-[2rem]">
-      <StudentDashboardHeader primaryRoute={"Home"} otherRoutes={['results', 'upload']}>
+      <StudentDashboardHeader
+        primaryRoute={"Home"}
+        otherRoutes={["results", "upload"]}
+      >
         Upload results for JSS1!
       </StudentDashboardHeader>
 
-     
-
       <StudentsListTable students={[1, 2, 3, 4, 5, 6, 7, 8, 9, 0]} />
-
     </div>
   );
 };

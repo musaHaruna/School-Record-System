@@ -3,27 +3,28 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const assessmentsApi = createApi({
   reducerPath: "assessmentsApi",
-  tagTypes:["Assessments"],
+  tagTypes: ["Assessments"],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    prepareHeaders:(headers, {getState})=>{
-      const token =getState().auth.token || localStorage.getItem("token")
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
 
       // if we have a token set it in the headers
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllAssessments: builder.query({
       query: () => "/assessments",
-      providesTags:["Assessments"]
+      providesTags: ["Assessments"],
     }),
     getAssessmentByTerm: builder.query({
-      query: ({termId, classId, subjectId}) => `/assessments/term/${termId}/${classId}/${subjectId}`,
+      query: ({ termId, classId, subjectId }) =>
+        `/assessments/term/${termId}/${classId}/${subjectId}`,
     }),
     getAssessmentDetails: builder.query({
       query: (id) => `/assessments/${id}`,
@@ -34,16 +35,16 @@ export const assessmentsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Assessments"]
+      invalidatesTags: ["Assessments"],
     }),
-    updateAssessment:builder.mutation({
-      query: (id,body)=>({
-        url:`/assessments/${id}/status`,
+    updateAssessment: builder.mutation({
+      query: (id, body) => ({
+        url: `/assessments/${id}/status`,
         body,
-        method:"PUT"
+        method: "PUT",
       }),
-      invalidatesTags:["Assessments"]
-    })
+      invalidatesTags: ["Assessments"],
+    }),
   }),
 });
 
@@ -52,5 +53,5 @@ export const {
   useGetAssessmentDetailsQuery,
   useCreateAssessmentMutation,
   useUpdateAssessmentMutation,
-  useGetAssessmentByTermQuery
+  useGetAssessmentByTermQuery,
 } = assessmentsApi;

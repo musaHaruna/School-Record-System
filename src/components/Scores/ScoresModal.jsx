@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,27 +8,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { Button } from '../ui/button';
-import { useGetAssessmentByTermQuery } from '../../app/api/assessmentsApi'; // API hook to fetch assessments by term
-import { useCreateResultMutation } from '../../app/api/resultsApi'; // Mutation hook for saving scores
-import { useParams } from 'react-router-dom'; // Import useParams to get the subjectId from the route
-import { toast } from 'react-toastify';
-import { Loader2 } from 'lucide-react';
-import './ScoresModal.css';
+import { Button } from "../ui/button";
+import { useGetAssessmentByTermQuery } from "../../app/api/assessmentsApi"; // API hook to fetch assessments by term
+import { useCreateResultMutation } from "../../app/api/resultsApi"; // Mutation hook for saving scores
+import { useParams } from "react-router-dom"; // Import useParams to get the subjectId from the route
+import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
+import "./ScoresModal.css";
 
 const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
   // Get the subjectId from the route using useParams
   const { subjectId, classId } = useParams();
-  
+
   // Fetch assessments based on the selectedTerm using the correct query, only if selectedTerm is defined
   const {
     data: assessmentsData,
     isLoading: assessmentsLoading,
     error: assessmentsError,
-    refetch
+    refetch,
   } = useGetAssessmentByTermQuery(
     selectedTerm ? { termId: selectedTerm, classId, subjectId } : null,
-    { skip: !selectedTerm } // Skip fetching if selectedTerm is not set
+    { skip: !selectedTerm }, // Skip fetching if selectedTerm is not set
   );
 
   const [scores, setScores] = useState({}); // State for storing inputted scores
@@ -51,9 +51,18 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
   };
 
   const handleSubmit = async () => {
-    console.log("Scores to save", selectedTerm, selectedSession, studentId, subjectId, scores);
+    console.log(
+      "Scores to save",
+      selectedTerm,
+      selectedSession,
+      studentId,
+      subjectId,
+      scores,
+    );
     if (!selectedTerm || !selectedSession || !studentId || !subjectId) {
-      toast.error("Please ensure all required data (studentId, sessionId, termId, id) is provided!");
+      toast.error(
+        "Please ensure all required data (studentId, sessionId, termId, id) is provided!",
+      );
       return;
     }
 
@@ -98,7 +107,9 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
       <DialogTrigger className="text-[#4A3AFF]">View/Edit Scores</DialogTrigger>
       <DialogContent className="sm:max-w-[600px] flex justify-center flex-col">
         <DialogHeader>
-          <DialogTitle className="text-center text-[24px]">View/Enter Scores</DialogTitle>
+          <DialogTitle className="text-center text-[24px]">
+            View/Enter Scores
+          </DialogTitle>
           <DialogDescription className="text-center">
             Enter the scores for each assessment.
           </DialogDescription>
@@ -106,7 +117,9 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
 
         <div className="flex flex-col items-center justify-center gap-4 w-full">
           {!selectedTerm ? (
-            <div className="text-red-500">Please select a term to view assessments.</div> 
+            <div className="text-red-500">
+              Please select a term to view assessments.
+            </div>
           ) : assessmentsLoading ? (
             <div>Loading assessments...</div>
           ) : assessmentsData?.length > 0 ? (
@@ -116,7 +129,7 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
                 <input
                   type="number"
                   name={`assessment-${assessment.id}`}
-                  value={scores[assessment.id] || ''} // Dynamic score input
+                  value={scores[assessment.id] || ""} // Dynamic score input
                   onChange={(e) => handleChange(e, assessment.id)}
                   className="w-full p-2 border rounded-md"
                   placeholder={`Enter score for ${assessment.name}`}
@@ -129,8 +142,16 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
         </div>
 
         <DialogFooter>
-          <Button onClick={handleSubmit} disabled={isSubmitting} className="bg-[#4A3AFF] text-white">
-            {isSubmitting ? <Loader2 className="animate-spin" /> : "Save Changes"}
+          <Button
+            onClick={handleSubmit}
+            disabled={isSubmitting}
+            className="bg-[#4A3AFF] text-white"
+          >
+            {isSubmitting ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              "Save Changes"
+            )}
           </Button>
           <DialogTrigger asChild>
             <Button className="bg-gray-500 text-white">Close</Button>

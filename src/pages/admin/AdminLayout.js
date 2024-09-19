@@ -9,7 +9,7 @@ const Layout = () => {
       </div> */}
 
       <div className="main-container h-screen">
-      {/* passing a prop to the navbar which would determine the type of side bar to be triggered i.e admin-sidebar, teacher-sidebar */}
+        {/* passing a prop to the navbar which would determine the type of side bar to be triggered i.e admin-sidebar, teacher-sidebar */}
         <Navbar />
         <div className="contentContainer">
           <Outlet />

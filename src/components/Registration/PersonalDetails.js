@@ -1,43 +1,41 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { HeroOne, StudentIconWhite, Logo } from '../images'
-import { Button } from '../../components/ui/button'
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { HeroOne, StudentIconWhite, Logo } from "../images";
+import { Button } from "../../components/ui/button";
 
 const PersonalDetails = ({ nextStep, step }) => {
-  const [fullName, setFullName] = useState('')
-  const [gender, setGender] = useState('')
-  const [dateOfBirth, setDateOfBirth] = useState('')
-  const [address, setAddress] = useState('')
+  const [fullName, setFullName] = useState("");
+  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [address, setAddress] = useState("");
 
   const handleFormSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // Here you can handle form submission with the form data
     // For simplicity, we'll log the form data to the console
-    console.log('Form submitted with data:', {
+    console.log("Form submitted with data:", {
       fullName,
       gender,
       dateOfBirth,
       address,
-    })
-  }
+    });
+  };
 
   return (
-    
-    <article className='register-form-flex'>
-       <section className='register-hero'>
+    <article className="register-form-flex">
+      <section className="register-hero">
         <HeroOne />
       </section>
 
-
-      <section className='register-content'>
-        <div className='logo-sm'>
+      <section className="register-content">
+        <div className="logo-sm">
           <Logo />
         </div>
-        <p style={{ display: step === 4 ? 'none' : '' }}>
-          <span style={{ color: 'blue' }}>{step} </span>/3
+        <p style={{ display: step === 4 ? "none" : "" }}>
+          <span style={{ color: "blue" }}>{step} </span>/3
         </p>
-        <div className='register-desc'>
-          <div className={'icon-reg'}>
+        <div className="register-desc">
+          <div className={"icon-reg"}>
             <StudentIconWhite />
           </div>
           <div>
@@ -46,13 +44,11 @@ const PersonalDetails = ({ nextStep, step }) => {
           </div>
         </div>
 
-
-        
-        <form onSubmit={handleFormSubmit} className='register-details'>
+        <form onSubmit={handleFormSubmit} className="register-details">
           <label>
             <h5> Full Name</h5>
             <input
-              type='text'
+              type="text"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               required
@@ -61,23 +57,23 @@ const PersonalDetails = ({ nextStep, step }) => {
 
           <div>
             <h5>Gender</h5>
-            <div className='radio-btn'>
+            <div className="radio-btn">
               <label>
                 <input
-                  type='radio'
-                  value='male'
-                  checked={gender === 'male'}
-                  onChange={() => setGender('male')}
+                  type="radio"
+                  value="male"
+                  checked={gender === "male"}
+                  onChange={() => setGender("male")}
                 />
                 Male
               </label>
 
               <label>
                 <input
-                  type='radio'
-                  value='female'
-                  checked={gender === 'female'}
-                  onChange={() => setGender('female')}
+                  type="radio"
+                  value="female"
+                  checked={gender === "female"}
+                  onChange={() => setGender("female")}
                 />
                 Female
               </label>
@@ -88,7 +84,7 @@ const PersonalDetails = ({ nextStep, step }) => {
             <h5>Date of Birth</h5>
 
             <input
-              type='date'
+              type="date"
               value={dateOfBirth}
               onChange={(e) => setDateOfBirth(e.target.value)}
               required
@@ -105,24 +101,23 @@ const PersonalDetails = ({ nextStep, step }) => {
             />
           </label>
         </form>
-        <div className='register-navigate'>
-          <div className='btn-blue-border'>
-            <i class='fa-solid fa-chevron-left'></i>
-            <Link to={'/select-preference'} className='pref-link'>
+        <div className="register-navigate">
+          <div className="btn-blue-border">
+            <i class="fa-solid fa-chevron-left"></i>
+            <Link to={"/select-preference"} className="pref-link">
               Previous
             </Link>
           </div>
 
-          <button className='btn-blue' onClick={nextStep}>
+          <button className="btn-blue" onClick={nextStep}>
             Continue
           </button>
 
           {/* <Button variant="outline">Shadcn</Button> */}
         </div>
       </section>
-   
     </article>
-  )
-}
+  );
+};
 
-export default PersonalDetails
+export default PersonalDetails;

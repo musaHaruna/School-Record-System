@@ -3,24 +3,24 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const termsApi = createApi({
   reducerPath: "termsApi",
-  tagTypes:["Terms"],
+  tagTypes: ["Terms"],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    prepareHeaders:(headers, {getState})=>{
-      const token =getState().auth.token || localStorage.getItem("token")
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
 
       // if we have a token set it in the headers
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllTerms: builder.query({
       query: () => "/terms",
-      providesTags:["Terms"]
+      providesTags: ["Terms"],
     }),
     getTermDetails: builder.query({
       query: (id) => `/terms/${id}`,
@@ -31,16 +31,16 @@ export const termsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Terms"]
+      invalidatesTags: ["Terms"],
     }),
-    updateTerm:builder.mutation({
-      query: (id,body)=>({
-        url:`/terms/${id}/status`,
+    updateTerm: builder.mutation({
+      query: (id, body) => ({
+        url: `/terms/${id}/status`,
         body,
-        method:"PUT"
+        method: "PUT",
       }),
-      invalidatesTags:["Terms"]
-    })
+      invalidatesTags: ["Terms"],
+    }),
   }),
 });
 
@@ -48,5 +48,5 @@ export const {
   useGetAllTermsQuery,
   useGetTermDetailsQuery,
   useCreateTermMutation,
-  useUpdateTermMutation
+  useUpdateTermMutation,
 } = termsApi;

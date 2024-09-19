@@ -1,5 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Landing, Error, SelectPreference, AdminRegistration, LoginPage, StaffRegistration } from "./pages";
+import {
+  Landing,
+  Error,
+  SelectPreference,
+  AdminRegistration,
+  LoginPage,
+  StaffRegistration,
+} from "./pages";
 import {
   Dashboard,
   Classes,
@@ -14,16 +21,16 @@ import {
   SingleSubjects,
   SubjectStudents,
   Results,
-  AccademicSessions
+  AccademicSessions,
 } from "./pages/admin/Pages";
 import Layout from "./pages/admin/AdminLayout";
 import AddTeachers from "./pages/admin/Pages/AddTeachers";
 import { ToastContainer, Zoom } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
 import StudentLayout from "./pages/student/StudentLayout";
 import StudentDashboard from "./pages/teachers/TeachersDashboard";
-import {  StudentViewResult } from "./pages/student/StudentViewResult";
+import { StudentViewResult } from "./pages/student/StudentViewResult";
 import TeachersLayout from "./pages/teachers/TeachersLayout";
 import TeachersDashboard from "./pages/teachers/TeachersDashboard";
 import { ManageResults } from "./pages/teachers/ManageResults";
@@ -33,19 +40,19 @@ import TeacherLogin from "./pages/onboarding/TeacherLogin";
 function App() {
   return (
     <BrowserRouter>
-    <ToastContainer
-    position="bottom-right"
-    autoClose={5000}
-    hideProgressBar
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    theme="light"
-    transition={Zoom}
-  />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Zoom}
+      />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/select-preference" element={<SelectPreference />} />
@@ -54,12 +61,10 @@ function App() {
         <Route path="/admin-registration" element={<AdminRegistration />} />
         <Route path="/staff-registration" element={<StaffRegistration />} />
 
-
         <Route path="/admin" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="classes" element={<Classes />} />
           <Route path="class/:id" element={<SingleClass />} />
-          
 
           {/* teachers */}
           <Route path="all-teachers" element={<Teachers />} />
@@ -75,34 +80,34 @@ function App() {
           <Route path="subjects/:id" element={<SingleSubjects />} />
           <Route path="subject-students/:id" element={<SubjectStudents />} />
 
-        {/* <Route path="academic-sessions" element={<AcademicSessions />} /> */}
+          {/* <Route path="academic-sessions" element={<AcademicSessions />} /> */}
 
-        {/* teachers */}
-        <Route path="all-teachers" element={<Teachers />} />
-        <Route path="add-teachers" element={<AddTeachers />} />
-        <Route path="add-teacher" element={<AddTeacher />} />
-        <Route path="all-teachers/:id" element={<TeachersDetails />} />
+          {/* teachers */}
+          <Route path="all-teachers" element={<Teachers />} />
+          <Route path="add-teachers" element={<AddTeachers />} />
+          <Route path="add-teacher" element={<AddTeacher />} />
+          <Route path="all-teachers/:id" element={<TeachersDetails />} />
 
-        {/* students */}
-        <Route path="students" element={<Students />} />
-        <Route path="add-student" element={<AddStudent />} />
-        <Route path="student-details/:id" element={<SingleStudent />} />
+          {/* students */}
+          <Route path="students" element={<Students />} />
+          <Route path="add-student" element={<AddStudent />} />
+          <Route path="student-details/:id" element={<SingleStudent />} />
 
-        {/* subjects */}
-        <Route path="subjects" element={<Subjects />} />
-        <Route path="subjects/:id" element={<SingleSubjects />} />
-        <Route path="subject-students/:subjectId/:classId" element={<SubjectStudents />} />
+          {/* subjects */}
+          <Route path="subjects" element={<Subjects />} />
+          <Route path="subjects/:id" element={<SingleSubjects />} />
+          <Route
+            path="subject-students/:subjectId/:classId"
+            element={<SubjectStudents />}
+          />
 
-
-
-{/* new merge */}
+          {/* new merge */}
           <Route path="results/*" element={<Results />} />
           {/* academic-sessions */}
           <Route path="academic-sessions" element={<AccademicSessions />} />
-      
 
-  {/* new merge */}
-            <Route path="results/*" element={<Results />} />
+          {/* new merge */}
+          <Route path="results/*" element={<Results />} />
         </Route>
 
         {/* students dashboard */}
@@ -112,11 +117,10 @@ function App() {
           <Route path="result" element={<StudentViewResult />} />
         </Route>
 
-
         {/* teachers dashboard */}
         <Route path="/teacher" element={<TeachersLayout />}>
           <Route index element={<TeachersDashboard />} />
-          <Route path='results' element={<ManageResults />} />
+          <Route path="results" element={<ManageResults />} />
           <Route path="results/upload" element={<UploadResults />} />
         </Route>
 

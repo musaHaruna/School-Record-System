@@ -1,46 +1,42 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import "./Table.css"
-import React from 'react'
-import DeleteModal from '../../DeleteModal';
-import { Link } from 'react-router-dom';
+import "./Table.css";
+import React from "react";
+import DeleteModal from "../../DeleteModal";
+import { Link } from "react-router-dom";
 
 const NewTeachersTable = ({ row, columns, link, page }) => {
+  const handleDelete = (id) => {};
 
-    const handleDelete = (id) => {};
+  const actionColumn = {
+    field: "action",
+    headerName: "Actions",
+    width: 200,
+    renderCell: (params) => {
+      return (
+        <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
+          <Link to={`/admin/${link}/${params.row.id}`}>
+            <span className="text-[#3ec555] viewAction outline-1 p-2   ">
+              {" "}
+              View
+            </span>
+          </Link>
 
-    const actionColumn = {
-        field: "action",
-        headerName: "Actions",
-        width: 200,
-        renderCell: (params) => {
-          return (
-            <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
-              <Link to={`/admin/${link}/${params.row.id}`}>
-                <span className="text-[#3ec555] viewAction outline-1 p-2   ">
-                  {" "}
-                  View
-                </span>
-              </Link>
-    
-              <div
-                className="deleteAction"
-                onClick={() => handleDelete(params.row.id)}
-              >
-                <span className="text-[#e90404]">
-                  
-                  <DeleteModal />
-                </span>
-              </div>
-            </div>
-          );
-        },
-      };
-
+          <div
+            className="deleteAction"
+            onClick={() => handleDelete(params.row.id)}
+          >
+            <span className="text-[#e90404]">
+              <DeleteModal />
+            </span>
+          </div>
+        </div>
+      );
+    },
+  };
 
   return (
-
     <div>
-        <DataGrid
+      <DataGrid
         className="dataTableBg p-[20px]"
         rows={row}
         columns={[...columns, actionColumn]}
@@ -52,7 +48,6 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
             },
           },
         }}
-        
         slots={{ toolbar: GridToolbar }}
         slotProps={{
           toolbar: {
@@ -67,9 +62,8 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
         disableDensitySelector
         disableColumnSelector
       />
-    
     </div>
-  )
-}
+  );
+};
 
-export default NewTeachersTable
+export default NewTeachersTable;

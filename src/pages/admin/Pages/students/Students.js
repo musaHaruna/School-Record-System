@@ -7,16 +7,13 @@ import { Button } from "../../../../components/ui/button";
 import StudentsTable from "../../../../components/admin/students/StudentsTable";
 import { useGetAllStudentsQuery } from "../../../../app/api/studentsApi";
 
-
 const Students = () => {
-
-  const {data, isLoading, error}=useGetAllStudentsQuery()
-  useEffect(()=>{
-    if(error){
-        toast.error(error.data.message)
+  const { data, isLoading, error } = useGetAllStudentsQuery();
+  useEffect(() => {
+    if (error) {
+      toast.error(error.data.message);
     }
-
-}, [error])
+  }, [error]);
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
@@ -28,12 +25,12 @@ const Students = () => {
     { field: "parentsNumber", headerName: "Parents Number", width: 170 },
   ];
 
-  if(isLoading){
-    return(
+  if (isLoading) {
+    return (
       <div className="flex items-center justify-center h-screen w-full">
         <Loader2 className=" animate-spin w-[60px] h-[60px]" />
-    </div>
-)
+      </div>
+    );
   }
 
   return (
@@ -41,12 +38,13 @@ const Students = () => {
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-[32px]">All Students</h1>
         <Link to="/admin/add-student">
-      <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Add New Student</Button>
+          <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
+            Add New Student
+          </Button>
         </Link>
       </div>
 
       <div className="p-2 w-full ">
-      
         <StudentsTable
           link="students"
           route="students"

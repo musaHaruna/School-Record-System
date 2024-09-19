@@ -1,71 +1,71 @@
-import React, { useState } from 'react'
-import { HeroOne, KeyIcon, Logo } from '../images'
-import '../../assets/css/otp.css'
-import { AiFillCheckCircle } from 'react-icons/ai'
-import { RxCross2 } from 'react-icons/rx'
+import React, { useState } from "react";
+import { HeroOne, KeyIcon, Logo } from "../images";
+import "../../assets/css/otp.css";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 
 const ToCreatePassword = ({ prevStep, nextStep }) => {
-  const [otp1, setOtp1] = useState(new Array(6).fill(''))
-  const [otp2, setOtp2] = useState(new Array(6).fill(''))
-  const [borderColor, setBorderColor] = useState('#c5c6cc')
-  const [isModal, setIsModal] = useState(false)
+  const [otp1, setOtp1] = useState(new Array(6).fill(""));
+  const [otp2, setOtp2] = useState(new Array(6).fill(""));
+  const [borderColor, setBorderColor] = useState("#c5c6cc");
+  const [isModal, setIsModal] = useState(false);
   // eslint-disable-next-line
-  const [submitBtn, setSubmitBtn] = useState('btn-blue')
+  const [submitBtn, setSubmitBtn] = useState("btn-blue");
 
   const closeModal = () => {
-    setIsModal(false)
-  }
+    setIsModal(false);
+  };
 
   const handleChange1 = (e, index) => {
-    if (isNaN(e.target.value)) return false
-    const updatedOTP1 = [...otp1]
-    updatedOTP1[index] = e.target.value
-    setOtp1(updatedOTP1)
-    setBorderColor('#c5c6cc')
+    if (isNaN(e.target.value)) return false;
+    const updatedOTP1 = [...otp1];
+    updatedOTP1[index] = e.target.value;
+    setOtp1(updatedOTP1);
+    setBorderColor("#c5c6cc");
 
     if (e.target.value && e.target.nextSibling) {
-      e.target.nextSibling.focus()
+      e.target.nextSibling.focus();
     }
-  }
+  };
 
   const handleChange2 = (e, index) => {
-    if (isNaN(e.target.value)) return false
-    const updatedOTP2 = [...otp2]
-    updatedOTP2[index] = e.target.value
-    setOtp2(updatedOTP2)
-    setBorderColor('#c5c6cc')
+    if (isNaN(e.target.value)) return false;
+    const updatedOTP2 = [...otp2];
+    updatedOTP2[index] = e.target.value;
+    setOtp2(updatedOTP2);
+    setBorderColor("#c5c6cc");
 
     if (e.target.value && e.target.nextSibling) {
-      e.target.nextSibling.focus()
+      e.target.nextSibling.focus();
     }
-  }
-  let areOTPMatching = otp1.join('') === otp2.join('')
+  };
+  let areOTPMatching = otp1.join("") === otp2.join("");
   let hasInputValues =
-    otp1.some((value) => value.trim() !== '') &&
-    otp2.some((value) => value.trim() !== '')
+    otp1.some((value) => value.trim() !== "") &&
+    otp2.some((value) => value.trim() !== "");
   const handleSubmit = () => {
-    setBorderColor(areOTPMatching ? '#27ae60' : '#eb5757')
+    setBorderColor(areOTPMatching ? "#27ae60" : "#eb5757");
 
     if (!hasInputValues) {
-      alert('Fields cannot be empty')
-      setBorderColor('#c5c6cc')
-      setIsModal(false)
-      setSubmitBtn('btn-blue')
-      return
+      alert("Fields cannot be empty");
+      setBorderColor("#c5c6cc");
+      setIsModal(false);
+      setSubmitBtn("btn-blue");
+      return;
     }
-    setIsModal(true)
-    setSubmitBtn('btn-green')
-  }
+    setIsModal(true);
+    setSubmitBtn("btn-green");
+  };
 
   return (
-    <article className='register-form-flex'>
-      <section className='register-content'>
-        <div className='logo-sm create-passcode'>
+    <article className="register-form-flex">
+      <section className="register-content">
+        <div className="logo-sm create-passcode">
           <Logo />
         </div>
 
-        <div className='register-desc'>
-          <div className='icon-reg'>
+        <div className="register-desc">
+          <div className="icon-reg">
             <KeyIcon />
           </div>
           <div>
@@ -76,9 +76,9 @@ const ToCreatePassword = ({ prevStep, nextStep }) => {
         <div>
           {isModal &&
             (areOTPMatching ? (
-              <div className='passcode-modal'>
+              <div className="passcode-modal">
                 <div>
-                  <AiFillCheckCircle className='icon' />
+                  <AiFillCheckCircle className="icon" />
                 </div>
                 <div>
                   <h5>Successfully created</h5>
@@ -87,9 +87,9 @@ const ToCreatePassword = ({ prevStep, nextStep }) => {
                 <RxCross2 onClick={closeModal} />
               </div>
             ) : (
-              <div className='passcode-modal error'>
+              <div className="passcode-modal error">
                 <div>
-                  <AiFillCheckCircle className='icon' />
+                  <AiFillCheckCircle className="icon" />
                 </div>
                 <div>
                   <h6>Passcode not match</h6>
@@ -100,52 +100,52 @@ const ToCreatePassword = ({ prevStep, nextStep }) => {
             ))}
           <div>
             <h6>New Pin</h6>
-            <div className='otp-area'>
+            <div className="otp-area">
               {otp1.map((data, i) => {
                 return (
                   <input
                     key={i}
-                    type='password'
+                    type="password"
                     maxLength={1}
                     value={data}
                     onChange={(e) => handleChange1(e, i)}
                     style={{ borderColor }}
                   />
-                )
+                );
               })}
             </div>
           </div>
           <div>
             <h6>Confirm Pin</h6>
-            <div className='otp-area'>
+            <div className="otp-area">
               {otp2.map((data, i) => {
                 return (
                   <input
                     key={i}
-                    type='password'
+                    type="password"
                     maxLength={1}
                     value={data}
                     onChange={(e) => handleChange2(e, i)}
                     style={{ borderColor }}
                   />
-                )
+                );
               })}
             </div>
           </div>
         </div>
-        <div className='register-navigate'>
-          <button className='btn-blue-border' onClick={prevStep}>
-            <i class='fa-solid fa-chevron-left'></i>
+        <div className="register-navigate">
+          <button className="btn-blue-border" onClick={prevStep}>
+            <i class="fa-solid fa-chevron-left"></i>
             Previous
           </button>
 
           <button
             className={
-              borderColor === '#27ae60'
+              borderColor === "#27ae60"
                 ? submitBtn
-                : borderColor === '#eb5757'
-                ? 'btn-red'
-                : 'btn-blue'
+                : borderColor === "#eb5757"
+                  ? "btn-red"
+                  : "btn-blue"
             }
             onClick={handleSubmit}
           >
@@ -153,11 +153,11 @@ const ToCreatePassword = ({ prevStep, nextStep }) => {
           </button>
         </div>
       </section>
-      <section className='register-hero'>
+      <section className="register-hero">
         <HeroOne />
       </section>
     </article>
-  )
-}
+  );
+};
 
-export default ToCreatePassword
+export default ToCreatePassword;

@@ -1,12 +1,7 @@
-import React from 'react'
-
-
+import React from "react";
 
 const SingleSubjects = () => {
-  return (
-   <div>Single Subject</div>
-  
-  )
-}
+  return <div>Single Subject</div>;
+};
 
-export default SingleSubjects
+export default SingleSubjects;

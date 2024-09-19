@@ -6,7 +6,7 @@
   gap: 2rem;
   padding: 1rem 1.8rem;
   border: 1.5px solid #ebeafb;
-  width:100%;
+  width: 100%;
 }
 
 .admin-navbar h3 {
@@ -105,10 +105,8 @@ p {
   color: #4a3aff;
 }
 
-
-
-@media (max-width:420px){
-    .admin-nav-search{
-      display:none;
-    }
-} 
+@media (max-width: 420px) {
+  .admin-nav-search {
+    display: none;
+  }
+}

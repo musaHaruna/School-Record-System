@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,43 +8,65 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { Button } from '../ui/button';
-import { toast } from 'react-toastify';
-import { Loader2 } from 'lucide-react';
-import { useParams } from 'react-router-dom';
-import { useGetAllClassesQuery } from '../../app/api/classApi'; 
-import { useGetAllSessionsQuery, useGetSessionsTermsQuery } from '../../app/api/sessionsApi'; // Import session and terms query
-import { useGetAllSubjectsQuery } from '../../app/api/allSubjectApi';
-import { useCreateAssessmentMutation } from '../../app/api/assessmentsApi';
-import './AssessmentModal.css'; 
+import { Button } from "../ui/button";
+import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { useGetAllClassesQuery } from "../../app/api/classApi";
+import {
+  useGetAllSessionsQuery,
+  useGetSessionsTermsQuery,
+} from "../../app/api/sessionsApi"; // Import session and terms query
+import { useGetAllSubjectsQuery } from "../../app/api/allSubjectApi";
+import { useCreateAssessmentMutation } from "../../app/api/assessmentsApi";
+import "./AssessmentModal.css";
 
 const AssessmentsModal = () => {
   const { id: routeSubjectId } = useParams();
   const subjectId = routeSubjectId ? parseInt(routeSubjectId) : null;
 
-  const { data: classesData, isLoading: classesLoading, error: classesError } = useGetAllClassesQuery();
-  const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
-  const { data: subjectsData, isLoading: subjectsLoading, error: subjectsError } = useGetAllSubjectsQuery();
-  const [selectedSession, setSelectedSession] = useState(''); // Track selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError } = useGetSessionsTermsQuery(selectedSession, {
+  const {
+    data: classesData,
+    isLoading: classesLoading,
+    error: classesError,
+  } = useGetAllClassesQuery();
+  const {
+    data: sessionsData,
+    isLoading: sessionsLoading,
+    error: sessionsError,
+  } = useGetAllSessionsQuery();
+  const {
+    data: subjectsData,
+    isLoading: subjectsLoading,
+    error: subjectsError,
+  } = useGetAllSubjectsQuery();
+  const [selectedSession, setSelectedSession] = useState(""); // Track selected session
+  const {
+    data: sessionTermsData,
+    isLoading: termsLoading,
+    error: termsError,
+  } = useGetSessionsTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip fetching terms if no session is selected
   });
 
   const [assessment, setAssessment] = useState({
-    class: '',
-    session: '',
-    subject: subjectId ? subjectId : '',
-    term: '',
-    weight: '',
-    name: '',
+    class: "",
+    session: "",
+    subject: subjectId ? subjectId : "",
+    term: "",
+    weight: "",
+    name: "",
   });
 
-  const [createAssessment, { isLoading: isCreating }] = useCreateAssessmentMutation();
+  const [createAssessment, { isLoading: isCreating }] =
+    useCreateAssessmentMutation();
 
   // Preselect the class based on the preselected subject
   useEffect(() => {
     if (subjectId && subjectsData) {
-      const selectedSubject = subjectsData.find((subject) => subject.id === subjectId);
+      const selectedSubject = subjectsData.find(
+        (subject) => subject.id === subjectId,
+      );
       if (selectedSubject && selectedSubject.class) {
         setAssessment((prev) => ({
           ...prev,
@@ -67,7 +89,11 @@ const AssessmentsModal = () => {
   const handleSessionChange = (e) => {
     const selectedSessionId = e.target.value;
     setSelectedSession(selectedSessionId); // Update selected session
-    setAssessment((prev) => ({ ...prev, session: selectedSessionId, term: '' })); // Clear term when session changes
+    setAssessment((prev) => ({
+      ...prev,
+      session: selectedSessionId,
+      term: "",
+    })); // Clear term when session changes
   };
 
   const handleChange = (e) => {
@@ -86,7 +112,9 @@ const AssessmentsModal = () => {
 
     try {
       await createAssessment(assessmentData).unwrap();
-      toast.success("Assessment created successfully", { position: "top-center" });
+      toast.success("Assessment created successfully", {
+        position: "top-center",
+      });
     } catch (error) {
       toast.error("Error creating assessment", { position: "top-center" });
     }
@@ -108,7 +136,7 @@ const AssessmentsModal = () => {
   }, [classesError, sessionsError, subjectsError, termsError]);
 
   const filteredSubjects = subjectId
-    ? subjectsData?.filter(subject => subject.id === subjectId)
+    ? subjectsData?.filter((subject) => subject.id === subjectId)
     : subjectsData;
 
   return (
@@ -116,7 +144,9 @@ const AssessmentsModal = () => {
       <DialogTrigger className="text-[#4A3AFF]">Add Assessment</DialogTrigger>
       <DialogContent className="sm:max-w-[600px] flex justify-center flex-col">
         <DialogHeader>
-          <DialogTitle className="text-center text-[24px]">Add Assessment</DialogTitle>
+          <DialogTitle className="text-center text-[24px]">
+            Add Assessment
+          </DialogTitle>
           <DialogDescription className="text-center">
             Fill in the details for the new assessment.
           </DialogDescription>
@@ -235,7 +265,11 @@ const AssessmentsModal = () => {
 
         <DialogFooter>
           <Button onClick={handleSubmit} className="bg-[#4A3AFF] text-white">
-            {isCreating ? <Loader2 className="animate-spin" /> : "Save Assessment"}
+            {isCreating ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              "Save Assessment"
+            )}
           </Button>
           <DialogTrigger asChild>
             <Button className="bg-gray-500 text-white">Close</Button>
