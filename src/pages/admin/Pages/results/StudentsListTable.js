@@ -1,214 +1,117 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
-// import { subjects } from "../../../../shared/constants";
 import { ScoreInputField } from "../../../../components/fields/scoreInput";
 
-export const StudentsListTable = ({ students, subjects }) => {
+export const StudentsListTable = ({ classResultsData }) => {
   const [studentEditIndex, setStudentEditIndex] = useState();
-  const [studentsWithGrades, setStudentsWithGrades] = useState(
-    students.map((s) => ({
-      name: "ABDULRAHMAN, TIJJANI STEPHEN",
-      grades: subjects.map((c) => ({
-        course: c,
-        _1stAssessment: null,
-        _1stTest: null,
-        _2ndAssessment: null,
-        _2ndTest: null,
-        exams: null,
-        total: null,
-      })),
+
+  // Check if there are results; if not, render a message
+  if (!classResultsData || classResultsData.length === 0) {
+    return <div>No student data available.</div>;
+  }
+
+  // Extract subjects and their assessments while allowing for duplicates
+  const subjectsWithAssessments = classResultsData.flatMap((student) =>
+    student.subjects.map((subject) => ({
+      subjectName: subject.subjectName,
+      assessments: subject.assessments,
     })),
   );
-  const calculateTotal = (studentIndex, gradeIndex) => {
-    if (studentEditIndex !== studentIndex) return null;
 
-    setStudentsWithGrades((prevS) =>
-      prevS.map((s, i) =>
-        i !== studentIndex
-          ? s
-          : {
-              ...s,
-              grades: s.grades.map((g, a) =>
-                a !== gradeIndex
-                  ? g
-                  : {
-                      ...g,
-                      total:
-                        Number(g._1stTest) +
-                        Number(g._1stAssessment) +
-                        Number(g._2ndTest) +
-                        Number(g._2ndAssessment) +
-                        Number(g.exams),
-                    },
-              ),
-            },
-      ),
-    );
-  };
-  const handleGradeChange = (e, studentIndex, gradeIndex) => {
-    if (studentEditIndex !== studentIndex) return null;
-    else
-      setStudentsWithGrades((prevS) =>
-        prevS.map((s, i) =>
-          i !== studentIndex
-            ? s
-            : {
-                ...s,
-                grades: s.grades.map((g, a) =>
-                  a !== gradeIndex
-                    ? g
-                    : {
-                        ...g,
-                        [e?.target?.name]: e?.target?.value
-                          ? Number(e?.target?.value)
-                          : 0,
-                      },
-                ),
-              },
-        ),
-      );
+  // Get unique subjects for headers
+  const uniqueSubjects = [
+    ...new Set(subjectsWithAssessments.map((item) => item.subjectName)),
+  ];
 
-    calculateTotal(studentIndex, gradeIndex);
-  };
-
-  // useEffect(() => {
-  //   setTotal();
-  // }, [grades]);
-  console.log(studentEditIndex);
   return (
-    <div className="w-full overflow-x-scroll text-[1.4rem] font-inter bg-white py-[4rem] px-[2rem] rounded-3xl ">
-      <table className="w-full min-w-[50rem] ">
+    <div className="w-full overflow-x-scroll text-[1.4rem] font-inter bg-white py-[4rem] px-[2rem] rounded-3xl">
+      <table className="w-full min-w-[50rem]">
         <thead>
           <tr className="*:text-center *:border-[1px] bg-blue_primary text-left *:p-4 *:font-medium text-white">
             <th className="sticky left-[-2rem] w-[5rem] bg-inherit z-10">
               S/N
             </th>
-            <th className="sticky left-[3rem] bg-inherit z-10  border-r-[1px] border-r-primary/[.5]">
+            <th className="sticky left-[3rem] bg-inherit z-10 border-r-[1px] border-r-primary/[.5]">
               Name
             </th>
-            {subjects.map((c, i) => (
-              <th colSpan={6} className="" key={i}>
-                {c}
+            <th className="bg-inherit z-10" colSpan={uniqueSubjects.length}>
+              Subjects
+            </th>
+          </tr>
+          <tr className="*:border-[1px] bg-gray-500 text-left *:p-4 *:font-medium text-white">
+            <th className="sticky left-[-2rem] w-[5rem] bg-inherit z-10"></th>
+            <th className="sticky left-[3rem] bg-inherit z-10 border-r-[1px] border-r-primary/[.5]"></th>
+            {uniqueSubjects.map((subjectName, subjIndex) => (
+              <th
+                key={subjIndex}
+                colSpan={
+                  classResultsData[0].subjects.find(
+                    (s) => s.subjectName === subjectName,
+                  ).assessments.length
+                }
+                className="text-center"
+              >
+                {subjectName}
               </th>
             ))}
           </tr>
-          <tr className="*:border-[1px]  bg-gray-500 text-left *:p-4 *:font-medium text-white">
-            <th className="sticky left-[-2rem] w-[5rem]  bg-inherit z-10"></th>
-            <th className="sticky left-[3rem]   bg-inherit z-10  border-r-[1px] border-r-primary/[.5]"></th>
-            {subjects.map((c, k) => (
-              <React.Fragment key={k}>
-                <th className="[writing-mode:vertical-rl] scale-[-1]">
-                  1st Ass.
-                </th>
-                <th className="[writing-mode:vertical-rl] scale-[-1]">
-                  1st test
-                </th>
-                <th className="[writing-mode:vertical-rl] scale-[-1]">
-                  2nd Ass.
-                </th>
-                <th className="[writing-mode:vertical-rl] scale-[-1]">
-                  2nd test.
-                </th>
-
-                <th className="[writing-mode:vertical-rl] scale-[-1]">Exams</th>
-                <th className="[writing-mode:vertical-rl] scale-[-1]">Total</th>
-              </React.Fragment>
-            ))}
+          <tr className="*:border-[1px] bg-gray-500 text-left *:p-4 *:font-medium text-white">
+            <th className="sticky left-[-2rem] w-[5rem] bg-inherit z-10"></th>
+            <th className="sticky left-[3rem] bg-inherit z-10 border-r-[1px] border-r-primary/[.5]"></th>
+            {uniqueSubjects.flatMap((subjectName) =>
+              classResultsData[0].subjects
+                .find((s) => s.subjectName === subjectName)
+                .assessments.map((assessment, assIndex) => (
+                  <th
+                    key={assIndex}
+                    className="[writing-mode:vertical-rl] scale-[-1]"
+                  >
+                    {assessment.name}
+                  </th>
+                )),
+            )}
           </tr>
         </thead>
         <tbody>
-          {studentsWithGrades.map((student, studentIndex) => (
+          {classResultsData.map((student, studentIndex) => (
             <tr
               key={studentIndex}
-              className={`[&>*]:p-4 even:bg-slate-50 ${
-                studentIndex === studentEditIndex
-                  ? "border-b-blue-500/50 border-l-blue-500/50 "
-                  : "border-transparent"
-              }  border-b-[1px] border-l-[1px]  border-solid odd:bg-white `}
+              className={`[&>*]:p-4 even:bg-slate-50 ${studentIndex === studentEditIndex ? "border-b-blue-500/50 border-l-blue-500/50" : "border-transparent"} border-b-[1px] border-l-[1px] border-solid odd:bg-white`}
             >
               <td className="sticky left-[-2rem] w-[5rem] bg-inherit z-10">
                 {studentIndex + 1}
               </td>
               <td className="min-w-[40rem] sticky left-[3rem] bg-inherit z-10 border-r-[1px] border-r-primary/[.5]">
                 <p className="w-full flex flex-row items-center justify-between text-[1.4rem] bg-inherit z-10">
-                  <span className="uppercase">{student.name}</span>
+                  <span className="uppercase">{student.studentName}</span>
                   <button onClick={() => setStudentEditIndex(studentIndex)}>
                     <Icon icon="iconoir:page-edit" fontSize={17} />
                   </button>
                 </p>
               </td>
-              {student.grades.map(
-                (
-                  {
-                    course,
-                    _1stAssessment,
-                    _1stTest,
-                    _2ndAssessment,
-                    _2ndTest,
-                    exams,
-                    total,
-                  },
-                  gradeIndex,
-                ) => (
-                  <React.Fragment key={gradeIndex}>
-                    <td key={gradeIndex}>
+              {uniqueSubjects.map((subjectName) => {
+                const studentSubject = student.subjects.find(
+                  (s) => s.subjectName === subjectName,
+                );
+                return studentSubject ? (
+                  studentSubject.assessments.map((assessment, assIndex) => (
+                    <td key={assIndex} className="p-2 min-w-[5rem]">
                       <ScoreInputField
-                        value={_1stAssessment}
-                        name={"_1stAssessment"}
-                        disabled={studentEditIndex !== studentIndex}
-                        handleChange={(e) =>
-                          handleGradeChange(e, studentIndex, gradeIndex)
+                        value={
+                          assessment.score === "N/A" ? "" : assessment.score
                         }
+                        name={assessment.name}
+                        disabled={studentEditIndex !== studentIndex}
+                        handleChange={(e) => {
+                          // Handle score change if needed
+                        }}
                       />
                     </td>
-                    <td key={gradeIndex}>
-                      <ScoreInputField
-                        value={_1stTest}
-                        name={"_1stTest"}
-                        disabled={studentEditIndex !== studentIndex}
-                        handleChange={(e) =>
-                          handleGradeChange(e, studentIndex, gradeIndex)
-                        }
-                      />
-                    </td>
-                    <td>
-                      <ScoreInputField
-                        value={_2ndAssessment}
-                        name={"_2ndAssessment"}
-                        disabled={studentEditIndex !== studentIndex}
-                        handleChange={(e) =>
-                          handleGradeChange(e, studentIndex, gradeIndex)
-                        }
-                      />
-                    </td>
-                    <td>
-                      <ScoreInputField
-                        value={_2ndTest}
-                        name={"_2ndTest"}
-                        disabled={studentEditIndex !== studentIndex}
-                        handleChange={(e) =>
-                          handleGradeChange(e, studentIndex, gradeIndex)
-                        }
-                      />
-                    </td>
-
-                    <td>
-                      <ScoreInputField
-                        value={exams}
-                        name={"exams"}
-                        disabled={studentEditIndex !== studentIndex}
-                        handleChange={(e) =>
-                          handleGradeChange(e, studentIndex, gradeIndex)
-                        }
-                      />
-                    </td>
-                    <td className="bg-slate-300 text-center font-semibold">
-                      {" "}
-                      {total}
-                    </td>
-                  </React.Fragment>
-                ),
-              )}
+                  ))
+                ) : (
+                  <td key={subjectName}></td>
+                );
+              })}
             </tr>
           ))}
         </tbody>

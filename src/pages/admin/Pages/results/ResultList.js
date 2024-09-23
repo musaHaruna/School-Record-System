@@ -8,6 +8,7 @@ import {
   useGetSessionsTermsQuery,
 } from "../../../../app/api/sessionsApi";
 import { useGetAllClassesQuery } from "../../../../app/api/classApi";
+import { useGetClassResultsQuery } from "../../../../app/api/classApi";
 
 export const ResultList = () => {
   const subjects = [
@@ -30,6 +31,17 @@ export const ResultList = () => {
   const [selectedSession, setSelectedSession] = useState(""); // State to hold the selected session
   const [selectedTerm, setSelectedTerm] = useState(""); // State to hold the selected term
   const [selectedClass, setSelectedClass] = useState(""); // State to hold the selected class
+
+  const {
+    data: classResultsData,
+    isLoading: classResultsLoading,
+    error: classResultsError,
+  } = useGetClassResultsQuery(
+    { classId: selectedClass, termId: selectedTerm },
+    {
+      skip: !selectedClass || !selectedTerm,
+    },
+  );
 
   // Fetch sessions
   const {
@@ -56,6 +68,11 @@ export const ResultList = () => {
     }
   }, [sessionsData]);
 
+  useEffect(() => {
+    console.log("class results is>>>>>>>");
+    console.log(classResultsData);
+  }, [classResultsData]);
+
   // Handle session change
   const handleSessionChange = (sessionId) => {
     setSelectedSession(sessionId);
@@ -64,6 +81,7 @@ export const ResultList = () => {
   };
 
   const handleTermChange = (termId) => {
+    console.log("term id is>>>>>>>", termId);
     setSelectedTerm(termId);
   };
   const handleClassChange = (classId) => {
@@ -116,16 +134,20 @@ export const ResultList = () => {
             ))}
           </SelectFilter>
         </div>
-        {!(sessionTermsData && sessionsData && classesData) ? (
+        {!(
+          sessionTermsData &&
+          sessionsData &&
+          classesData &&
+          classResultsData
+        ) ? (
           <StudentListTableEmpty />
         ) : (
           <div className="mt-8">
             {/* student table container  */}
             <StudentsListTable
               {...{ sessionTermsData, classesData, sessionsData }}
-              subjects={subjects}
               role="admin"
-              students={[1, 2, 3, 4, 5, 6, 7, 8, 19, 0]}
+              classResultsData={classResultsData}
             />
           </div>
         )}
