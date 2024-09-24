@@ -11,17 +11,6 @@ import { useGetAllClassesQuery } from "../../../../app/api/classApi";
 import { useGetClassResultsQuery } from "../../../../app/api/classApi";
 
 export const ResultList = () => {
-  const subjects = [
-    "English",
-    "Mathematics",
-    "Physics",
-    "Chemistry",
-    "Biology",
-    "Geography",
-    "Hausa",
-    "Civic Education",
-    "Computing",
-  ];
   const {
     data: classesData,
     isLoading: classesLoading,
@@ -50,6 +39,14 @@ export const ResultList = () => {
     error: sessionsError,
   } = useGetAllSessionsQuery();
 
+  // Preselect the last session
+  useEffect(() => {
+    if (sessionsData && sessionsData.length > 0) {
+      const lastSession = sessionsData[sessionsData.length - 1]; // Get the last session
+      setSelectedSession(lastSession.id); // Preselect the last session's ID
+    }
+  }, [sessionsData]);
+
   // Fetch terms for the selected session
   const {
     data: sessionTermsData,
@@ -60,18 +57,21 @@ export const ResultList = () => {
     skip: !selectedSession, // Skip the query if no session is selected
   });
 
-  // Preselect the last session
+  // Preselect the last term
   useEffect(() => {
-    if (sessionsData && sessionsData.length > 0) {
-      const lastSession = sessionsData[sessionsData.length - 1]; // Get the last session
-      setSelectedSession(lastSession.id); // Preselect the last session's ID
+    if (sessionTermsData && sessionTermsData.length > 0) {
+      const lastTerm = sessionTermsData[sessionTermsData.length - 1]; // Get the last term
+      setSelectedTerm(lastTerm.id); // Preselect the last term's ID
     }
-  }, [sessionsData]);
+  }, [sessionTermsData]);
 
+  // Preselect the last class
   useEffect(() => {
-    console.log("class results is>>>>>>>");
-    console.log(classResultsData);
-  }, [classResultsData]);
+    if (classesData && classesData.length > 0) {
+      const firstClass = classesData[0]; // Get the last class
+      setSelectedClass(firstClass.id); // Preselect the last class's ID
+    }
+  }, [classesData]);
 
   // Handle session change
   const handleSessionChange = (sessionId) => {
@@ -81,12 +81,13 @@ export const ResultList = () => {
   };
 
   const handleTermChange = (termId) => {
-    console.log("term id is>>>>>>>", termId);
     setSelectedTerm(termId);
   };
+
   const handleClassChange = (classId) => {
     setSelectedClass(classId);
   };
+
   return (
     <>
       <Outlet />
@@ -98,11 +99,12 @@ export const ResultList = () => {
           <SelectFilter
             primaryLabel={"Session"}
             handleChange={(e) => handleSessionChange(e?.target.value)}
+            value={selectedSession} // Bind the state to the dropdown
           >
             {/* session filter */}
             <option value="">Select session</option>
-            {sessionsData?.map((session) => (
-              <option key={session.id} value={session.id}>
+            {sessionsData?.map((session, index) => (
+              <option key={`${session.id}-${index}`} value={session.id}>
                 {session.name}
               </option>
             ))}
@@ -111,11 +113,12 @@ export const ResultList = () => {
           <SelectFilter
             primaryLabel={"Term"}
             handleChange={(e) => handleTermChange(e?.target?.value)}
+            value={selectedTerm} // Bind the state to the dropdown
           >
-            {/* term filter  */}
+            {/* term filter */}
             <option value="">Select term</option>
-            {sessionTermsData?.map((term) => (
-              <option key={term.id} value={term.id}>
+            {sessionTermsData?.map((term, index) => (
+              <option key={`${term.id}-${index}`} value={term.id}>
                 {term.name}
               </option>
             ))}
@@ -124,11 +127,12 @@ export const ResultList = () => {
           <SelectFilter
             primaryLabel={"Class"}
             handleChange={(e) => handleClassChange(e?.target?.value)}
+            value={selectedClass} // Bind the state to the dropdown
           >
-            {/* class filter  */}
+            {/* class filter */}
             <option value="">Select class</option>
-            {classesData?.map((classItem) => (
-              <option key={classItem.id} value={classItem.id}>
+            {classesData?.map((classItem, index) => (
+              <option key={`${classItem.id}-${index}`} value={classItem.id}>
                 {classItem.name}
               </option>
             ))}

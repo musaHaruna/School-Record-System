@@ -12,7 +12,7 @@ export const StudentListTableEmpty = () => (
             Name
           </th>
           {SAMPLE_COURSES.map((c, i) => (
-            <th colSpan={6} className="" key={i}>
+            <th colSpan={6} className="" key={`course-${i}`}>
               {c}
             </th>
           ))}
@@ -21,7 +21,7 @@ export const StudentListTableEmpty = () => (
           <th className="sticky left-[-2rem] w-[5rem]  bg-inherit z-10"></th>
           <th className="sticky left-[3rem]   bg-inherit z-10  border-r-[1px] border-r-primary/[.5]"></th>
           {SAMPLE_COURSES.map((c, k) => (
-            <React.Fragment key={k}>
+            <React.Fragment key={`term-${k}`}>
               <th className="[writing-mode:vertical-rl] scale-[-1]">
                 1st Ass.
               </th>
@@ -46,7 +46,7 @@ export const StudentListTableEmpty = () => (
           .fill("a")
           .map((student, studentIndex) => (
             <tr
-              key={studentIndex}
+              key={`student-${studentIndex}`}
               className="[&>*]:p-4 even:bg-slate-50 odd:bg-white "
             >
               <td className="sticky left-[-2rem] w-[5rem] bg-inherit z-10">
@@ -60,8 +60,8 @@ export const StudentListTableEmpty = () => (
               {Array(SAMPLE_COURSES.length)
                 .fill("a")
                 .map((_, gradeIndex) => (
-                  <React.Fragment key={gradeIndex}>
-                    <td key={gradeIndex}>
+                  <React.Fragment key={`grade-${studentIndex}-${gradeIndex}`}>
+                    <td key={`first-ass-${studentIndex}-${gradeIndex}`}>
                       <ScoreInputField
                         value={""}
                         name={""}
@@ -69,7 +69,7 @@ export const StudentListTableEmpty = () => (
                         handleChange={(e) => console.log()}
                       />
                     </td>
-                    <td key={gradeIndex}>
+                    <td key={`first-test-${studentIndex}-${gradeIndex}`}>
                       <ScoreInputField
                         value={""}
                         disabled
@@ -77,7 +77,7 @@ export const StudentListTableEmpty = () => (
                         handleChange={(e) => console.log()}
                       />
                     </td>
-                    <td>
+                    <td key={`second-ass-${studentIndex}-${gradeIndex}`}>
                       <ScoreInputField
                         disabled
                         value={""}
@@ -85,7 +85,7 @@ export const StudentListTableEmpty = () => (
                         handleChange={(e) => console.log()}
                       />
                     </td>
-                    <td>
+                    <td key={`second-test-${studentIndex}-${gradeIndex}`}>
                       <ScoreInputField
                         value={""}
                         disabled
@@ -93,8 +93,7 @@ export const StudentListTableEmpty = () => (
                         handleChange={(e) => console.log()}
                       />
                     </td>
-
-                    <td>
+                    <td key={`exams-${studentIndex}-${gradeIndex}`}>
                       <ScoreInputField
                         value={""}
                         disabled
@@ -102,7 +101,10 @@ export const StudentListTableEmpty = () => (
                         handleChange={(e) => console.log()}
                       />
                     </td>
-                    <td className="bg-slate-300 text-center font-semibold">
+                    <td
+                      className="bg-slate-300 text-center font-semibold"
+                      key={`total-${studentIndex}-${gradeIndex}`}
+                    >
                       {" "}
                     </td>
                   </React.Fragment>

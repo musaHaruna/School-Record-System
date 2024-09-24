@@ -21,6 +21,20 @@ const StudentsTable = ({
   const [selectedSession, setSelectedSession] = useState(""); // State to hold the selected session
   const [selectedTerm, setSelectedTerm] = useState(""); // State to hold the selected term
 
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  // Filter rows based on search text
+  const filteredRows = row.filter((rowItem) =>
+    rowItem
+      ? rowItem.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
+        rowItem.middleName.toLowerCase().includes(searchText.toLowerCase()) ||
+        rowItem.otherNames.toLowerCase().includes(searchText.toLowerCase())
+      : true,
+  );
   // Fetch sessions
   const {
     data: sessionsData,
@@ -45,6 +59,14 @@ const StudentsTable = ({
       setSelectedSession(lastSession.id); // Preselect the last session's ID
     }
   }, [sessionsData]);
+
+  // Preselect the last term
+  useEffect(() => {
+    if (sessionTermsData && sessionTermsData.length > 0) {
+      const lastTerm = sessionTermsData[sessionTermsData.length - 1]; // Get the last term
+      setSelectedTerm(lastTerm.id); // Preselect the last term's ID
+    }
+  }, [sessionTermsData]);
 
   // Handle session change
   const handleSessionChange = (e) => {
@@ -151,9 +173,20 @@ const StudentsTable = ({
         </div>
       </div>
 
+      {/* Custom search input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchText}
+          onChange={handleSearchChange}
+          className="p-2 border rounded-md w-1/4" // Adjust width here
+        />
+      </div>
+
       <DataGrid
         className="dataTableBg p-[20px] "
-        rows={row}
+        rows={filteredRows}
         columns={[...columns, actionColumn]}
         initialState={{
           pagination: {

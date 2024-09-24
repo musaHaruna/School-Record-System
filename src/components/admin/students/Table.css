@@ -22,3 +22,8 @@
 .dataTableBg {
   background: #fff;
 }
+
+input[type="search"] {
+  color: black !important;
+  z-index: 10;
+}

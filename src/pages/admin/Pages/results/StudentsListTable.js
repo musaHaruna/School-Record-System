@@ -3,7 +3,8 @@ import { Icon } from "@iconify/react";
 import { ScoreInputField } from "../../../../components/fields/scoreInput";
 
 export const StudentsListTable = ({ classResultsData }) => {
-  const [studentEditIndex, setStudentEditIndex] = useState();
+  const [studentEditIndex, setStudentEditIndex] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
   // Check if there are results; if not, render a message
   if (!classResultsData || classResultsData.length === 0) {
@@ -23,8 +24,24 @@ export const StudentsListTable = ({ classResultsData }) => {
     ...new Set(subjectsWithAssessments.map((item) => item.subjectName)),
   ];
 
+  // Filter students by name based on the search query
+  const filteredStudents = classResultsData.filter((student) =>
+    student.studentName.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   return (
     <div className="w-full overflow-x-scroll text-[1.4rem] font-inter bg-white py-[4rem] px-[2rem] rounded-3xl">
+      {/* Search input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search by student name"
+          className="p-2 border rounded-md w-full"
+        />
+      </div>
+
       <table className="w-full min-w-[50rem]">
         <thead>
           <tr className="*:text-center *:border-[1px] bg-blue_primary text-left *:p-4 *:font-medium text-white">
@@ -73,10 +90,14 @@ export const StudentsListTable = ({ classResultsData }) => {
           </tr>
         </thead>
         <tbody>
-          {classResultsData.map((student, studentIndex) => (
+          {filteredStudents.map((student, studentIndex) => (
             <tr
               key={studentIndex}
-              className={`[&>*]:p-4 even:bg-slate-50 ${studentIndex === studentEditIndex ? "border-b-blue-500/50 border-l-blue-500/50" : "border-transparent"} border-b-[1px] border-l-[1px] border-solid odd:bg-white`}
+              className={`[&>*]:p-4 even:bg-slate-50 ${
+                studentIndex === studentEditIndex
+                  ? "border-b-blue-500/50 border-l-blue-500/50"
+                  : "border-transparent"
+              } border-b-[1px] border-l-[1px] border-solid odd:bg-white`}
             >
               <td className="sticky left-[-2rem] w-[5rem] bg-inherit z-10">
                 {studentIndex + 1}
