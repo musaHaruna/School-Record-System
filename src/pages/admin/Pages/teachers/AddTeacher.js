@@ -4,6 +4,7 @@ import { useCreateTeacherMutation } from '../../../../app/api/teachersApi'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { Loader2 } from 'lucide-react'
+import DatePicker from "react-datepicker";
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 // import { classOptions } from '../../data'
 
@@ -11,12 +12,12 @@ const AddTeacher = () => {
     const navigate =useNavigate()
     const [createTeacher,{isLoading, error, isSuccess}]=useCreateTeacherMutation()
     const [showPassword, setShowPassword]= useState(false)
+    const [dateOfBirth, setDateOfBirth] = useState(new Date());
     const [teacherDetails, setTeacherDetails]=useState({
         name:"",
         email:"",
         password:"",
         confirmPassword:"",
-        dateOfBirth:"",
         gender:"",
         phoneNumber:"",
         qualifications:""
@@ -42,9 +43,11 @@ const AddTeacher = () => {
         })
     }   
 
+    const formatDateOfBirth= dateOfBirth.toISOString().split('T')[0]
+
     const handleSubmit =(e)=>{
         e.preventDefault()
-        createTeacher(teacherDetails)
+        createTeacher({...teacherDetails, dateOfBirth:formatDateOfBirth})
 
     }
 
@@ -180,13 +183,13 @@ const AddTeacher = () => {
                 <div className='grid   gap-6 grid-cols-12 '>
                     <div className='flex flex-col gap-2 col-span-6'>
                         <label htmlFor='dateOfBirth' className='text-sm'>Date of Birth</label>
-                        <input
-                            type='text'
-                            id='dateOfBirth'
-                            name='dateOfBirth'
-                            placeholder='dd/mm/yyy'
-                            value={teacherDetails.dateOfBirth}
-                            onChange={handleChange}
+                        <DatePicker
+                            selected={dateOfBirth} 
+                            onChange={(date) => setDateOfBirth(date)} 
+                            dateFormat={ "MM/dd/yyyy"}
+                            timeInputLabel='Time'
+                            wrapperClassName='date-picker'
+                            placeholderText='Start Date'
                             className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
 
                         />

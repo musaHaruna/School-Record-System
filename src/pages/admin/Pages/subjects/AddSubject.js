@@ -26,6 +26,7 @@ const AddSubject = () => {
     description:"",
     classTitle:"",
     categoryId:123,
+    classId:2,
     addedBy:""
   })
 
@@ -43,6 +44,7 @@ const AddSubject = () => {
           classTitle:"",
           categoryId:0,
           addedBy:""
+          
         })
     }
 }, [error,isSuccess])

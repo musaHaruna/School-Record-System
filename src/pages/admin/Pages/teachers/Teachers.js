@@ -9,7 +9,6 @@ import { useGetAllTeachersQuery } from '../../../../app/api/teachersApi'
 
 const Teachers = () => {
 
-  const navigate =useNavigate()
   const {data, isLoading}=useGetAllTeachersQuery()
 
   const columns = [
@@ -33,34 +32,9 @@ const Teachers = () => {
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-[32px]">All Teachers</h1>
         <Link to="/admin/add-teacher">
-      <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Add New Student</Button>
+      <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Add New Teacher</Button>
         </Link>
       </div>
-
-      {/* <section className='teachers-table-filters'>
-        <p className='filter'>
-          Add filter <SlArrowDown className='filter-icon' />
-        </p>
-        <div className='filter search-box'>
-          <CiSearch className='filter-icon' />
-          <input
-            type='text'
-            placeholder='Search for a Teachers by name or email'
-          />
-        </div>
-        <div className='filter calender'>
-          <SlCalender className='filter-icon' />
-          <p>Selected dates</p>
-          <SlArrowDown className='filter-icon' />
-        </div>
-      </section> */}
-
-      {/* <TeachersTable
-        onClose={closeModal}
-        show={showModal}
-        isModalOpen={isModalOpen}
-      /> */}
-
 
       <div className="p-2 w-full ">
         <NewTeachersTable

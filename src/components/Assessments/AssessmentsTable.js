@@ -1,12 +1,44 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./Table.css"
 import React from 'react'
-import DeleteModal from '../../DeleteModal';
+import DeleteModal from "../DeleteModal";
 import { Link } from 'react-router-dom';
+import SingleAssessment from "../../pages/admin/Pages/assessments/SingleAssessment";
 
-const NewTeachersTable = ({ row, columns, link, page }) => {
+const AssessmentsTable = ({ row, columns, link, page }) => {
 
     const handleDelete = (id) => {};
+
+    const subjectColumn ={
+        field: "subjectId",
+        headerName: "Subject",
+        width: 200,
+        renderCell:(params)=>{
+            return(
+                <div>{params.row.subject.subjectName}</div>
+            )
+        }
+    }
+    const classColumn ={
+        field: "classId",
+        headerName: "Class",
+        width: 200,
+        renderCell:(params)=>{
+            return(
+                <div>{params.row.class.name}</div>
+            )
+        }
+    }
+    const termColumn ={
+        field: "termId",
+        headerName: "Term",
+        width: 200,
+        renderCell:(params)=>{
+            return(
+                <div>{params.row.term.name}</div>
+            )
+        }
+    }
 
     const actionColumn = {
         field: "action",
@@ -15,12 +47,7 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
         renderCell: (params) => {
           return (
             <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
-              <Link to={`/admin/${link}/${params.row.id}`}>
-                <span className="text-[#3ec555] viewAction outline-1 p-2   ">
-                  {" "}
-                  View
-                </span>
-              </Link>
+             <SingleAssessment id={params.row.id} />
     
               <div
                 className="deleteAction"
@@ -28,7 +55,7 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
               >
                 <span className="text-[#e90404]">
                   
-                  <DeleteModal type={"teacher"} id={params.row.id} />
+                  <DeleteModal type={"assessment"} id={params.row.id} />
                 </span>
               </div>
             </div>
@@ -43,7 +70,7 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
         <DataGrid
         className="dataTableBg p-[20px]"
         rows={row}
-        columns={[...columns, actionColumn]}
+        columns={[...columns,subjectColumn,classColumn,termColumn,actionColumn, ]}
         //  getRowId={generateUniqueId}
         initialState={{
           pagination: {
@@ -72,4 +99,4 @@ const NewTeachersTable = ({ row, columns, link, page }) => {
   )
 }
 
-export default NewTeachersTable
+export default AssessmentsTable

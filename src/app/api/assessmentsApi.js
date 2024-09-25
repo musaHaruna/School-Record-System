@@ -43,7 +43,14 @@ export const assessmentsApi = createApi({
         method:"PUT"
       }),
       invalidatesTags:["Assessments"]
-    })
+    }),
+    deleteAssessment: builder.mutation({
+      query: (id)=>({
+      url:`/assessments/${id}`,
+      method:"DELETE"
+    }),
+    invalidatesTags:["Assessments"]
+  }),
   }),
 });
 
@@ -52,5 +59,6 @@ export const {
   useGetAssessmentDetailsQuery,
   useCreateAssessmentMutation,
   useUpdateAssessmentMutation,
-  useGetAssessmentByTermQuery
+  useGetAssessmentByTermQuery,
+  useDeleteAssessmentMutation
 } = assessmentsApi;

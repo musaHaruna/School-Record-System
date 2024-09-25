@@ -14,10 +14,13 @@ import {
   SingleSubjects,
   SubjectStudents,
   Results,
-  AccademicSessions
+  AccademicSessions,
+  Assessments
 } from "./pages/admin/Pages";
+import { TeacherProfile } from "./pages/teachers/pages";
+
 import Layout from "./pages/admin/AdminLayout";
-import AddTeachers from "./pages/admin/Pages/AddTeachers";
+// import AddTeachers from "./pages/admin/Pages/AddTeachers";
 import { ToastContainer, Zoom } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "react-datepicker/dist/react-datepicker.css";
@@ -63,7 +66,7 @@ function App() {
 
           {/* teachers */}
           <Route path="all-teachers" element={<Teachers />} />
-          <Route path="add-teachers" element={<AddTeachers />} />
+          {/* <Route path="add-teachers" element={<AddTeachers />} /> */}
           <Route path="add-teacher" element={<AddTeacher />} />
           <Route path="all-teachers/:id" element={<TeachersDetails />} />
           {/* students */}
@@ -77,6 +80,7 @@ function App() {
 
           {/* academic-sessions */}
           <Route path="academic-sessions" element={<AccademicSessions />} />
+          <Route path="assessments" element={<Assessments />} />
       
 
   {/* new merge */}
@@ -94,6 +98,7 @@ function App() {
         {/* teachers dashboard */}
         <Route path="/teacher" element={<TeachersLayout />}>
           <Route index element={<TeachersDashboard />} />
+          <Route path='profile' element={<TeacherProfile />} />
           <Route path='results' element={<ManageResults />} />
           <Route path="results/upload" element={<UploadResults />} />
         </Route>

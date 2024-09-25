@@ -59,7 +59,7 @@ const Navbar = () => {
             <div className="navbar-dropdown-content">
               <div>
                 <BsPerson />
-                <p>View Profile</p>
+                <Link to={"/teacher/profile"}>View Profile</Link>
               </div>
               <div>
                 <SlLogout />

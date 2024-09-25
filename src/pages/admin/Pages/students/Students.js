@@ -38,7 +38,7 @@ const Students = () => {
 
   return (
     <section className='className="py-4 px-2 sm:p-8 w-full h-full flex flex-col gap-6 overflow-y-auto'>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between p-4">
         <h1 className="font-bold text-[32px]">All Students</h1>
         <Link to="/admin/add-student">
       <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Add New Student</Button>

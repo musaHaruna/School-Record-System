@@ -21,7 +21,7 @@ const Classes = () => {
   return (
     <section className="bg-white w-full h-auto sm:h-screen">
       <div className=" p-4 max-w-7xl mx-auto flex flex-col gap-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-center justify-between">
         <div className="flex items-center gap-2">
         <img src="/newFolder.png" alt="img" className="w-[90px]" />
            <div className="flex flex-col">
@@ -29,8 +29,11 @@ const Classes = () => {
             <p className="text-sm">Total Classes {data.length}</p>
            </div>
         </div>
-      
+
+
+        <div>
         <AddClasss />
+        </div>
       </div>
 
           <div className="mt-4 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

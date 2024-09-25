@@ -1,4 +1,5 @@
-import { Icon } from "@iconify/react";
+import TeachersCard from "../../components/TeachersCard";
+
 
 const samplePerformanceSummary = [
   {
@@ -19,44 +20,59 @@ const samplePerformanceSummary = [
 ];
 const TeachersDashboard = () => {
   return (
-    <section className="px-[2.5vw] ">
-      <div className=" flex flex-row justify-between items-end  py-[2.5vw]">
-        {/* header */}
-        <h1 className="text-[2.8rem]  font-500">Welcome Mr Andrew!</h1>
-        <p className="font-medium text-[1.4rem]">
-          <span>Home</span>/{" "}
-          <span className="text-gray-900 font-medium">Teacher</span>
-        </p>
-      </div>
-      <h2 className="text-[1.8rem] font-medium font-rubik mb-4 text-gray-900">
-        Performance summary
-      </h2>
-      <div className="flex flex-wrap gap-16">
-        {samplePerformanceSummary.map((s, i) => (
-          <div className="text-black flex  gap-4 items-center bg-white rounded-3xl shadow-sm px-12 py-8 w-full md:w-fit">
-            <div className="flex flex-row-reverse items-center">
-              <span className="font-semibold text-[4.8rem] text-gray-900">
-                {s.score}
-              </span>
-              {/* simulate downtrend */}
-              <Icon
-                className={
-                  i === 2 ? "rotate-90 text-red-500" : "text-green-600"
-                }
-                icon="material-symbols-light:chart-data-rounded"
-                fontSize={48}
-              />
+    <section className="w-full bg-white h-auto min-h-screen">
+      <div className="max-w-7xl mx-auto p-4 flex flex-col gap-4">
+        <div className="flex justify-between items-center">
+          <h2 className="font-semibold text-[20px]">Welcome Mr Ayuba</h2>
+
+          <p className="text-sm">Home/<span className="font-bold text-black">Teacher</span></p>
+        </div>      
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4 gap-6">
+
+        <div className="rounded-lg bg-white border border-gray-100 shadow flex items-center justify-center   ">
+          <img src="/teacherWireframe.png" alt="img" className="w-[100px]" />
+
+          <div className="p-4">
+          
+              <h2 className="text-[36px] font-bold text-center text-[#4a3aff]">1500</h2>
+              <p className="text-sm text-center ">Total Students</p>
             </div>
-            <div>
-              <p className="font-medium text-[1.4rem]">
-                <span className="text-gray-900">Type:</span> {s.title}
-              </p>
-              <p className="font-medium text-[1.4rem]">
-                <span className="text-gray-900">Remarks:</span> {s.remarks}
-              </p>
+        </div>
+
+
+        {/* <div className=" rounded-xl bg-white border border-gray-100 shadow h-[120px] flex items-center">
+            <div className="bg-[#3320b0] p-4 rounded-lg w-[250px] flex justify-center items-center  h-full">
+              <h2 className="text-white text-center font-semibold tracking-wide">Welcome to Peculiar Tressure Academy</h2>
             </div>
+
+            <div className="p-4">
+              <h2 className="text-[36px] font-bold text-center">1500</h2>
+              <p className="text-sm text-center ">Total Students</p>
+            </div>
+        </div> */}
+
+        <div className="bg-white shadow border border-gray-100 p-4 flex flex-col sm:flex-row items-center justify-center gap-1 rounded-xl">
+          <img src="/paper.png" alt="img" className="w-[100px]" />
+
+          <div className="flex flex-col items-center justify-center">
+            <h2 className="text-[18px] sm:text-[20px] font-bold">My Subjects: 7 subjects</h2>
+            <p className="text-sm">Assigned classes: 3 classes</p>
           </div>
-        ))}
+        </div>
+      </div>
+
+
+        <h2 className="font-semibold text-[24px] mt-4">My Subjects and classes</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-2 gap-6">
+
+          <TeachersCard />
+          <TeachersCard />
+          <TeachersCard />
+          <TeachersCard />
+          <TeachersCard />
+
+        </div>
       </div>
     </section>
   );

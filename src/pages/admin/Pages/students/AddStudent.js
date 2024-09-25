@@ -1,16 +1,20 @@
 import { Button } from '../../../../components/ui/button'
 import React, { useEffect, useState } from 'react'
-import { classOptions } from '../../data'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { useCreateStudentMutation } from '../../../../app/api/studentsApi'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import { Loader } from 'lucide-react'
+import { Loader, Loader2 } from 'lucide-react'
+import { useGetAllClassesQuery } from '../../../../app/api/classApi'
+import DatePicker from "react-datepicker";
 
 const AddStudent = () => {
     const navigate =useNavigate()
-
+    const {data, isLoading:isClassLoading}=useGetAllClassesQuery()
     const [createStudent, {isLoading, isSuccess, error}] =useCreateStudentMutation()
+    const [dateOfBirth, setDateOfBirth] = useState(new Date());
+    const [classId, setClassId]=useState()
+    const [age, setAge]=useState()
 
     useEffect(()=>{
         if(error){
@@ -28,17 +32,16 @@ const AddStudent = () => {
         firstName:"",
         middleName:"",
         otherNames:"",
-        age:0,
         studentClass:"",
         parentsNumber:"",
-        dateOfBirth:"",
         gender:"",
         stateOfOrigin:"",
         lgaOfOrigin:"",
         parentsAddress:"",
         medicalReport: "string",
         birthCertificate: "string",
-        picture: "string"
+        picture: "string",
+        password: "",
     })
 
     const handleChange =(e)=>{
@@ -49,11 +52,16 @@ const AddStudent = () => {
         })
     }
 
+    const formatDateOfBirth= dateOfBirth.toISOString().split('T')[0]
+    const numAge= Number(age)
+    const numClassId=Number(classId)
+
     const handleSubmit =(e)=>{
         e.preventDefault()
-        createStudent(studentDetails)
+        createStudent({...studentDetails, dateOfBirth:formatDateOfBirth, classId:numClassId, age:numAge})
 
     }
+
 
     // console.log(studentDetails)
 
@@ -131,8 +139,8 @@ const AddStudent = () => {
                             type='number'
                             id='age'
                             name='age'
-                            value={studentDetails.age}
-                            onChange={handleChange}
+                            value={age}
+                            onChange={(e)=>setAge(e.target.value)}
                             className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
 
                         />
@@ -141,14 +149,17 @@ const AddStudent = () => {
                         <label htmlFor='studentClass' className='text-sm'>Class</label>
 
                         <select 
-                        name='studentClass'
-                          value={studentDetails.studentClass}
-                          onChange={handleChange}
+                        name='classId'
+                        onChange={(e)=>setClassId(e.target.value)}
                         className='text-sm text-gray-600 px-4 py-2 outline-none border border-gray-300 rounded-lg' >
-                            <option></option>
-                            {classOptions.map((option)=>(
-                                <option value={option.class} key={option.id}>{option.class}</option>
+                         { isClassLoading ? <Loader2 className='animate-spin' /> :
+                            <>
+                            <option>Select Class</option>
+                            {data.map((classes)=>(
+                                <option value={classes.id} key={classes.id}>{classes.name}</option>
                             ))}
+                            </>
+                         }
                         </select>
                     
                     </div>
@@ -172,13 +183,13 @@ const AddStudent = () => {
                 <div className='grid   gap-6 grid-cols-12 '>
                     <div className='flex flex-col gap-2 col-span-6'>
                         <label htmlFor='dateOfBirth' className='text-sm'>Date of Birth</label>
-                        <input
-                            type='text'
-                            id='dateOfBirth'
-                            name='dateOfBirth'
-                            value={studentDetails.dateOfBirth}
-                            onChange={handleChange}
-                            placeholder='dd/mm/yyy'
+                        <DatePicker
+                            selected={dateOfBirth} 
+                            onChange={(date) => setDateOfBirth(date)} 
+                            dateFormat={ "MM/dd/yyyy"}
+                            timeInputLabel='Time'
+                            wrapperClassName='date-picker'
+                            placeholderText='Start Date'
                             className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
 
                         />
@@ -225,13 +236,26 @@ const AddStudent = () => {
                         />
                     </div>
 
-                    <div className='flex flex-col gap-2 col-span-12'>
+                    <div className='flex flex-col gap-2 col-span-6'>
                         <label htmlFor='parentsAddress' className='text-sm'>Parents Address</label>
                         <input
                             type='text'
                             id='parentsAddress'
                             name='parentsAddress'
                             value={studentDetails.parentsAddress}
+                            onChange={handleChange}
+                            placeholder=''
+                            className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
+
+                        />
+                    </div>
+                    <div className='flex flex-col gap-2 col-span-6'>
+                        <label htmlFor='password' className='text-sm'>Default Password</label>
+                        <input
+                            type='password'
+                            id='password'
+                            name='password'
+                            value={studentDetails.password}
                             onChange={handleChange}
                             placeholder=''
                             className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 

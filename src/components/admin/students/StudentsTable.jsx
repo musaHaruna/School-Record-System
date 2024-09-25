@@ -62,7 +62,7 @@ const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) =
           {showDelete && (
             <div className="deleteAction" onClick={() => handleDelete(studentId)}>
               <span className="text-[#e90404]">
-                <DeleteModal />
+                <DeleteModal type={"student"} id={params.row.id} />
               </span>
             </div>
           )}

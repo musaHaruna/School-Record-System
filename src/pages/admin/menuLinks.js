@@ -46,20 +46,26 @@ export const menuLinks = [
   },
   {
     id: 7,
+    title: 'Assessments',
+    url: 'assessments',
+    icon: <RiTeamLine />,
+  },
+  {
+    id: 8,
     title: 'Admin Results',
     url: 'results',
     icon: <Icon icon='carbon:result-new' />,
   },
   {
     // student rouute
-    id: 8,
+    id: 9,
     title: 'My Result',
     url: 'result',
     icon: <Icon icon='carbon:result-new' />,
   },
   {
     // teachers route
-    id: 8,
+    id: 10,
     title: 'Upload results',
     url: 'results',
     icon: <Icon icon='foundation:results-demographics' />,

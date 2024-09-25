@@ -11,10 +11,11 @@ import AddStudent from './students/AddStudent'
 import SingleStudent from './students/SingleStudent'
 import SubjectStudents from './subject-students/SubjectStudents'
 import AccademicSessions from './academic-sessions/AccademicSessions'
+import Assessments from './assessments/Assessments'
 import Results from './Results'
 
 export { Classes, Dashboard, Students, Subjects, Teachers, SingleSubjects, AddStudent, SingleStudent, SingleClass,
-    TeachersDetails, AddTeacher, Results, SubjectStudents, AccademicSessions
+    TeachersDetails, AddTeacher, Results, SubjectStudents, AccademicSessions, Assessments
 }
 
 

@@ -53,12 +53,7 @@ const MobileSideBar = () => {
             <div className='admin-logo'>
                 <Logo  />
             </div>
-            {/* <div className='admin-sidebar'>
-          <RiMenuFoldLine className="admin-sidebar" />
-            </div> */}
          </section>
-            
-
          <section className='w-full '>
         
         {menuLinks.map((link) => (
@@ -88,47 +83,10 @@ const MobileSideBar = () => {
                 onClick={() => handleLinkClick(link)}
               >
                 <span className='listItemTitle'>{link.title}</span>
-                {/* {link.id === 2 ? (
-                  <div
-                    className={activeLink === link.id ? 'icon-active' : ''}
-                    onClick={() => handleLinkClick(link)}
-                  >
-                    <IoIosArrowDown />
-                  </div>
-                ) : (
-                  ''
-                )} */}
               </Link>
               </SheetClose>
             </div>
             </SheetClose>
-            {/* {link.id === 2 && showTeacherLinks && (
-              <div className='teachers-links-container'>
-                {teachersLink.map((teacherLink) => (
-                  <div
-                    className={`teachers-links ${
-                      activeTeacherLink === teacherLink.id
-                        ? 'teacher-link-active'
-                        : ''
-                    }`}
-                    key={teacherLink.id}
-                  >
-                    {teacherLink.icon}
-                    <Link
-                      className={`teacher-link ${
-                        activeTeacherLink === teacherLink.id
-                          ? 'teacher-link-active'
-                          : ''
-                      }`}
-                      to={teacherLink.url}
-                      onClick={() => handleTeacherLinkClick(teacherLink)}
-                    >
-                      {teacherLink.title}
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            )} */}
           </div>
         ))}
         

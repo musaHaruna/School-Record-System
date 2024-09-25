@@ -30,7 +30,7 @@ const TeacherLogin = () => {
       }
 
       if(isSuccess){
-        navigate("/admin")
+        navigate("/teacher")
         toast.success("Logged in Successfully")
       }
     }, [error,isSuccess])

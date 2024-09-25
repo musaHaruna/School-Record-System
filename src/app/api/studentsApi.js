@@ -1,15 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// const baseUrl = process.env.REACT_APP_API_BASE_URL;
+const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
-<<<<<<< HEAD
-// console.log("URL IS>>>>>>",baseUrl)
-=======
->>>>>>> a4406703b488b7175d92b6807e6f2f081fc621de
 export const studentsApi = createApi({
   reducerPath: "studentsApi",
   tagTypes:["Students"],
   baseQuery: fetchBaseQuery({
-     baseUrl: "https://resultprocessingapi.onrender.com/",
+     baseUrl,
     prepareHeaders:(headers, {getState})=>{
       const token =getState().auth.token || localStorage.getItem("token")
 
@@ -44,7 +40,14 @@ export const studentsApi = createApi({
         method:"PUT"
       }),
       invalidatesTags:["Students"]
-    })
+    }),
+    deleteStudent: builder.mutation({
+      query: (id)=>({
+      url:`/student/${id}`,
+      method:"DELETE"
+    }),
+    invalidatesTags:["Students"]
+  }),
   }),
 });
 
@@ -52,5 +55,6 @@ export const {
   useGetAllStudentsQuery,
   useGetStudentDetailsQuery,
   useCreateStudentMutation,
-  useUpdateStudentMutation
+  useUpdateStudentMutation,
+  useDeleteStudentMutation
 } = studentsApi;
