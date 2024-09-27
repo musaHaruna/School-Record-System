@@ -1,5 +1,4 @@
-
-export const ScoreInputField = ({ value, name, handleChange,disabled }) => {
+export const ScoreInputField = ({ value, name, handleChange, disabled }) => {
   return (
     <input
       type="number"

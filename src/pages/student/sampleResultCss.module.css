@@ -1,24 +1,27 @@
 .sampleResult {
-  background:#fff;
-  padding : 2rem 2.5vw ;
+  background: #fff;
+  padding: 2rem 2.5vw;
 }
 .sampleResult table {
   border-collapse: collapse;
-  width: 100%; 
-  border: 1px solid black 
+  width: 100%;
+  border: 1px solid black;
 }
-.sampleResult td,th {
-  border:1px solid black ;
+.sampleResult td,
+th {
+  border: 1px solid black;
 }
-.sampleResult .header { 
+.sampleResult .header {
   margin-bottom: 8rem;
   font-size: 1.8rem;
 }
-.sampleResult .header h3, 
-.sampleResult .header h1{margin : 0 }
+.sampleResult .header h3,
+.sampleResult .header h1 {
+  margin: 0;
+}
 .sampleResult .header img {
   width: 15rem;
-  height:auto;
+  height: auto;
 }
 .sampleResult .header h3 {
   font-weight: 600;
@@ -48,7 +51,6 @@
   font-size: 1.4rem;
 }
 
-
 .sampleResult .sheetContainer table td,
 .sampleResult .sheetContainer table th {
   padding: 0.5rem;
@@ -72,32 +74,30 @@
 }
 
 .sampleResult .stamp {
-  display: flex ;
+  display: flex;
   justify-content: flex-end;
 }
 .sampleResult .stamp p {
-width : 30rem ; 
-text-align: center;
-font-size: 1.6rem;
-border-top : 1px solid black ;
-padding-top: 1rem;
-margin-top: 10rem;
+  width: 30rem;
+  text-align: center;
+  font-size: 1.6rem;
+  border-top: 1px solid black;
+  padding-top: 1rem;
+  margin-top: 10rem;
 }
-.sampleResult .finalGrading{
-  border :1px solid black ; 
-  padding : 1rem ; 
-  font-size: 1.6rem ; 
+.sampleResult .finalGrading {
+  border: 1px solid black;
+  padding: 1rem;
+  font-size: 1.6rem;
 
-  text-align: center ;
-  margin-bottom: 1rem
-  
-  ;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.sampleResult .footer  {
-  text-align: center ; 
+.sampleResult .footer {
+  text-align: center;
   font-weight: 500;
-  font-size: 1.4rem ; ;
+  font-size: 1.4rem;
 }
 
 /* UTILS */

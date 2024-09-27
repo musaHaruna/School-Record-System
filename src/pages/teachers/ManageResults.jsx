@@ -4,15 +4,19 @@ import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { fetchClasses } from "../../services/teachers";
 export const ManageResults = () => {
-  const [classes] = useState([{class :"JSS1", subject:'English' ,} ,{class :"JSS2", subject:'Mathematics' ,},{class :"JSS3", subject:'Literature' ,}]);
-  const handleFetchClasses = async () =>{
-    const classes = await fetchClasses()
-    console.log(classes)
-  }
+  const [classes] = useState([
+    { class: "JSS1", subject: "English" },
+    { class: "JSS2", subject: "Mathematics" },
+    { class: "JSS3", subject: "Literature" },
+  ]);
+  const handleFetchClasses = async () => {
+    const classes = await fetchClasses();
+    console.log(classes);
+  };
   useEffect(() => {
-    // todo change this to fetch classes assigned to a teacher 
-  handleFetchClasses()
-  },[])
+    // todo change this to fetch classes assigned to a teacher
+    handleFetchClasses();
+  }, []);
   return (
     <div className="px-[2.5vw] py-[2rem]">
       <StudentDashboardHeader primaryRoute={"Home"} otherRoutes={["results"]}>
@@ -27,7 +31,9 @@ export const ManageResults = () => {
           >
             <Icon icon="teenyicons:building-outline" className="text-[4rem] " />
             <div className="flex flex-col text-[1.6rem] font-noto text-center">
-              <span className="text-[1.5em] font-medium">{c.class} <span className="text-[1.2em]">({c.subject})</span></span>
+              <span className="text-[1.5em] font-medium">
+                {c.class} <span className="text-[1.2em]">({c.subject})</span>
+              </span>
               <span>
                 No of pupils: <b>23</b>
               </span>
@@ -44,4 +50,3 @@ export const ManageResults = () => {
     </div>
   );
 };
-

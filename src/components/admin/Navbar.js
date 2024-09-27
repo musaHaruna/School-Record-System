@@ -13,9 +13,8 @@ import { useSelector } from "react-redux";
 import { Loader } from "lucide-react";
 
 const Navbar = () => {
-
-  const {_}=useGetUserProfileQuery()
-  const {user, isLoading} =useSelector((state)=> state.user)
+  const { _ } = useGetUserProfileQuery();
+  const { user, isLoading } = useSelector((state) => state.user);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,19 +26,19 @@ const Navbar = () => {
   return (
     <article className="admin-navbar">
       <section className="admin-navbar-home">
-      <div>
-        <MobileSideBar />
-      </div>
-      <Link to="/">
-        <h3 className="cursor-pointer">Dashboard</h3>
-      </Link>
+        <div>
+          <MobileSideBar />
+        </div>
+        <Link to="/">
+          <h3 className="cursor-pointer">Dashboard</h3>
+        </Link>
       </section>
       <section className="admin-nav-search">
         <input type="text" placeholder="Search here..." />
       </section>
       <section>
         <div className="flex items-center w-[50px] gap-2  ">
-          <Profile  />
+          <Profile />
           <div>
             <SlArrowDown
               className={`navbar-arrow ${rotateIconClass}`}
@@ -52,7 +51,7 @@ const Navbar = () => {
                 <Profile />
               </div>
               <div>
-                <h6>{isLoading ? <Loader /> :user.username}</h6>
+                <h6>{isLoading ? <Loader /> : user.username}</h6>
                 <p>{isLoading ? <Loader /> : user.role}</p>
               </div>
             </div>
@@ -70,8 +69,7 @@ const Navbar = () => {
         </div>
       </section>
 
-{/*to trigger mobile sidebar */}
-    
+      {/*to trigger mobile sidebar */}
     </article>
   );
 };

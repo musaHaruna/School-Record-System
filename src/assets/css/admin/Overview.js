@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   display: grid;
@@ -45,6 +45,6 @@ const Wrapper = styled.article`
   .left-section {
     margin: 2rem 0;
   }
-`
+`;
 
-export default Wrapper
+export default Wrapper;

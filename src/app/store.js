@@ -3,11 +3,11 @@ import { authApi } from "./api/authApi";
 import { userApi } from "./api/userApi";
 import { studentsApi } from "./api/studentsApi";
 import { teachersApi } from "./api/teachersApi";
-import {classesApi} from "./api/classApi"
+import { classesApi } from "./api/classApi";
 // import { studentsApi } from "./api/studentsApi";
-import {allSubjectApi} from  "./api/allSubjectApi"
+import { allSubjectApi } from "./api/allSubjectApi";
 import authReducer from "./features/authSlice";
-import userReducer from "./features/userSlice"
+import userReducer from "./features/userSlice";
 import { sessionsApi } from "./api/sessionsApi";
 import { termsApi } from "./api/termApi";
 import { resultsApi } from "./api/resultsApi";
@@ -15,8 +15,8 @@ import { assessmentsApi } from "./api/assessmentsApi";
 
 export const store = configureStore({
   reducer: {
-    auth:authReducer,
-    user:userReducer,
+    auth: authReducer,
+    user: userReducer,
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [studentsApi.reducerPath]: studentsApi.reducer,
@@ -26,7 +26,7 @@ export const store = configureStore({
     [termsApi.reducerPath]: termsApi.reducer,
     [resultsApi.reducerPath]: resultsApi.reducer,
     [sessionsApi.reducerPath]: sessionsApi.reducer,
-    [assessmentsApi.reducerPath]:assessmentsApi.reducer
+    [assessmentsApi.reducerPath]: assessmentsApi.reducer,
     // [studentsApi.reducerPath]: studentsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

@@ -3,24 +3,24 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const assessmentsApi = createApi({
   reducerPath: "assessmentsApi",
-  tagTypes:["Assessments"],
+  tagTypes: ["Assessments"],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    prepareHeaders:(headers, {getState})=>{
-      const token =getState().auth.token || localStorage.getItem("token")
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
 
       // if we have a token set it in the headers
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllAssessments: builder.query({
       query: () => "/assessments",
-      providesTags:["Assessments"]
+      providesTags: ["Assessments"],
     }),
     getAssessmentByTerm: builder.query({
       query: (termId) => `/assessments/term/${termId}`,
@@ -34,23 +34,23 @@ export const assessmentsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Assessments"]
+      invalidatesTags: ["Assessments"],
     }),
-    updateAssessment:builder.mutation({
-      query: (id,body)=>({
-        url:`/assessments/${id}/status`,
+    updateAssessment: builder.mutation({
+      query: (id, body) => ({
+        url: `/assessments/${id}/status`,
         body,
-        method:"PUT"
+        method: "PUT",
       }),
-      invalidatesTags:["Assessments"]
+      invalidatesTags: ["Assessments"],
     }),
     deleteAssessment: builder.mutation({
-      query: (id)=>({
-      url:`/assessments/${id}`,
-      method:"DELETE"
+      query: (id) => ({
+        url: `/assessments/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Assessments"],
     }),
-    invalidatesTags:["Assessments"]
-  }),
   }),
 });
 
@@ -60,5 +60,5 @@ export const {
   useCreateAssessmentMutation,
   useUpdateAssessmentMutation,
   useGetAssessmentByTermQuery,
-  useDeleteAssessmentMutation
+  useDeleteAssessmentMutation,
 } = assessmentsApi;

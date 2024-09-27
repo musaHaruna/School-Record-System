@@ -1,22 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import "./Table.css";
 import DeleteModal from "../../DeleteModal";
 import ScoresModal from "../../Scores/ScoresModal";
-import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../../app/api/sessionsApi'; // Import both queries
+import {
+  useGetAllSessionsQuery,
+  useGetSessionTermsQuery,
+} from "../../../app/api/sessionsApi"; // Import both queries
 
 const handleDelete = (id) => {};
 
-const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) => {
+const StudentsTable = ({
+  row,
+  columns,
+  showDelete,
+  showView,
+  showEditScores,
+}) => {
   const [selectedSession, setSelectedSession] = useState(""); // State to hold the selected session
   const [selectedTerm, setSelectedTerm] = useState(""); // State to hold the selected term
 
   // Fetch sessions
-  const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
-  
+  const {
+    data: sessionsData,
+    isLoading: sessionsLoading,
+    error: sessionsError,
+  } = useGetAllSessionsQuery();
+
   // Fetch terms for the selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError, refetch: fetchSessionTerms } = useGetSessionTermsQuery(selectedSession, {
+  const {
+    data: sessionTermsData,
+    isLoading: termsLoading,
+    error: termsError,
+    refetch: fetchSessionTerms,
+  } = useGetSessionTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip the query if no session is selected
   });
 
@@ -54,13 +72,19 @@ const StudentsTable = ({ row, columns, showDelete, showView, showEditScores }) =
           {/* Conditionally render view button based on showView prop */}
           {showView && (
             <Link to={`/admin/student-details/${studentId}`}>
-              <span className="text-[#3ec555] viewAction outline-1 p-2"> View </span>
+              <span className="text-[#3ec555] viewAction outline-1 p-2">
+                {" "}
+                View{" "}
+              </span>
             </Link>
           )}
 
           {/* Conditionally render delete button based on showDelete prop */}
           {showDelete && (
-            <div className="deleteAction" onClick={() => handleDelete(studentId)}>
+            <div
+              className="deleteAction"
+              onClick={() => handleDelete(studentId)}
+            >
               <span className="text-[#e90404]">
                 <DeleteModal type={"student"} id={params.row.id} />
               </span>

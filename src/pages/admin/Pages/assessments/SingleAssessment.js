@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,47 +8,72 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../../../components/ui/dialog";
-import { Button } from '../../../../components/ui/button';
-import { toast } from 'react-toastify';
-import { Loader2 } from 'lucide-react';
-import { useParams } from 'react-router-dom';
-import { useGetAllClassesQuery } from '../../../../app/api/classApi'; 
-import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../../../app/api/sessionsApi'; // Import session and terms query
-import { useGetAllSubjectsQuery } from '../../../../app/api/allSubjectApi';
-import { useUpdateAssessmentMutation,  } from '../../../../app/api/assessmentsApi';
-import './AssessmentModal.css'; 
-import { useGetAssessmentDetailsQuery } from '../../../../app/api/assessmentsApi';
+import { Button } from "../../../../components/ui/button";
+import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react";
+import { useParams } from "react-router-dom";
+import { useGetAllClassesQuery } from "../../../../app/api/classApi";
+import {
+  useGetAllSessionsQuery,
+  useGetSessionTermsQuery,
+} from "../../../../app/api/sessionsApi"; // Import session and terms query
+import { useGetAllSubjectsQuery } from "../../../../app/api/allSubjectApi";
+import { useUpdateAssessmentMutation } from "../../../../app/api/assessmentsApi";
+import "./AssessmentModal.css";
+import { useGetAssessmentDetailsQuery } from "../../../../app/api/assessmentsApi";
 
-const SingleAssessment = ({id}) => {
+const SingleAssessment = ({ id }) => {
   const { id: routeSubjectId } = useParams();
   const subjectId = routeSubjectId ? parseInt(routeSubjectId) : null;
 
-  const {data:singleAssessment, isLoading:singleAssessmentLoading, error:singleAssessmentError}=useGetAssessmentDetailsQuery(id)
+  const {
+    data: singleAssessment,
+    isLoading: singleAssessmentLoading,
+    error: singleAssessmentError,
+  } = useGetAssessmentDetailsQuery(id);
 
-  const { data: classesData, isLoading: classesLoading, error: classesError } = useGetAllClassesQuery();
-  const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
-  const { data: subjectsData, isLoading: subjectsLoading, error: subjectsError } = useGetAllSubjectsQuery();
-  const [selectedSession, setSelectedSession] = useState(''); // Track selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError } = useGetSessionTermsQuery(selectedSession, {
+  const {
+    data: classesData,
+    isLoading: classesLoading,
+    error: classesError,
+  } = useGetAllClassesQuery();
+  const {
+    data: sessionsData,
+    isLoading: sessionsLoading,
+    error: sessionsError,
+  } = useGetAllSessionsQuery();
+  const {
+    data: subjectsData,
+    isLoading: subjectsLoading,
+    error: subjectsError,
+  } = useGetAllSubjectsQuery();
+  const [selectedSession, setSelectedSession] = useState(""); // Track selected session
+  const {
+    data: sessionTermsData,
+    isLoading: termsLoading,
+    error: termsError,
+  } = useGetSessionTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip fetching terms if no session is selected
   });
 
   const [assessment, setAssessment] = useState({
-    class: '',
-    session: '',
-    subject: subjectId ? subjectId : '',
-    term: '',
-    weight: '',
-    name: '',
+    class: "",
+    session: "",
+    subject: subjectId ? subjectId : "",
+    term: "",
+    weight: "",
+    name: "",
   });
 
-
-  const [updateAssessment, { isLoading: isUpdating }] = useUpdateAssessmentMutation();
+  const [updateAssessment, { isLoading: isUpdating }] =
+    useUpdateAssessmentMutation();
 
   // Preselect the class based on the preselected subject
   useEffect(() => {
     if (subjectId && subjectsData) {
-      const selectedSubject = subjectsData.find((subject) => subject.id === subjectId);
+      const selectedSubject = subjectsData.find(
+        (subject) => subject.id === subjectId,
+      );
       if (selectedSubject && selectedSubject.class) {
         setAssessment((prev) => ({
           ...prev,
@@ -58,14 +83,12 @@ const SingleAssessment = ({id}) => {
     }
 
     setAssessment({
-        name:singleAssessment?.name,
-        weight:singleAssessment?.weight,
-        term:singleAssessment?.term.id,
-        subject:singleAssessment?.subject.id,
-        class:singleAssessment?.class.id
-    })
-
-
+      name: singleAssessment?.name,
+      weight: singleAssessment?.weight,
+      term: singleAssessment?.term.id,
+      subject: singleAssessment?.subject.id,
+      class: singleAssessment?.class.id,
+    });
   }, [subjectId, subjectsData]);
 
   // Preselect the last session when sessionsData is available
@@ -81,7 +104,11 @@ const SingleAssessment = ({id}) => {
   const handleSessionChange = (e) => {
     const selectedSessionId = e.target.value;
     setSelectedSession(selectedSessionId); // Update selected session
-    setAssessment((prev) => ({ ...prev, session: selectedSessionId, term: '' })); // Clear term when session changes
+    setAssessment((prev) => ({
+      ...prev,
+      session: selectedSessionId,
+      term: "",
+    })); // Clear term when session changes
   };
 
   const handleChange = (e) => {
@@ -100,7 +127,9 @@ const SingleAssessment = ({id}) => {
 
     try {
       await updateAssessment(assessmentData).unwrap();
-      toast.success("Assessment Updated successfully", { position: "top-center" });
+      toast.success("Assessment Updated successfully", {
+        position: "top-center",
+      });
     } catch (error) {
       toast.error("Error creating assessment", { position: "top-center" });
     }
@@ -122,7 +151,7 @@ const SingleAssessment = ({id}) => {
   }, [classesError, sessionsError, subjectsError, termsError]);
 
   const filteredSubjects = subjectId
-    ? subjectsData?.filter(subject => subject.id === subjectId)
+    ? subjectsData?.filter((subject) => subject.id === subjectId)
     : subjectsData;
 
   return (
@@ -130,7 +159,9 @@ const SingleAssessment = ({id}) => {
       <DialogTrigger className="text-[#4A3AFF]">View</DialogTrigger>
       <DialogContent className="sm:max-w-[600px] flex justify-center flex-col">
         <DialogHeader>
-          <DialogTitle className="text-center text-[24px]">View Assessment</DialogTitle>
+          <DialogTitle className="text-center text-[24px]">
+            View Assessment
+          </DialogTitle>
           <DialogDescription className="text-center">
             Check the details for the {assessment.name} assessment.
           </DialogDescription>
@@ -249,7 +280,11 @@ const SingleAssessment = ({id}) => {
 
         <DialogFooter>
           <Button onClick={handleSubmit} className="bg-[#4A3AFF] text-white">
-            {isUpdating ? <Loader2 className="animate-spin" /> : "Update Assessment"}
+            {isUpdating ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              "Update Assessment"
+            )}
           </Button>
           <DialogTrigger asChild>
             <Button className="bg-gray-500 text-white">Close</Button>

@@ -1,19 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import "./Table.css";
 import DeleteModal from "../../DeleteModal";
-import { useGetAllSessionsQuery, useGetSessionTermsQuery } from '../../../app/api/sessionsApi'; // Import both queries
+import {
+  useGetAllSessionsQuery,
+  useGetSessionTermsQuery,
+} from "../../../app/api/sessionsApi"; // Import both queries
 
 const SubjectTable = ({ row, columns }) => {
   const [selectedSession, setSelectedSession] = useState("");
   const [selectedTerm, setSelectedTerm] = useState(""); // State to hold the selected term
 
   // Fetch sessions
-  const { data: sessionsData, isLoading: sessionsLoading, error: sessionsError } = useGetAllSessionsQuery();
-  
+  const {
+    data: sessionsData,
+    isLoading: sessionsLoading,
+    error: sessionsError,
+  } = useGetAllSessionsQuery();
+
   // Fetch terms for the selected session
-  const { data: sessionTermsData, isLoading: termsLoading, error: termsError, refetch: fetchSessionTerms } = useGetSessionTermsQuery(selectedSession, {
+  const {
+    data: sessionTermsData,
+    isLoading: termsLoading,
+    error: termsError,
+    refetch: fetchSessionTerms,
+  } = useGetSessionTermsQuery(selectedSession, {
     skip: !selectedSession, // Skip the query if no session is selected
   });
 
@@ -56,11 +68,17 @@ const SubjectTable = ({ row, columns }) => {
       return (
         <div className="flex items-center w-full actionButton h-full gap-2 cursor-pointer">
           <Link to={`/admin/student-details/${params.row.id}`}>
-            <span className="text-[#3ec555] viewAction outline-1 p-2"> View </span>
+            <span className="text-[#3ec555] viewAction outline-1 p-2">
+              {" "}
+              View{" "}
+            </span>
           </Link>
 
           <Link to={`/admin/subject-students/${params.row.id}`}>
-            <span className="text-[#3ec555] viewStudentsAction outline-1 p-2"> View Students </span>
+            <span className="text-[#3ec555] viewStudentsAction outline-1 p-2">
+              {" "}
+              View Students{" "}
+            </span>
           </Link>
 
           <div className="deleteAction">

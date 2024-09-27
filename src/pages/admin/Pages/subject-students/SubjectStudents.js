@@ -6,19 +6,16 @@ import { useGetAllStudentsQuery } from "../../../../app/api/studentsApi";
 import { Loader2 } from "lucide-react";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import "./SubjectStudents.css"; 
+import "./SubjectStudents.css";
 
 const SubjectStudents = () => {
+  const { data, isLoading, error } = useGetAllStudentsQuery();
 
-  const {data, isLoading, error}=useGetAllStudentsQuery()
-
-
-  useEffect(()=>{
-    if(error){
-        toast.error(error.data.message)
+  useEffect(() => {
+    if (error) {
+      toast.error(error.data.message);
     }
-
-}, [error])
+  }, [error]);
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
@@ -30,12 +27,12 @@ const SubjectStudents = () => {
     { field: "parentsNumber", headerName: "Parents Number", width: 170 },
   ];
 
-  if(isLoading){
-    return(
+  if (isLoading) {
+    return (
       <div className="flex items-center justify-center h-screen w-full">
         <Loader2 className=" animate-spin w-[60px] h-[60px]" />
-    </div>
-)
+      </div>
+    );
   }
 
   return (
@@ -43,10 +40,11 @@ const SubjectStudents = () => {
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-[32px]">Mathematics Students</h1>
         <div className="action-buttons">
-        <AssessmentModal></AssessmentModal>
-        <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Print Scores</Button>
+          <AssessmentModal></AssessmentModal>
+          <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">
+            Print Scores
+          </Button>
         </div>
-       
       </div>
 
       <div className="p-2 w-full ">

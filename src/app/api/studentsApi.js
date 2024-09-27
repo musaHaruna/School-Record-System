@@ -3,24 +3,24 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const studentsApi = createApi({
   reducerPath: "studentsApi",
-  tagTypes:["Students"],
+  tagTypes: ["Students"],
   baseQuery: fetchBaseQuery({
-     baseUrl,
-    prepareHeaders:(headers, {getState})=>{
-      const token =getState().auth.token || localStorage.getItem("token")
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
 
       // if we have a token set it in the headers
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllStudents: builder.query({
       query: () => "/student",
-      providesTags:["Students"]
+      providesTags: ["Students"],
     }),
     getStudentDetails: builder.query({
       query: (id) => `/student/${id}`,
@@ -31,23 +31,23 @@ export const studentsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Students"]
+      invalidatesTags: ["Students"],
     }),
-    updateStudent:builder.mutation({
-      query: (id,body)=>({
-        url:`/student/${id}/status`,
+    updateStudent: builder.mutation({
+      query: (id, body) => ({
+        url: `/student/${id}/status`,
         body,
-        method:"PUT"
+        method: "PUT",
       }),
-      invalidatesTags:["Students"]
+      invalidatesTags: ["Students"],
     }),
     deleteStudent: builder.mutation({
-      query: (id)=>({
-      url:`/student/${id}`,
-      method:"DELETE"
+      query: (id) => ({
+        url: `/student/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Students"],
     }),
-    invalidatesTags:["Students"]
-  }),
   }),
 });
 
@@ -56,5 +56,5 @@ export const {
   useGetStudentDetailsQuery,
   useCreateStudentMutation,
   useUpdateStudentMutation,
-  useDeleteStudentMutation
+  useDeleteStudentMutation,
 } = studentsApi;

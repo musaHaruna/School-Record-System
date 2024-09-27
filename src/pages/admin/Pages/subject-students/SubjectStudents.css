@@ -1,12 +1,11 @@
 /* SubjectStudents.css */
 .action-buttons {
-    display: flex;
-    gap: 10px; /* Space between the buttons */
-    justify-content: flex-end; /* Align the buttons to the right */
-  }
-  
-  .action-buttons .btn {
-    padding: 10px 20px;
-    border-radius: 4px;
-  }
-  
+  display: flex;
+  gap: 10px; /* Space between the buttons */
+  justify-content: flex-end; /* Align the buttons to the right */
+}
+
+.action-buttons .btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+}

@@ -60,7 +60,7 @@ export const StudentViewResult = () => {
               <table>
                 <thead>
                   <tr>
-                    <th rowspan="2">
+                    <th rowSpan="2">
                       <img src={SchoolImg} alt="school" />
                     </th>
                     <th>

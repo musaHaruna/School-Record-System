@@ -14,7 +14,6 @@ const TableCtaButton = ({ href, icon, title }) => (
   </Link>
 );
 
-
 const StudentListTableEmpty = () => (
   <div className="w-full overflow-x-scroll text-[1.4rem] font-inter bg-white py-[4rem] px-[2rem] rounded-3xl ">
     <table className="w-full min-w-[50rem] ">
@@ -140,7 +139,7 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
         exams: null,
         total: null,
       })),
-    }))
+    })),
   );
   const calculateTotal = (studentIndex, gradeIndex) => {
     if (studentEditIndex !== studentIndex) return null;
@@ -162,10 +161,10 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                         Number(g._2ndTest) +
                         Number(g._2ndAssessment) +
                         Number(g.exams),
-                    }
+                    },
               ),
-            }
-      )
+            },
+      ),
     );
   };
   const handleGradeChange = (e, studentIndex, gradeIndex) => {
@@ -185,10 +184,10 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                         [e?.target?.name]: e?.target?.value
                           ? Number(e?.target?.value)
                           : 0,
-                      }
+                      },
                 ),
-              }
-        )
+              },
+        ),
       );
 
     calculateTotal(studentIndex, gradeIndex);
@@ -271,15 +270,14 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                     exams,
                     total,
                   },
-                  gradeIndex
+                  gradeIndex,
                 ) => (
                   <React.Fragment key={gradeIndex}>
                     <td key={gradeIndex}>
                       <ScoreInputField
                         value={_1stAssessment}
                         name={"_1stAssessment"}
-                        disabled ={(studentEditIndex !== studentIndex) }
-
+                        disabled={studentEditIndex !== studentIndex}
                         handleChange={(e) =>
                           handleGradeChange(e, studentIndex, gradeIndex)
                         }
@@ -289,7 +287,7 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                       <ScoreInputField
                         value={_1stTest}
                         name={"_1stTest"}
-                        disabled ={(studentEditIndex !== studentIndex) }
+                        disabled={studentEditIndex !== studentIndex}
                         handleChange={(e) =>
                           handleGradeChange(e, studentIndex, gradeIndex)
                         }
@@ -299,8 +297,7 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                       <ScoreInputField
                         value={_2ndAssessment}
                         name={"_2ndAssessment"}
-                        disabled ={(studentEditIndex !== studentIndex) }
-
+                        disabled={studentEditIndex !== studentIndex}
                         handleChange={(e) =>
                           handleGradeChange(e, studentIndex, gradeIndex)
                         }
@@ -310,8 +307,7 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                       <ScoreInputField
                         value={_2ndTest}
                         name={"_2ndTest"}
-                        disabled ={(studentEditIndex !== studentIndex) }
-
+                        disabled={studentEditIndex !== studentIndex}
                         handleChange={(e) =>
                           handleGradeChange(e, studentIndex, gradeIndex)
                         }
@@ -322,8 +318,7 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                       <ScoreInputField
                         value={exams}
                         name={"exams"}
-                        disabled ={(studentEditIndex !== studentIndex) }
-
+                        disabled={studentEditIndex !== studentIndex}
                         handleChange={(e) =>
                           handleGradeChange(e, studentIndex, gradeIndex)
                         }
@@ -334,7 +329,7 @@ const StudentsListTable = ({ students, term, classs, session, role }) => {
                       {total}
                     </td>
                   </React.Fragment>
-                )
+                ),
               )}
             </tr>
           ))}
@@ -426,8 +421,8 @@ const ViewResult = () => {
                 e?.target?.name === "course"
                   ? e?.target?.value
                   : Number(e?.target?.value),
-            }
-      )
+            },
+      ),
     );
   const $handleSubmit = async (e) => {
     e.preventDefault();

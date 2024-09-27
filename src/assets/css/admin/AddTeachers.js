@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   .modal {
@@ -165,5 +165,5 @@ const Wrapper = styled.article`
   .personal-details div {
     width: 100%;
   }
-`
-export default Wrapper
+`;
+export default Wrapper;

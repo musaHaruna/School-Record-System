@@ -3,24 +3,24 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const sessionsApi = createApi({
   reducerPath: "sessionsApi",
-  tagTypes:["Sessions"],
+  tagTypes: ["Sessions"],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    prepareHeaders:(headers, {getState})=>{
-      const token =getState().auth.token || localStorage.getItem("token")
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
 
       // if we have a token set it in the headers
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllSessions: builder.query({
       query: () => "/sessions",
-      providesTags:["Sessions"]
+      providesTags: ["Sessions"],
     }),
     getSessionDetails: builder.query({
       query: (id) => `/sessions/${id}`,
@@ -34,22 +34,22 @@ export const sessionsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Sessions"]
+      invalidatesTags: ["Sessions"],
     }),
-    updateSession:builder.mutation({
-      query: (id,body)=>({
-        url:`/sessions/${id}`,
+    updateSession: builder.mutation({
+      query: (id, body) => ({
+        url: `/sessions/${id}`,
         body,
-        method:"PATCH"
+        method: "PATCH",
       }),
-      invalidatesTags:["Sessions"]
+      invalidatesTags: ["Sessions"],
     }),
-    deleteSession:builder.mutation({
-      query: (id)=> ({
-        url:`/sessions/${id}`,
-        method:"DELETE"
+    deleteSession: builder.mutation({
+      query: (id) => ({
+        url: `/sessions/${id}`,
+        method: "DELETE",
       }),
-      invalidatesTags:["Sessions"]
+      invalidatesTags: ["Sessions"],
     }),
     createTerm: builder.mutation({
       query: (body) => ({
@@ -57,7 +57,7 @@ export const sessionsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Sessions"]
+      invalidatesTags: ["Sessions"],
     }),
   }),
 });
@@ -69,5 +69,5 @@ export const {
   useUpdateSessionMutation,
   useGetSessionTermsQuery,
   useDeleteSessionMutation,
-  useCreateTermMutation
+  useCreateTermMutation,
 } = sessionsApi;

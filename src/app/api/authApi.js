@@ -17,16 +17,16 @@ export const authApi = createApi({
         method: "POST",
         body,
       }),
-      transformResponse: (result) =>result.token,
-      async onQueryStarted(_, {dispatch, queryFulfilled}){
-        try{
-          const {data}= await queryFulfilled
-          dispatch(setToken(data))
-          await dispatch(userApi.endpoints.getUserProfile.initiate(null))
-        }catch(error){
-          console.log(error)
+      transformResponse: (result) => result.token,
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setToken(data));
+          await dispatch(userApi.endpoints.getUserProfile.initiate(null));
+        } catch (error) {
+          console.log(error);
         }
-      }
+      },
     }),
     teacherLogin: builder.mutation({
       query: (body) => ({
@@ -34,16 +34,16 @@ export const authApi = createApi({
         method: "POST",
         body,
       }),
-      transformResponse: (result) =>result.token,
-      async onQueryStarted(_, {dispatch, queryFulfilled}){
-        try{
-          const {data}= await queryFulfilled
-          dispatch(setToken(data))
-          await dispatch(userApi.endpoints.getUserProfile.initiate(null))
-        }catch(error){
-          console.log(error)
+      transformResponse: (result) => result.token,
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          dispatch(setToken(data));
+          await dispatch(userApi.endpoints.getUserProfile.initiate(null));
+        } catch (error) {
+          console.log(error);
         }
-      }
+      },
     }),
 
     register: builder.mutation({
@@ -56,4 +56,8 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation , useTeacherLoginMutation} = authApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useTeacherLoginMutation,
+} = authApi;

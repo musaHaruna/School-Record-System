@@ -160,179 +160,178 @@ export const teacherToStudentCharts = [
 
 export const studentRows = [
   {
-    id:1,
-    firstName:"Emmanuel",
-    middleName:"Iseoluwa",
-    otherNames:"Abiodun",
-    gender:"Male",
-    age:14,
-    studentClass:"SS1",
-    parentsNumber:"+2349025766940"
+    id: 1,
+    firstName: "Emmanuel",
+    middleName: "Iseoluwa",
+    otherNames: "Abiodun",
+    gender: "Male",
+    age: 14,
+    studentClass: "SS1",
+    parentsNumber: "+2349025766940",
   },
   {
-    id:2,
-    firstName:"James",
-    middleName:"David",
-    otherNames:"Olaoluwa",
-    gender:"Male",
-    age:12,
-    studentClass:"JSS3",
-    parentsNumber:"+2349025766940"
+    id: 2,
+    firstName: "James",
+    middleName: "David",
+    otherNames: "Olaoluwa",
+    gender: "Male",
+    age: 12,
+    studentClass: "JSS3",
+    parentsNumber: "+2349025766940",
   },
   {
-    id:3,
-    firstName:"Abigirl",
-    middleName:"Dolapo",
-    otherNames:"Abiodun",
-    gender:"female",
-    age:13,
-    studentClass:"SS1",
-    parentsNumber:"+2349025766940"
+    id: 3,
+    firstName: "Abigirl",
+    middleName: "Dolapo",
+    otherNames: "Abiodun",
+    gender: "female",
+    age: 13,
+    studentClass: "SS1",
+    parentsNumber: "+2349025766940",
   },
   {
-    id:4,
-    firstName:"Emmanuel",
-    middleName:"Iseoluwa",
-    otherNames:"Abiodun",
-    gender:"Male",
-    age:14,
-    studentClass:"SS1",
-    parentsNumber:"+2349025766940"
+    id: 4,
+    firstName: "Emmanuel",
+    middleName: "Iseoluwa",
+    otherNames: "Abiodun",
+    gender: "Male",
+    age: 14,
+    studentClass: "SS1",
+    parentsNumber: "+2349025766940",
   },
   {
-    id:4,
-    firstName:"Emmanuel",
-    middleName:"Iseoluwa",
-    otherNames:"Abiodun",
-    gender:"Male",
-    age:14,
-    studentClass:"SS1",
-    parentsNumber:"+2349025766940"
+    id: 4,
+    firstName: "Emmanuel",
+    middleName: "Iseoluwa",
+    otherNames: "Abiodun",
+    gender: "Male",
+    age: 14,
+    studentClass: "SS1",
+    parentsNumber: "+2349025766940",
   },
   {
-    id:5,
-    firstName:"Emmanuel",
-    middleName:"Iseoluwa",
-    otherNames:"Abiodun",
-    gender:"Male",
-    age:14,
-    studentClass:"SS1",
-    parentsNumber:"+2349025766940"
+    id: 5,
+    firstName: "Emmanuel",
+    middleName: "Iseoluwa",
+    otherNames: "Abiodun",
+    gender: "Male",
+    age: 14,
+    studentClass: "SS1",
+    parentsNumber: "+2349025766940",
   },
   {
-    id:6,
-    firstName:"Emmanuel",
-    middleName:"Iseoluwa",
-    otherNames:"Abiodun",
-    gender:"Male",
-    age:14,
-    studentClass:"SS1",
-    parentsNumber:"+2349025766940"
+    id: 6,
+    firstName: "Emmanuel",
+    middleName: "Iseoluwa",
+    otherNames: "Abiodun",
+    gender: "Male",
+    age: 14,
+    studentClass: "SS1",
+    parentsNumber: "+2349025766940",
   },
 ];
 
-export const classOptions =[
+export const classOptions = [
   {
-    id:1,
-    class:"JSS1"
+    id: 1,
+    class: "JSS1",
   },
   {
-    id:2,
-    class:"JSS2"
+    id: 2,
+    class: "JSS2",
   },
   {
-    id:3,
-    class:"JSS3"
+    id: 3,
+    class: "JSS3",
   },
   {
-    id:4,
-    class:"SS1"
+    id: 4,
+    class: "SS1",
   },
   {
-    id:5,
-    class:"SS3"
+    id: 5,
+    class: "SS3",
   },
   {
-    id:6,
-    class:"SS3"
-  }
-]
+    id: 6,
+    class: "SS3",
+  },
+];
 
-
-export const subjectsRow =[
+export const subjectsRow = [
   {
-    id:1,
-    subjectName:"Physcis",
-    classTitle:"SS2",
-    addedBy:"Mrs Abigirl",
-    teachers:[
+    id: 1,
+    subjectName: "Physcis",
+    classTitle: "SS2",
+    addedBy: "Mrs Abigirl",
+    teachers: [
       {
-        id:1,
-        name:"Mr Amao",
-        gender:"male",
-      }
-    ]
+        id: 1,
+        name: "Mr Amao",
+        gender: "male",
+      },
+    ],
   },
   {
-    id:2,
-    subjectName:"English",
-    classTitle:"SS1",
-    addedBy:"Mr Ade",
-    teachers:[
+    id: 2,
+    subjectName: "English",
+    classTitle: "SS1",
+    addedBy: "Mr Ade",
+    teachers: [
       {
-        id:1,
-        name:"Mr Ade",
-        gender:"male",
-      }
-    ]
+        id: 1,
+        name: "Mr Ade",
+        gender: "male",
+      },
+    ],
   },
   {
-    id:3,
-    subjectName:"Civic Education",
-    classTitle:"SS3",
-    addedBy:"Mr Abiodun",
-    teachers:[
+    id: 3,
+    subjectName: "Civic Education",
+    classTitle: "SS3",
+    addedBy: "Mr Abiodun",
+    teachers: [
       {
-        id:1,
-        name:"Mrs Joke",
-        gender:"Female",
-      }
-    ]
+        id: 1,
+        name: "Mrs Joke",
+        gender: "Female",
+      },
+    ],
   },
   {
-    id:4,
-    subjectName:"Mathematics",
-    classTitle:"SS2",
-    addedBy:"Mr Ade",
-    teachers:[
+    id: 4,
+    subjectName: "Mathematics",
+    classTitle: "SS2",
+    addedBy: "Mr Ade",
+    teachers: [
       {
-        id:1,
-        name:"Mr John",
-        gender:"Male",
+        id: 1,
+        name: "Mr John",
+        gender: "Male",
       },
       {
-        id:2,
-        name:"Mr John",
-        gender:"Male",
+        id: 2,
+        name: "Mr John",
+        gender: "Male",
       },
       {
-        id:3,
-        name:"Mrs Funmi",
-        gender:"Female",
+        id: 3,
+        name: "Mrs Funmi",
+        gender: "Female",
       },
-    ]
+    ],
   },
   {
-    id:5,
-    subjectName:"Accounting",
-    classTitle:"SS2",
-    addedBy:"Mr Adam",
-    teachers:[
+    id: 5,
+    subjectName: "Accounting",
+    classTitle: "SS2",
+    addedBy: "Mr Adam",
+    teachers: [
       {
-        id:1,
-        name:"Mr David",
-        gender:"male",
-      }
-    ]
+        id: 1,
+        name: "Mr David",
+        gender: "male",
+      },
+    ],
   },
-]
+];

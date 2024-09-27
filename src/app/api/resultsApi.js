@@ -3,26 +3,26 @@ const baseUrl = process.env.REACT_APP_API_BASE_URL;
 
 export const resultsApi = createApi({
   reducerPath: "resultsApi",
-  tagTypes:["Results"],
+  tagTypes: ["Results"],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    prepareHeaders:(headers, {getState})=>{
-      const token =getState().auth.token || localStorage.getItem("token")
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token || localStorage.getItem("token");
 
       // if we have a token set it in the headers
       if (token) {
-        headers.set('Authorization', `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
-      return headers
+      return headers;
     },
     credentials: "include",
   }),
   endpoints: (builder) => ({
     getAllResults: builder.query({
       query: () => "/results",
-      providesTags:["Results"]
+      providesTags: ["Results"],
     }),
-   
+
     getResultDetails: builder.query({
       query: (id) => `/results/${id}`,
     }),
@@ -32,16 +32,16 @@ export const resultsApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags:["Results"]
+      invalidatesTags: ["Results"],
     }),
-    updateResult:builder.mutation({
-      query: (id,body)=>({
-        url:`/results/${id}/status`,
+    updateResult: builder.mutation({
+      query: (id, body) => ({
+        url: `/results/${id}/status`,
         body,
-        method:"PUT"
+        method: "PUT",
       }),
-      invalidatesTags:["Results"]
-    })
+      invalidatesTags: ["Results"],
+    }),
   }),
 });
 
@@ -49,5 +49,5 @@ export const {
   useGetAllResultsQuery,
   useGetResultDetailsQuery,
   useCreateResultMutation,
-  useUpdateResultMutation
+  useUpdateResultMutation,
 } = resultsApi;

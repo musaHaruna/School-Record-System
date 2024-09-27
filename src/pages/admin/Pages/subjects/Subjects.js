@@ -55,7 +55,7 @@ const Subjects = () => {
         <h1 className="font-bold text-[32px]">All Subjects</h1>
 
         <div>
-        <AddSubject />
+          <AddSubject />
         </div>
       </div>
 

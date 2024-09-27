@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Logo,
   SchoolIcon,
@@ -8,45 +8,45 @@ import {
   StudentIconWhite,
   TeacherIcon,
   TeachersIconWhite,
-} from '../../components/images'
+} from "../../components/images";
 
 function SelectPreference() {
-  const [selectedPreference, setSelectedPreference] = useState(null)
+  const [selectedPreference, setSelectedPreference] = useState(null);
 
   const handlePreferenceClick = (preference) => {
-    setSelectedPreference(preference)
-  }
+    setSelectedPreference(preference);
+  };
 
   // dispatch(userRole(selectedPreference))
 
   return (
-    <main className='pref-container '>
-      <section className='pref-headings'>
-        <div className='pref-logo logo-sm'>
+    <main className="pref-container ">
+      <section className="pref-headings">
+        <div className="pref-logo logo-sm">
           <Logo />
         </div>
         <h2>Choose Your Preference</h2>
         <p>It will help us, to give you a better experience on our platform.</p>
       </section>
-      <section className='pref-select'>
+      <section className="pref-select">
         <div
-          onClick={() => handlePreferenceClick('administrator')}
+          onClick={() => handlePreferenceClick("administrator")}
           className={
-            selectedPreference === 'administrator'
-              ? 'select-active'
-              : ' select-deactive'
+            selectedPreference === "administrator"
+              ? "select-active"
+              : " select-deactive"
           }
         >
-          <div className=''>
+          <div className="">
             <div>
               <div
                 className={
-                  selectedPreference === 'administrator'
-                    ? 'pref-icon-active'
-                    : 'pref-icon'
+                  selectedPreference === "administrator"
+                    ? "pref-icon-active"
+                    : "pref-icon"
                 }
               >
-                {selectedPreference === 'administrator' ? (
+                {selectedPreference === "administrator" ? (
                   <SchoolIconWhite />
                 ) : (
                   <SchoolIcon />
@@ -57,31 +57,31 @@ function SelectPreference() {
 
             <div
               className={
-                selectedPreference === 'administrator'
-                  ? 'circle-icon-active'
-                  : 'circle-icon'
+                selectedPreference === "administrator"
+                  ? "circle-icon-active"
+                  : "circle-icon"
               }
             ></div>
           </div>
         </div>
         <div
-          onClick={() => handlePreferenceClick('teacher')}
+          onClick={() => handlePreferenceClick("teacher")}
           className={
-            selectedPreference === 'teacher'
-              ? 'select-active'
-              : 'select-deactive'
+            selectedPreference === "teacher"
+              ? "select-active"
+              : "select-deactive"
           }
         >
           <div>
             <div>
               <div
                 className={
-                  selectedPreference === 'teacher'
-                    ? 'pref-icon-active'
-                    : 'pref-icon'
+                  selectedPreference === "teacher"
+                    ? "pref-icon-active"
+                    : "pref-icon"
                 }
               >
-                {selectedPreference === 'teacher' ? (
+                {selectedPreference === "teacher" ? (
                   <TeachersIconWhite />
                 ) : (
                   <TeacherIcon />
@@ -92,9 +92,9 @@ function SelectPreference() {
 
             <div
               className={
-                selectedPreference === 'teacher'
-                  ? 'circle-icon-active'
-                  : 'circle-icon'
+                selectedPreference === "teacher"
+                  ? "circle-icon-active"
+                  : "circle-icon"
               }
             ></div>
           </div>
@@ -138,14 +138,18 @@ function SelectPreference() {
 
       <div>
         <Link
-          to={selectedPreference ==='administrator' ? "/admin-registration" :'/staff-registration' }
-          className={selectedPreference ? 'btn-blue-active' : 'btn-gray'}
+          to={
+            selectedPreference === "administrator"
+              ? "/admin-registration"
+              : "/staff-registration"
+          }
+          className={selectedPreference ? "btn-blue-active" : "btn-gray"}
         >
           Continue
         </Link>
       </div>
     </main>
-  )
+  );
 }
 
-export default SelectPreference
+export default SelectPreference;
