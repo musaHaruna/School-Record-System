@@ -35,7 +35,7 @@ const Classes = () => {
         <div className="mt-4 sm:mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {isLoading
             ? [1, 2, 3, 4, 5, 6].map((_, index) => (
-                <div className="py-5 px-4 shadow rounded-lg h-[150px] bg-slate-100 animate-pulse">
+                <div key={index} className="py-5 px-4 shadow rounded-lg h-[150px] bg-slate-100 animate-pulse">
                   <div className="flex items gap-4">
                     <div className="bg-white w-[40px] h-[40px] p-4 rounded-full" />
                     <div className="flex flex-col gap-1">

@@ -12,7 +12,7 @@ import SingleStudent from "./students/SingleStudent";
 import SubjectStudents from "./subject-students/SubjectStudents";
 import AccademicSessions from "./academic-sessions/AccademicSessions";
 import Assessments from "./assessments/Assessments";
-import Results from "./Results";
+import Results from "./scores/Results";
 
 export {
   Classes,

@@ -9,6 +9,7 @@ import {
   useGetSessionTermsQuery,
 } from "../../../app/api/sessionsApi"; // Import both queries
 
+
 const handleDelete = (id) => {};
 
 const StudentsTable = ({
@@ -21,6 +22,20 @@ const StudentsTable = ({
   const [selectedSession, setSelectedSession] = useState(""); // State to hold the selected session
   const [selectedTerm, setSelectedTerm] = useState(""); // State to hold the selected term
 
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  // Filter rows based on search text
+  const filteredRows = row.filter((rowItem) =>
+    rowItem
+      ? rowItem.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
+        rowItem.middleName.toLowerCase().includes(searchText.toLowerCase()) ||
+        rowItem.otherNames.toLowerCase().includes(searchText.toLowerCase())
+      : true,
+  );
   // Fetch sessions
   const {
     data: sessionsData,
@@ -46,18 +61,24 @@ const StudentsTable = ({
     }
   }, [sessionsData]);
 
+  // Preselect the last term
+  useEffect(() => {
+    if (sessionTermsData && sessionTermsData.length > 0) {
+      const lastTerm = sessionTermsData[sessionTermsData.length - 1]; // Get the last term
+      setSelectedTerm(lastTerm.id); // Preselect the last term's ID
+    }
+  }, [sessionTermsData]);
+
   // Handle session change
   const handleSessionChange = (e) => {
     const sessionId = e.target.value;
     setSelectedSession(sessionId);
-    setSelectedTerm(""); // Reset the term when a new session is selected
-    fetchSessionTerms(); // Refetch terms for the newly selected session
+    setSelectedTerm("");
+    fetchSessionTerms();
   };
 
-  // Handle term change
   const handleTermChange = (e) => {
     setSelectedTerm(e.target.value);
-    // Add logic here to filter or refetch the students based on the selected term
   };
 
   const actionColumn = {
@@ -153,9 +174,20 @@ const StudentsTable = ({
         </div>
       </div>
 
+      {/* Custom search input */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchText}
+          onChange={handleSearchChange}
+          className="p-2 border rounded-md w-1/4" // Adjust width here
+        />
+      </div>
+
       <DataGrid
         className="dataTableBg p-[20px] "
-        rows={row}
+        rows={filteredRows}
         columns={[...columns, actionColumn]}
         initialState={{
           pagination: {

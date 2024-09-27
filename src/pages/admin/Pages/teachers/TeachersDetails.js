@@ -98,6 +98,7 @@ const TeachersDetails = () => {
                 />
               </div>
             </div>
+          </div>
 
             {/* second row */}
             <div className="grid   gap-6 grid-cols-12 ">
@@ -184,7 +185,7 @@ const TeachersDetails = () => {
                 />
               </div>
             </div>
-          </div>
+         
 
           <div className="flex  gap-6 justify-between items-center mt-6"></div>
 

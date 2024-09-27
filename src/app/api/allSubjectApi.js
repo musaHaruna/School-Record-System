@@ -25,6 +25,9 @@ export const allSubjectApi = createApi({
     getSingleSubject: builder.query({
       query: (id) => `/subjects/${id}`,
     }),
+    getSubjectStudents: builder.query({
+      query: (id) => `/classes/${id}/students`,
+    }),
     createSubject: builder.mutation({
       query: (body) => ({
         url: "/subjects",
@@ -57,4 +60,5 @@ export const {
   useGetAllSubjectsQuery,
   useGetSingleSubjectQuery,
   useUpdateSubjectMutation,
+  useGetSubjectStudentsQuery,
 } = allSubjectApi;

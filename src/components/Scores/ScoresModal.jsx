@@ -18,17 +18,18 @@ import "./ScoresModal.css";
 
 const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
   // Get the subjectId from the route using useParams
-  const { id } = useParams(); //subjectId
+  const { subjectId, classId } = useParams();
 
-  // Fetch assessments based on the selectedTerm using the correct query
+  // Fetch assessments based on the selectedTerm using the correct query, only if selectedTerm is defined
   const {
     data: assessmentsData,
     isLoading: assessmentsLoading,
     error: assessmentsError,
     refetch,
-  } = useGetAssessmentByTermQuery(selectedTerm, {
-    skip: !selectedTerm, // Skip the query if no term is selected
-  });
+  } = useGetAssessmentByTermQuery(
+    selectedTerm ? { termId: selectedTerm, classId, subjectId } : null,
+    { skip: !selectedTerm }, // Skip fetching if selectedTerm is not set
+  );
 
   const [scores, setScores] = useState({}); // State for storing inputted scores
   const [createResult, { isLoading: isSubmitting }] = useCreateResultMutation(); // Mutation hook for saving scores
@@ -55,10 +56,10 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
       selectedTerm,
       selectedSession,
       studentId,
-      id,
+      subjectId,
       scores,
     );
-    if (!selectedTerm || !selectedSession || !studentId || !id) {
+    if (!selectedTerm || !selectedSession || !studentId || !subjectId) {
       toast.error(
         "Please ensure all required data (studentId, sessionId, termId, id) is provided!",
       );
@@ -69,7 +70,7 @@ const ScoresModal = ({ selectedTerm, studentId, selectedSession }) => {
     const parsedStudentId = parseInt(studentId, 10);
     const parsedSessionId = parseInt(selectedSession, 10);
     const parsedTermId = parseInt(selectedTerm, 10);
-    const parsedSubjectId = parseInt(id, 10);
+    const parsedSubjectId = parseInt(subjectId, 10);
 
     const requests = assessmentsData.map(async (assessment) => {
       const score = scores[assessment.id];

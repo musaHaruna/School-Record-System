@@ -22,7 +22,9 @@ import { useCreateAssessmentMutation } from "../../app/api/assessmentsApi";
 import "./AssessmentModal.css";
 
 const AssessmentsModal = () => {
-  const { id: routeSubjectId } = useParams();
+  const { subjectId: routeSubjectId, classId } = useParams();
+  console.log("routeSubjectId", routeSubjectId);
+  console.log("classId", classId);
   const subjectId = routeSubjectId ? parseInt(routeSubjectId) : null;
 
   const {
@@ -95,6 +97,14 @@ const AssessmentsModal = () => {
       term: "",
     })); // Clear term when session changes
   };
+
+  // Select last term when terms are available
+  useEffect(() => {
+    if (sessionTermsData && sessionTermsData.length > 0) {
+      const lastTerm = sessionTermsData[sessionTermsData.length - 1].id;
+      setAssessment((prev) => ({ ...prev, term: lastTerm }));
+    }
+  }, [sessionTermsData]);
 
   const handleChange = (e) => {
     setAssessment({ ...assessment, [e.target.name]: e.target.value });

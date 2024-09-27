@@ -28,6 +28,8 @@ import { TeacherProfile } from "./pages/teachers/pages";
 
 import Layout from "./pages/admin/AdminLayout";
 // import AddTeachers from "./pages/admin/Pages/AddTeachers";
+import AddTeachers from "./pages/admin/Pages/AddTeachers";
+import { ViewResult } from "./components/admin/results/ViewResult";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -83,12 +85,40 @@ function App() {
           <Route path="subjects/:id" element={<SingleSubjects />} />
           <Route path="subject-students/:id" element={<SubjectStudents />} />
 
+          {/* <Route path="academic-sessions" element={<AcademicSessions />} /> */}
+
+          {/* teachers */}
+          <Route path="all-teachers" element={<Teachers />} />
+          <Route path="add-teachers" element={<AddTeachers />} />
+          <Route path="add-teacher" element={<AddTeacher />} />
+          <Route path="all-teachers/:id" element={<TeachersDetails />} />
+
+          {/* students */}
+          <Route path="students" element={<Students />} />
+          <Route path="add-student" element={<AddStudent />} />
+          <Route path="student-details/:id" element={<SingleStudent />} />
+
+          {/* subjects */}
+          <Route path="subjects" element={<Subjects />} />
+          <Route path="subjects/:id" element={<SingleSubjects />} />
+          <Route
+            path="subject-students/:subjectId/:classId"
+            element={<SubjectStudents />}
+          />
+
+          {/* new merge */}
+          <Route path="results/*" element={<Results />} />
           {/* academic-sessions */}
           <Route path="academic-sessions" element={<AccademicSessions />} />
           <Route path="assessments" element={<Assessments />} />
 
           {/* new merge */}
           <Route path="results/*" element={<Results />} />
+
+          {/* new merge */}
+          <Route path="results/*" element={<Results />} />
+
+          <Route path="result" element={<ViewResult />} />
         </Route>
 
         {/* students dashboard */}

@@ -26,6 +26,9 @@ export const classesApi = createApi({
     getSingleClasses: builder.query({
       query: (id) => `/classes/${id}`,
     }),
+    getClassResults: builder.query({
+      query: ({ classId, termId }) => `/classes/results/${classId}/${termId}`,
+    }),
     createClass: builder.mutation({
       query: (body) => ({
         url: "/classes",
@@ -58,4 +61,5 @@ export const {
   useGetAllClassesQuery,
   useGetSingleClassesQuery,
   useUpdateClassesMutation,
+  useGetClassResultsQuery,
 } = classesApi;

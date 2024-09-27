@@ -52,7 +52,7 @@ export const menuLinks = [
   },
   {
     id: 8,
-    title: "Admin Results",
+    title: "Results",
     url: "results",
     icon: <Icon icon="carbon:result-new" />,
   },
