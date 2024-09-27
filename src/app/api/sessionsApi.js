@@ -38,9 +38,9 @@ export const sessionsApi = createApi({
     }),
     updateSession:builder.mutation({
       query: (id,body)=>({
-        url:`/sessions/${id}/status`,
+        url:`/sessions/${id}`,
         body,
-        method:"PUT"
+        method:"PATCH"
       }),
       invalidatesTags:["Sessions"]
     }),

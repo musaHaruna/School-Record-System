@@ -34,7 +34,7 @@ const AddSession = () => {
   }, [error,isSuccess])
 
     const formatStartDate= startDate.toISOString().split('T')[0]
-    const formatEndDate= startDate.toISOString().split('T')[0]
+    const formatEndDate= endDate.toISOString().split('T')[0]
     // Output: "2022-07-31"
 
   const handleSubmit =(e)=>{

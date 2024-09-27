@@ -5,6 +5,7 @@ import AddSession from './AddSession'
 import { useGetAllSessionsQuery } from '../../../../app/api/sessionsApi'
 import SingleSession from './SingleSession'
 import CreateTerms from './CreateTerms'
+import DeleteModal from '../../../../components/DeleteModal'
 // import { useGetAllSessionsQuery } from '../../../../app/api/classApi'
 
 const AccademicSessions = () => {
@@ -48,16 +49,21 @@ const AccademicSessions = () => {
                {data.map((session)=>(
                  <div key={session.name} className='bg-white shadow-md p-4'>
                     <h2 className='text-[18px]'>{session.name}</h2>
-                    <div className='flex justify-between'>
+                    
                     <div className='flex flex-col gap-2 mt-2'>
                         <p className='text-sm'>Start Date: {new Date(session.startDate).toISOString().split("T")[0]}</p>
                         <p className='text-sm'>End Date: {new Date(session.endDate).toISOString().split("T")[0]}</p>
                     </div>
 
-                    <div>
+                    <div className='flex justify-between'>
+                      <div>
+                      <DeleteModal type={"sessions"} id={session.id} />
+                      </div>
+                      <div>
                     <SingleSession session={session}/>
+                      </div>
                     </div>
-                    </div>                    
+                                      
                 </div>
                ))
                 

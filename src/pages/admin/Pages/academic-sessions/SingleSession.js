@@ -14,9 +14,16 @@ import {
   } from "../../../../components/ui/accordion"
 import DatePicker from "react-datepicker";
 import DeleteModal from '../../../../components/DeleteModal';
+import { useUpdateSessionMutation } from '../../../../app/api/sessionsApi';
+import { useNavigate } from 'react-router-dom';
+import { Loader2 } from 'lucide-react';
+import { Button } from '../../../../components/ui/button';
+import { toast } from 'react-toastify';
 
 const SingleSession = ({session}) => {
 
+  const navigate =useNavigate()
+  const [updateSession,{ isLoading,isSuccess, error}]=useUpdateSessionMutation()
   const [sessionName, setSessionName]=useState()
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -24,15 +31,28 @@ const SingleSession = ({session}) => {
 
 
   useEffect(()=>{
+    
+      if(error){
+          toast.error(error.data.message)
+      }
+
+      if(isSuccess){
+          toast.success("Session Updated Successfully")
+          setOpenDialog(false)
+      }
+
     setSessionName(session?.name)
     setStartDate(session?.startDate)
     setEndDate(session?.endDate)
-  },[session])
+  },[session, error,isSuccess])
 
+  console.log(sessionName)
+  // const formatStartDate= startDate.toISOString().split('T')[0]
+  //   const formatEndDate= endDate.toISOString().split('T')[0]
 
   const handleSubmit =(e)=>{
     e.preventDefault()
-    
+    updateSession(session.id,{sessionName, startDate, endDate} )
   }
 
 
@@ -51,8 +71,8 @@ const SingleSession = ({session}) => {
                     <label className='text-gray-500 text-sm'>Session Name</label>
                     <input 
                     type='text'
-                    value={sessionName}
                     disabled
+                    value={sessionName}
                     onChange={(e)=>setSessionName(e.target.value)}
                     placeholder='2023/2024'
                     className='py-3 bg-[#F9F9F9] outline-none px-3 border-none text-sm'
@@ -128,13 +148,13 @@ const SingleSession = ({session}) => {
                 </div>
                 
 
-                {/* <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">Create Session</Button> */}
-                <div className='flex items-center gap-2 w-full  justify-center'>
+                {/* <Button className="bg-[#4a3aff] text-white hover:bg-[#5446f2]">{isLoading ? <Loader2 className='animate-spin' /> :"Update Session"}</Button> */}
+                {/* <div className='flex items-center gap-2 w-full  justify-center'>
                     <h2>Delete Session</h2>
                     <div>
                     <DeleteModal id={session.id} type={"sessions"} />
                     </div>
-                </div>
+                </div> */}
 
             </form>
     </DialogContent>
