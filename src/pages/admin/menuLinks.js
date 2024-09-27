@@ -46,14 +46,14 @@ export const menuLinks = [
   },
   {
     id: 7,
-    title: "Admin Results",
+    title: "Results",
     url: "results",
     icon: <Icon icon="carbon:result-new" />,
   },
   {
     // student rouute
     id: 8,
-    title: "My Result",
+    title: "Report Cards",
     url: "result",
     icon: <Icon icon="carbon:result-new" />,
   },

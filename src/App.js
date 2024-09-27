@@ -25,6 +25,7 @@ import {
 } from "./pages/admin/Pages";
 import Layout from "./pages/admin/AdminLayout";
 import AddTeachers from "./pages/admin/Pages/AddTeachers";
+import { ViewResult } from "./components/admin/results/ViewResult";
 import { ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -108,6 +109,8 @@ function App() {
 
           {/* new merge */}
           <Route path="results/*" element={<Results />} />
+
+          <Route path="result" element={<ViewResult />} />
         </Route>
 
         {/* students dashboard */}
