@@ -52,14 +52,14 @@ export const menuLinks = [
   },
   {
     id: 8,
-    title: "Results",
+    title: "Score Sheets",
     url: "results",
     icon: <Icon icon="carbon:result-new" />,
   },
   {
     // student rouute
     id: 9,
-    title: "My Result",
+    title: "Report Cards",
     url: "result",
     icon: <Icon icon="carbon:result-new" />,
   },

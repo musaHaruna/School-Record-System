@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { SelectFilter } from "../../../../components/fields/filterFields";
+import { ViewResult } from "../../../../components/admin/results/ViewResult";
+
 import { StudentsListTableEmpty } from "./StudentsListTableEmpty";
 import { StudentsListTable } from "./StudentsListTable";
 import {
@@ -11,6 +13,9 @@ import { useGetAllClassesQuery } from "../../../../app/api/classApi";
 import { useGetClassResultsQuery } from "../../../../app/api/classApi";
 
 export const ResultList = () => {
+
+  const resultRef = useRef();
+
   const {
     data: classesData,
     isLoading: classesLoading,
@@ -20,6 +25,10 @@ export const ResultList = () => {
   const [selectedSession, setSelectedSession] = useState(""); // State to hold the selected session
   const [selectedTerm, setSelectedTerm] = useState(""); // State to hold the selected term
   const [selectedClass, setSelectedClass] = useState(""); // State to hold the selected class
+  const [selectedClassName, setSelectedClassName] = useState(""); // State to hold the selected class name
+  const [selectedSessionName, setSelectedSessionName] = useState(""); // State to hold the selected session name
+  const [selectedTermName, setSelectedTermName] = useState(""); // State to hold the selected term name
+  
 
   const {
     data: classResultsData,
@@ -44,6 +53,7 @@ export const ResultList = () => {
     if (sessionsData && sessionsData.length > 0) {
       const lastSession = sessionsData[sessionsData.length - 1]; // Get the last session
       setSelectedSession(lastSession.id); // Preselect the last session's ID
+      setSelectedSessionName(lastSession.name); // Store the session name
     }
   }, [sessionsData]);
 
@@ -62,37 +72,75 @@ export const ResultList = () => {
     if (sessionTermsData && sessionTermsData.length > 0) {
       const lastTerm = sessionTermsData[sessionTermsData.length - 1]; // Get the last term
       setSelectedTerm(lastTerm.id); // Preselect the last term's ID
+      setSelectedTermName(lastTerm.name); // Store the term name
     }
   }, [sessionTermsData]);
 
   // Preselect the last class
   useEffect(() => {
     if (classesData && classesData.length > 0) {
-      const firstClass = classesData[0]; // Get the last class
-      setSelectedClass(firstClass.id); // Preselect the last class's ID
+      const firstClass = classesData[0]; // Get the first class
+      setSelectedClass(firstClass.id); // Preselect the first class's ID
+      setSelectedClassName(firstClass.name); // Store the class name
     }
   }, [classesData]);
 
+  useEffect(() => {
+    console.log("classResultsData", classResultsData);
+  }, [classResultsData]);
+
   // Handle session change
   const handleSessionChange = (sessionId) => {
+    const selectedSessionObj = sessionsData.find(session => session.id === sessionId);
     setSelectedSession(sessionId);
+    setSelectedSessionName(selectedSessionObj.name); // Set the selected session name
     setSelectedTerm("");
     fetchSessionTerms();
   };
 
   const handleTermChange = (termId) => {
     setSelectedTerm(termId);
+    setSelectedTermName(sessionTermsData.find(term => term.id === termId).name); // Set the selected term name
   };
 
   const handleClassChange = (classId) => {
+    const selectedClassObj = classesData.find(classItem => classItem.id === classId);
     setSelectedClass(classId);
+    setSelectedClassName(selectedClassObj.name); // Set the selected class name
+  };
+
+  // Handle print button click (add logic here for printing)
+  const handlePrint = () => {
+    const printWindow = window.open("", "_blank", "width=800,height=600");
+    const printContent = resultRef.current.innerHTML;
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Print View</title>
+          <style>
+            /* Add any custom styles for print here */
+            body {
+              font-family: Arial, sans-serif;
+            }
+          </style>
+        </head>
+        <body>
+          ${printContent}
+        </body>
+      </html>
+    `);
+
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
   };
 
   return (
     <>
       <Outlet />
       <div>
-        <h1 className="font-thin font-rubik text-[2.4rem] mb-4">Result List</h1>
+        <h1 className="font-thin font-rubik text-[2.4rem] mb-4">Score Sheet</h1>
 
         <div className="flex-col flex gap-4 md:flex-row mb-8">
           {/* filters container  */}
@@ -137,7 +185,34 @@ export const ResultList = () => {
               </option>
             ))}
           </SelectFilter>
+
+         {/* Button next to filters */}
+          <button
+            className="w-auto px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            onClick={handlePrint}
+            style={{ maxWidth: '200px' }} // Set a max width
+          >
+            Print Report Cards
+          </button>
         </div>
+        <div ref={resultRef} style={{ display: "none" }}>
+
+        {
+          // List viewResult for each student in classResultsData
+          classResultsData?.map((result, index) => (
+            <ViewResult 
+              key={index} 
+              studentResultsData={result} 
+            
+              studentClass={selectedClassName} // Pass the class name
+              session={selectedSessionName} // Pass the session name
+              term={selectedTermName} // Pass the term name
+              year={selectedSessionName.split('/')[1]} // Pass the current year
+            />
+          ))
+        }
+        </div>
+
         {!(
           sessionTermsData &&
           sessionsData &&

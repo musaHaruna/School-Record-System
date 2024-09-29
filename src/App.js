@@ -115,9 +115,6 @@ function App() {
           {/* new merge */}
           <Route path="results/*" element={<Results />} />
 
-          {/* new merge */}
-          <Route path="results/*" element={<Results />} />
-
           <Route path="result" element={<ViewResult />} />
         </Route>
 
