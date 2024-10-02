@@ -8,6 +8,9 @@ import { classesApi } from "./api/classApi";
 import { allSubjectApi } from "./api/allSubjectApi";
 import authReducer from "./features/authSlice";
 import userReducer from "./features/userSlice";
+import classResultsReducer from "./features/classResultsSlice";
+import subjectsReducer from "./features/subjectsSlice";
+
 import { sessionsApi } from "./api/sessionsApi";
 import { termsApi } from "./api/termApi";
 import { resultsApi } from "./api/resultsApi";
@@ -17,6 +20,8 @@ export const store = configureStore({
   reducer: {
     auth: authReducer,
     user: userReducer,
+    classResults: classResultsReducer,
+    subjects: subjectsReducer,
     [authApi.reducerPath]: authApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [studentsApi.reducerPath]: studentsApi.reducer,

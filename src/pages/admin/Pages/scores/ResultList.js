@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { SelectFilter } from "../../../../components/fields/filterFields";
 import { ViewResult } from "../../../../components/admin/results/ViewResult";
@@ -12,8 +13,13 @@ import {
 import { useGetAllClassesQuery } from "../../../../app/api/classApi";
 import { useGetClassResultsQuery } from "../../../../app/api/classApi";
 
-export const ResultList = () => {
+import { fetchClassResults } from "../../../../app/features/classResultsSlice";
 
+
+export const ResultList = () => {
+  const dispatch = useDispatch();   
+
+  const { data: classResultsData, loading, error } = useSelector((state) => state.classResults);
   const resultRef = useRef();
 
   const {
@@ -30,16 +36,16 @@ export const ResultList = () => {
   const [selectedTermName, setSelectedTermName] = useState(""); // State to hold the selected term name
   
 
-  const {
-    data: classResultsData,
-    isLoading: classResultsLoading,
-    error: classResultsError,
-  } = useGetClassResultsQuery(
-    { classId: selectedClass, termId: selectedTerm },
-    {
-      skip: !selectedClass || !selectedTerm,
-    },
-  );
+  // const {
+  //   data: classResultsData,
+  //   isLoading: classResultsLoading,
+  //   error: classResultsError,
+  // } = useGetClassResultsQuery(
+  //   { classId: selectedClass, termId: selectedTerm },
+  //   {
+  //     skip: !selectedClass || !selectedTerm,
+  //   },
+  // );
 
   // Fetch sessions
   const {
@@ -86,14 +92,15 @@ export const ResultList = () => {
   }, [classesData]);
 
   useEffect(() => {
-    console.log("classResultsData", classResultsData);
-  }, [classResultsData]);
+    dispatch(fetchClassResults(selectedClass, selectedTerm)); // Dispatch action to fetch class results
+  }, [dispatch, selectedClass, selectedTerm]);
+
 
   // Handle session change
   const handleSessionChange = (sessionId) => {
     const selectedSessionObj = sessionsData.find(session => session.id === sessionId);
     setSelectedSession(sessionId);
-    setSelectedSessionName(selectedSessionObj.name); // Set the selected session name
+   // setSelectedSessionName(selectedSessionObj.name); // Set the selected session name
     setSelectedTerm("");
     fetchSessionTerms();
   };

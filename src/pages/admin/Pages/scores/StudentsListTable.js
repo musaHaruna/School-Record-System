@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { Icon } from "@iconify/react";
 import { ScoreInputField } from "../../../../components/fields/scoreInput";
+import { setSubjects } from "../../../../app/features/subjectsSlice";
+
 
 export const StudentsListTable = ({ classResultsData }) => {
+  
+ const dispatch = useDispatch();
+
+  //const [classResultsData, setClassResultsData] = useState(initialClassResultsData);
+
+
   const [studentEditIndex, setStudentEditIndex] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
@@ -19,15 +29,27 @@ export const StudentsListTable = ({ classResultsData }) => {
     })),
   );
 
-  // Get unique subjects for headers
-  const uniqueSubjects = [
-    ...new Set(subjectsWithAssessments.map((item) => item.subjectName)),
-  ];
+  useEffect(() => {
+    let uniqueSubjectsData = [...new Set(subjectsWithAssessments.map((item) => item.subjectName))];
+    console.log("Dispatching unique subjects", uniqueSubjectsData);
+    dispatch(setSubjects(uniqueSubjectsData));
+  }, [classResultsData, dispatch]);
+
+
+  const { data: uniqueSubjects, loading, error } = useSelector((state) => state.subjects);
+  console.log("uniqueSubjects from store: ", uniqueSubjects);
+  
+  
 
   // Filter students by name based on the search query
   const filteredStudents = classResultsData.filter((student) =>
-    student.studentName.toLowerCase().includes(searchQuery.toLowerCase()),
+    student.studentName.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Handle score change
+  const handleScoreChange = (e, studentIndex, subjectName, assessmentName) => {
+   
+  };
 
   return (
     <div className="w-full overflow-x-scroll text-[1.4rem] font-inter bg-white py-[4rem] px-[2rem] rounded-3xl">
@@ -45,9 +67,7 @@ export const StudentsListTable = ({ classResultsData }) => {
       <table className="w-full min-w-[50rem]">
         <thead>
           <tr className="*:text-center *:border-[1px] bg-blue_primary text-left *:p-4 *:font-medium text-white">
-            <th className="sticky left-[-2rem] w-[5rem] bg-inherit z-10">
-              S/N
-            </th>
+            <th className="sticky left-[-2rem] w-[5rem] bg-inherit z-10">S/N</th>
             <th className="sticky left-[3rem] bg-inherit z-10 border-r-[1px] border-r-primary/[.5]">
               Name
             </th>
@@ -63,7 +83,7 @@ export const StudentsListTable = ({ classResultsData }) => {
                 key={subjIndex}
                 colSpan={
                   classResultsData[0].subjects.find(
-                    (s) => s.subjectName === subjectName,
+                    (s) => s.subjectName === subjectName
                   ).assessments.length
                 }
                 className="text-center"
@@ -85,7 +105,7 @@ export const StudentsListTable = ({ classResultsData }) => {
                   >
                     {assessment.name}
                   </th>
-                )),
+                ))
             )}
           </tr>
         </thead>
@@ -112,20 +132,23 @@ export const StudentsListTable = ({ classResultsData }) => {
               </td>
               {uniqueSubjects.map((subjectName) => {
                 const studentSubject = student.subjects.find(
-                  (s) => s.subjectName === subjectName,
+                  (s) => s.subjectName === subjectName
                 );
                 return studentSubject ? (
                   studentSubject.assessments.map((assessment, assIndex) => (
                     <td key={assIndex} className="p-2 min-w-[5rem]">
                       <ScoreInputField
-                        value={
-                          assessment.score === "N/A" ? "" : assessment.score
-                        }
+                        value={assessment.score}
                         name={assessment.name}
                         disabled={studentEditIndex !== studentIndex}
-                        handleChange={(e) => {
-                          // Handle score change if needed
-                        }}
+                        handleChange={(e) =>
+                          handleScoreChange(
+                            e,
+                            studentIndex,
+                            subjectName,
+                            assessment.name
+                          )
+                        }
                       />
                     </td>
                   ))
