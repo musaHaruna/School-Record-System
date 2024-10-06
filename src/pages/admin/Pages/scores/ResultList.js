@@ -100,7 +100,7 @@ export const ResultList = () => {
   const handleSessionChange = (sessionId) => {
     const selectedSessionObj = sessionsData.find(session => session.id === sessionId);
     setSelectedSession(sessionId);
-   // setSelectedSessionName(selectedSessionObj.name); // Set the selected session name
+    setSelectedSessionName(selectedSessionObj.name); // Set the selected session name
     setSelectedTerm("");
     fetchSessionTerms();
   };

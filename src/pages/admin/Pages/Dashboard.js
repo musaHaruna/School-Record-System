@@ -13,7 +13,12 @@ import {
 } from "../data";
 import TeachersToStudentRatioChart from "../../../components/admin/charts/TeachersToStudentRatioChart";
 import { useGetUserProfileQuery } from "../../../app/api/userApi";
+import { useGetAllTeachersQuery } from "../../../app/api/teachersApi";
+import { useGetAllStudentsQuery } from "../../../app/api/studentsApi";
+import { useGetAllClassesQuery } from "../../../app/api/classApi";
+import { useGetAllSubjectsQuery } from "../../../app/api/allSubjectApi";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function getColorByItemId(id) {
   switch (id) {
@@ -32,6 +37,10 @@ function getColorByItemId(id) {
 const Dashboard = () => {
   const { _ } = useGetUserProfileQuery();
   const { user, isLoading } = useSelector((state) => state.user);
+  const { data: teachersData } = useGetAllTeachersQuery();
+  const { data: studentsData } = useGetAllStudentsQuery();
+  const { data: classesData } = useGetAllClassesQuery();
+  const { data: subjectsData } = useGetAllSubjectsQuery();
 
   return (
     <article className="admin-dashboard">
@@ -66,7 +75,13 @@ const Dashboard = () => {
                 className="value"
                 style={{ color: getColorByItemId(item.id) }}
               >
-                {item.number}
+                {item.id === 1
+                  ? teachersData?.length
+                  : item.id === 2
+                  ? studentsData?.length
+                  : item.id === 3
+                  ? subjectsData?.length
+                  : classesData?.length}{" "}
               </div>
             </div>
           ))

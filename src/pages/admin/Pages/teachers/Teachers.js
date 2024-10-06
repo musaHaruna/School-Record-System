@@ -2,18 +2,25 @@ import "../../../../assets/css/admin/teachersPage.css";
 // import TeachersTable from '../../../components/admin/teachers/TeachersTable'
 import { Link, useNavigate } from "react-router-dom";
 import NewTeachersTable from "../../../../components/admin/teachers/NewTeachersTable";
-import { teachersRow } from "../../../../constants/index";
 import { Button } from "../../../../components/ui/button";
-import { Loader2, PlusCircle } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useGetAllTeachersQuery } from "../../../../app/api/teachersApi";
+import { useEffect } from "react";
 
 const Teachers = () => {
   const { data, isLoading } = useGetAllTeachersQuery();
-
+  useEffect(() => {
+    console.log("Teachers>>>",data);
+  }, [data]);
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 160 },
     { field: "gender", headerName: "Gender", width: 130 },
+    {
+      field: "role",
+      headerName: "Role",
+      width: 130,
+    },
     { field: "email", headerName: "Email", width: 160 },
     { field: "phoneNumber", headerName: "Phone Number", width: 160 },
   ];

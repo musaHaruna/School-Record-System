@@ -37,7 +37,6 @@ const AddTeacher = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setTeacherDetails((preValue) => {
       return { ...preValue, [name]: value };
     });
@@ -47,6 +46,7 @@ const AddTeacher = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("teacherDetails", teacherDetails);
     createTeacher({ ...teacherDetails, dateOfBirth: formatDateOfBirth });
   };
 
@@ -157,27 +157,7 @@ const AddTeacher = () => {
                   className="px-4 py-2 outline-[#988fff] border border-gray-300 rounded-lg"
                 />
               </div>
-              {/* <div className='flex flex-col gap-2'>
-                        <label htmlFor='studentClass' className='text-sm'>Class</label>
-
-                        <select className='text-sm text-gray-600 px-4 py-2 outline-none border border-gray-300 rounded-lg' >
-                            {classOptions.map((option)=>(
-                                <option key={option.id}>{option.class}</option>
-                            ))}
-                        </select>
-                    
-                    </div> */}
-              {/* <div className='flex flex-col gap-2'>
-                        <label htmlFor='parentsNumber' className='text-sm'>Teacher's Number</label>
-                        <input
-                            type='text'
-                            id='parentsNumber'
-                            name='parentsNumber'
-                            placeholder='+234'
-                            className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
-
-                        />
-                    </div> */}
+            
             </div>
 
             {/* second row */}
@@ -213,6 +193,22 @@ const AddTeacher = () => {
               </div>
 
               <div className="flex flex-col gap-2 col-span-6">
+                <label htmlFor="role" className="text-sm">
+                  Role
+                </label>
+                <select
+                  name="role"
+                  value={teacherDetails.role}
+                  onChange={handleChange}
+                  className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
+                >
+                  <option value={"teacher"}>Teacher</option>
+                  <option value={"admin"}>Admin</option>
+                  <option value={"headteacher"}>Head Teacher</option>
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2 col-span-6">
                 <label htmlFor="phoneNumber" className="text-sm">
                   Teacher's Number
                 </label>
@@ -226,30 +222,6 @@ const AddTeacher = () => {
                   className="px-4 py-2 outline-none border border-gray-300 rounded-lg"
                 />
               </div>
-
-              {/* <div className='flex flex-col gap-2 col-span-6'>
-                        <label htmlFor='stateOfOrigin' className='text-sm'>State of Origin</label>
-                        <input
-                            type='text'
-                            id='stateOfOrigin'
-                            name='stateOfOrigin'
-                            placeholder='Osun state'
-                            className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
-
-                        />
-                    </div>
-
-                    <div className='flex flex-col gap-2 col-span-6'>
-                        <label htmlFor='lgaOfOrigin' className='text-sm'>Local Government</label>
-                        <input
-                            type='text'
-                            id='lgaOfOrigin'
-                            name='lgaOfOrigin'
-                            placeholder=''
-                            className='px-4 py-2 outline-none border border-gray-300 rounded-lg' 
-
-                        />
-                    </div> */}
 
               <div className="flex flex-col gap-2 col-span-12">
                 <label htmlFor="qualifications" className="text-sm">
