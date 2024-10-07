@@ -22,6 +22,9 @@ export const teachersApi = createApi({
       query: () => "/teacher",
       providesTags: ["Teachers"],
     }),
+    getHeadTeacher: builder.query({
+      query: () => "/teacher/head-teacher",
+    }),
     getTeacherDetails: builder.query({
       query: (id) => `/teacher${id}`,
     }),
@@ -52,4 +55,5 @@ export const {
   useCreateTeacherMutation,
   useGetSingleTeacherQuery,
   useDeleteTeacherMutation,
+  useGetHeadTeacherQuery,
 } = teachersApi;

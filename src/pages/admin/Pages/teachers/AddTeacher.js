@@ -37,7 +37,7 @@ const AddTeacher = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setTeacherDetails((preValue) => {
+    setTeacherDetails((preValue) => { 
       return { ...preValue, [name]: value };
     });
   };
@@ -46,7 +46,6 @@ const AddTeacher = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("teacherDetails", teacherDetails);
     createTeacher({ ...teacherDetails, dateOfBirth: formatDateOfBirth });
   };
 
@@ -204,7 +203,7 @@ const AddTeacher = () => {
                 >
                   <option value={"teacher"}>Teacher</option>
                   <option value={"admin"}>Admin</option>
-                  <option value={"headteacher"}>Head Teacher</option>
+                  <option value={"head-teacher"}>Head Teacher</option>
                 </select>
               </div>
 
