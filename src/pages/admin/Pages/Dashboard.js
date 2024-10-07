@@ -42,6 +42,17 @@ const Dashboard = () => {
   const { data: classesData } = useGetAllClassesQuery();
   const { data: subjectsData } = useGetAllSubjectsQuery();
 
+  const teacherToStudentRatio = [
+    {name: "Teachers", value: teachersData?.length},
+    {name: "Students", value: studentsData?.length}
+  ];
+
+  const maleToFemaleRatio = [
+    {name: "Boys", value: studentsData.filter(student=> student.gender === 'male').length},
+    {name: "Girls", value: studentsData.filter(student=> student.gender === 'female').length}
+  ];
+  
+
   return (
     <article className="admin-dashboard">
       <section className="admin-dashboard-heading">
@@ -122,10 +133,10 @@ const Dashboard = () => {
           ) : (
             <>
               <div className="chart-container">
-                <TeachersToStudentRatioChart data={teacherToStudentCharts} />
+                <TeachersToStudentRatioChart data={teacherToStudentRatio} />
               </div>
               <div className="chart-container">
-                <EnrollmentByGenderChart data={genderData} />
+                <EnrollmentByGenderChart data={maleToFemaleRatio} />
               </div>
               <div className="chart-container">
                 <EnrollmentByAgeChart data={enrollmentByAgeData} />
