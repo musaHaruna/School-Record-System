@@ -18,7 +18,7 @@ const ClassesCard = ({ className }) => {
           <h2 className="text-lg font-semibold">{className.name}</h2>
 
           <div>
-            <p className="text-sm">25 Students, 4 Teachers</p>
+            <p className="text-sm">{ className.students.length } Students</p>
           </div>
         </div>
       </div>

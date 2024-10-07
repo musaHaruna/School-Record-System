@@ -3,10 +3,15 @@ import ClassesCard from "../../../../components/admin/subjects/ClassesCard";
 import AddClasss from "./AddClasss";
 import { useGetAllClassesQuery } from "../../../../app/api/classApi";
 import { Loader2 } from "lucide-react";
+import { useEffect } from "react";
 
 const Classes = () => {
   const { data, isLoading } = useGetAllClassesQuery();
 
+  useEffect(() => {
+    console.log("Classes>>>", data);
+  }, [data]);
+  
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen w-full">
